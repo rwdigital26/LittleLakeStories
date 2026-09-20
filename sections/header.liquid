@@ -1621,13 +1621,6 @@
       "visible_if": "{{ section.settings.divider_width > 0 and section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
     },
     {
-      "type": "color",
-      "id": "divider_color",
-      "label": "t:settings.divider_color",
-      "placeholder": "t:settings.default",
-      "visible_if": "{{ section.settings.divider_width > 0 and section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
-    },
-    {
       "type": "range",
       "id": "border_width",
       "label": "t:settings.border_width",
@@ -1636,13 +1629,6 @@
       "step": 0.5,
       "unit": "px",
       "default": 0
-    },
-    {
-      "type": "color",
-      "id": "bottom_border_color",
-      "label": "t:settings.bottom_border_color",
-      "placeholder": "t:settings.default",
-      "visible_if": "{{ section.settings.border_width > 0 }}"
     },
     {
       "type": "header",

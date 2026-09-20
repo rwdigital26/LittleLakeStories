@@ -328,7 +328,7 @@
 
   {% if media_count == 0 %}
     <img
-      src="{{ 'little-lake-hero-art.png' | asset_url }}"
+      src="{{ 'little-lake-hero.png' | asset_url }}"
       alt="A family sharing a story beside a lake"
       class="hero__media hero__media--fallback"
       width="520"
@@ -652,12 +652,12 @@
   }
 
   .hero-wrapper:first-child .hero--reference-art {
-    min-height: 0;
+    min-height: min(560px, calc(100svh - var(--header-group-height)));
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__container {
-    min-height: 0;
-    aspect-ratio: 941 / 286;
+    min-height: inherit;
+    aspect-ratio: 2048 / 768;
   }
 
   .hero-wrapper:first-child .hero__content-wrapper {
@@ -673,7 +673,7 @@
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__media-grid {
-    inset-inline-start: 42%;
+    inset-inline-start: 0;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__media--fallback {
@@ -681,9 +681,35 @@
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
     align-content: center;
     justify-content: center;
+    align-items: center;
+    width: min(52%, 700px);
+    margin-inline-start: clamp(24px, 7vw, 104px);
+    padding-block: 48px;
     z-index: var(--layer-raised);
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
+    flex: 0 0 100%;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block p {
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block h1 {
+    max-width: 620px;
+    margin-inline: auto;
+    font-size: clamp(2.25rem, 4.3vw, 4.6rem);
+    line-height: 0.98;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button {
+    margin-block-start: 12px;
   }
 
   .hero-wrapper:first-child .hero__content-wrapper .button {
@@ -713,18 +739,32 @@
       object-position: center center;
     }
 
+    .hero-wrapper:first-child .hero--reference-art {
+      min-height: 620px;
+    }
+
     .hero-wrapper:first-child .hero--reference-art .hero__container {
-      aspect-ratio: 1 / 1.05;
+      aspect-ratio: 1 / 1.2;
     }
 
     .hero-wrapper:first-child .hero--reference-art .hero__media-grid {
-      inset-inline-start: 0;
-      opacity: 0.3;
+      opacity: 0.48;
     }
 
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
+      width: 100%;
+      margin-inline-start: 0;
       align-content: center;
       justify-content: center;
+      padding-inline: 24px;
+    }
+
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block h1 {
+      font-size: clamp(2.5rem, 11vw, 4rem);
+    }
+
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button {
+      margin-block-start: 8px;
     }
   }
 
