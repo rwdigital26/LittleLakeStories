@@ -684,7 +684,8 @@
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    flex-wrap: nowrap;
     align-content: center;
     justify-content: center;
     align-items: center;
@@ -692,10 +693,6 @@
     margin-inline-start: clamp(24px, 7vw, 104px);
     padding-block: 48px;
     z-index: var(--layer-raised);
-  }
-
-  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
-    flex: 0 0 100%;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block p {
@@ -716,10 +713,13 @@
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
+    flex: 0 0 auto;
+    width: 200px;
+    justify-content: center;
     min-height: 56px;
     padding-inline: 30px;
     border: 2px solid #4f9bc3;
-    border-radius: 999px;
+    border-radius: 999px !important;
     font-family: Georgia, 'Times New Roman', serif !important;
     font-size: 1rem;
     font-weight: 700;
@@ -729,13 +729,13 @@
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button {
-    background: #4f9bc3;
-    color: #fff;
+    background: #4f9bc3 !important;
+    color: #fff !important;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button-secondary {
-    background: rgb(255 255 255 / 88%);
-    color: #143d63;
+    background: rgb(255 255 255 / 88%) !important;
+    color: #143d63 !important;
   }
 
   .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-secondary) {
@@ -790,6 +790,7 @@
 
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
       margin-block-start: 8px;
+      width: min(200px, 82vw);
       min-height: 52px;
       padding-inline: 22px;
       font-size: 0.95rem;
