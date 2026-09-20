@@ -43,7 +43,7 @@
   .how-it-works {
     --how-it-works-ink: #143d63;
     --how-it-works-blue: #2d86b6;
-    padding-block: 72px 88px;
+    padding-block: 72px 128px;
     background: var(--how-it-works-bg, #fff);
     color: var(--how-it-works-ink);
   }
@@ -85,8 +85,9 @@
   .how-it-works__illustration {
     display: grid;
     place-items: center;
-    height: 190px;
-    margin-block-end: 22px;
+    height: 180px;
+    margin-block-end: 5px;
+    overflow: hidden;
   }
 
   .how-it-works__illustration img {
@@ -121,7 +122,7 @@
     align-items: start;
     position: relative;
     z-index: 1;
-    padding-block: 0 8px;
+    padding-block: 5px 8px;
     background: var(--how-it-works-bg, #fff);
   }
 
@@ -153,7 +154,7 @@
 
   @media screen and (max-width: 749px) {
     .how-it-works {
-      padding-block: 52px 64px;
+      padding-block: 52px 88px;
     }
 
     .how-it-works__steps {
