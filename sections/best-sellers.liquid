@@ -28,7 +28,7 @@
             {% endif %}
           </a>
           <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
-          <div class="best-sellers__rating" aria-label="{{ section.settings.rating_label }}">★★★★★ <span>({{ section.settings.review_count }})</span></div>
+                <h2 style="text-align: center;">{{ section.settings.heading }}</h2>
           <div class="best-sellers__price">{{ product.price | money }}</div>
           <div class="best-sellers__tags">
             <span>Personalized</span>
@@ -57,12 +57,13 @@
   .best-sellers {
     --best-sellers-ink: #143d63;
     --best-sellers-orange: #f2a21b;
-    padding-block: 72px 88px;
+    padding-block: 15px 88px;
     background: var(--best-sellers-bg, #fff);
     color: var(--best-sellers-ink);
   }
 
   .best-sellers__header {
+    position: relative;
     display: flex;
     align-items: end;
     justify-content: space-between;
@@ -75,6 +76,7 @@
 
   .best-sellers__header > div {
     flex: 1;
+    text-align: center;
   }
 
   .best-sellers h2,
@@ -99,6 +101,9 @@
 
   .best-sellers__view-all {
     flex: 0 0 auto;
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-end: 0;
     color: #2d86b6;
     font-size: 1rem;
     font-weight: 700;
@@ -204,6 +209,7 @@
     }
 
     .best-sellers__view-all {
+      position: static;
       display: inline-block;
       margin-block-start: 14px;
     }
