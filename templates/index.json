@@ -162,10 +162,13 @@
         "heading": "How It Works",
         "subheading": "From our lake to your little one's imagination — in three simple steps.",
         "background_color": "#ffffff",
+        "image_1": "shopify://shop_images/ChooseYourLake.png",
         "title_1": "Choose Your Lake",
         "description_1": "Pick Delavan Lake, Lake Geneva, or a grandparents theme.",
+        "image_2": "shopify://shop_images/Personalize_Your_Story.png",
         "title_2": "Personalize Your Story",
         "description_2": "Add your child's name, appearance, family members and favorite activities.",
+        "image_3": "shopify://shop_images/Order_Your_Keepsake.png",
         "title_3": "Order Your Keepsake",
         "description_3": "We bring the story to life and ship it to your door, ready to be loved for years to come."
       }
