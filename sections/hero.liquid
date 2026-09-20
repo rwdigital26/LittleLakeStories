@@ -664,6 +664,16 @@
     max-width: 1240px;
     margin-inline: auto;
     padding-inline: clamp(24px, 7vw, 104px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0;
+  }
+
+  .hero-wrapper:first-child .hero__content-wrapper > * {
+    flex: 0 0 auto;
   }
 
   .hero-wrapper:first-child .hero__content-wrapper h1,
@@ -684,9 +694,8 @@
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    column-gap: 18px;
     align-content: center;
     justify-content: center;
     align-items: center;
@@ -713,9 +722,11 @@
     line-height: 0.98;
   }
 
-  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
+  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-secondary) {
     flex: 0 0 auto;
-    width: 210px;
+    width: 210px !important;
+    min-width: 210px;
+    max-width: 210px;
     justify-content: center;
     min-height: 58px;
     padding-inline: 24px;
@@ -727,14 +738,15 @@
     letter-spacing: 0;
     line-height: 1;
     margin-block-start: 12px;
+    white-space: nowrap;
   }
 
-  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button {
+  .hero-wrapper:first-child .hero__content-wrapper .button {
     background: #4f9bc3 !important;
     color: #fff !important;
   }
 
-  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button-secondary {
+  .hero-wrapper:first-child .hero__content-wrapper .button-secondary {
     background: rgb(255 255 255 / 88%) !important;
     color: #143d63 !important;
   }
@@ -793,7 +805,9 @@
 
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
       margin-block-start: 8px;
-      width: min(210px, 82vw);
+      width: min(210px, 82vw) !important;
+      min-width: min(210px, 82vw);
+      max-width: min(210px, 82vw);
       min-height: 58px;
       padding-inline: 22px;
       font-size: 0.95rem;
