@@ -57,14 +57,24 @@
     {% endif %}
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      alt_text_fallback: alt_text_fallback,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
+    {% if settings.logo != blank %}
+      {% render 'image',
+        image: settings.logo,
+        class: 'header-logo__image',
+        height: settings.logo_height,
+        alt_text_fallback: alt_text_fallback,
+        text_fallback: shop.name,
+        style: logo_style
+      %}
+    {% else %}
+      <img
+        src="{{ 'little-lake-logo.png' | asset_url }}"
+        class="header-logo__fallback"
+        width="300"
+        height="62"
+        alt="{{ shop.name }}"
+      >
+    {% endif %}
   </span>
 
   {% if use_inverse_logo %}
@@ -130,6 +140,17 @@
     @media screen and (min-width: 750px) {
       height: var(--header-logo-image-height);
       width: var(--header-logo-image-width);
+    }
+  }
+
+  .header-logo__fallback {
+    display: block;
+    width: min(300px, 30vw);
+    height: auto;
+    object-fit: contain;
+
+    @media screen and (max-width: 749px) {
+      width: min(230px, 58vw);
     }
   }
 
