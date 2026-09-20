@@ -327,7 +327,14 @@
   {{ media_slot_2 }}
 
   {% if media_count == 0 %}
-    {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
+    <img
+      src="{{ 'little-lake-hero.png' | asset_url }}"
+      alt="A family sharing a story beside a lake"
+      class="hero__media hero__media--fallback"
+      width="520"
+      height="286"
+      fetchpriority="high"
+    >
   {%- endif -%}
 {% endcapture %}
 
@@ -521,7 +528,7 @@
     {%- endif -%}
     <div
       class="hero__media-grid"
-      style="--hero-media-count: {{ media_count }};--hero-media-count-mobile: {{ media_count_mobile }};{%- if section.settings.image_1 != blank -%} --hero-media-aspect-ratio: {{ section.settings.image_1.aspect_ratio }};{% endif %}"
+      style="--hero-media-count: {{ media_count | at_least: 1 }};--hero-media-count-mobile: {{ media_count_mobile | at_least: 1 }};{%- if section.settings.image_1 != blank -%} --hero-media-aspect-ratio: {{ section.settings.image_1.aspect_ratio }};{% endif %}"
       data-testid="hero-media-wrapper"
     >
       {% liquid
@@ -634,6 +641,59 @@
     overflow: hidden;
     position: relative;
     z-index: var(--layer-base);
+  }
+
+  .hero__media--fallback {
+    object-position: center;
+  }
+
+  .hero-wrapper:first-child .hero {
+    background: #dff3fb;
+  }
+
+  .hero-wrapper:first-child .hero__content-wrapper {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: clamp(24px, 7vw, 104px);
+  }
+
+  .hero-wrapper:first-child .hero__content-wrapper h1,
+  .hero-wrapper:first-child .hero__content-wrapper h2 {
+    color: #143d63;
+    text-wrap: balance;
+  }
+
+  .hero-wrapper:first-child .hero__content-wrapper .button {
+    border-color: #2d86b6;
+    background: #2d86b6;
+    color: #fff;
+  }
+
+  .hero-wrapper:first-child .hero__content-wrapper .button:hover {
+    border-color: #143d63;
+    background: #143d63;
+  }
+
+  @media screen and (min-width: 750px) {
+    .hero-wrapper:first-child .hero {
+      min-height: min(520px, calc(100svh - var(--header-group-height)));
+    }
+
+    .hero-wrapper:first-child .hero__media--fallback {
+      object-position: right center;
+      transform: scale(1.8);
+      transform-origin: right center;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero-wrapper:first-child .hero__content-wrapper {
+      padding-block: 48px;
+    }
+
+    .hero-wrapper:first-child .hero__media--fallback {
+      opacity: 0.45;
+    }
   }
 
   /* Mobile/Desktop media visibility */

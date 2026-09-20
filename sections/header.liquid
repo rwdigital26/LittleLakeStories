@@ -503,12 +503,57 @@
     contain: layout style;
     background: transparent;
 
+    --header-accent: #2d86b6;
+    --header-ink: #143d63;
+
     a,
     .button,
     .button-secondary,
     .header-actions__action {
       /* reset style from base.css */
       transition: color var(--header-content-transition-timing), border-color var(--header-content-transition-timing);
+    }
+  }
+
+  .header__row--top {
+    background: #fff;
+    border-block-end: 1px solid rgb(20 61 99 / 12%);
+  }
+
+  .header__row--top .header__columns {
+    min-height: 78px;
+    padding-block: 12px;
+  }
+
+  .header__row--top .header__column--left,
+  .header__row--top .header__column--center,
+  .header__row--top .header__column--right {
+    align-items: center;
+  }
+
+  .header__row--top .header-menu {
+    color: var(--header-ink);
+  }
+
+  .header__row--top .header-menu__link {
+    color: var(--header-ink);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .header__row--top .header-menu__link:hover,
+  .header__row--top .header-actions__action:hover {
+    color: var(--header-accent);
+  }
+
+  .header__row--top .header-actions__action {
+    color: var(--header-ink);
+  }
+
+  @media screen and (max-width: 749px) {
+    .header__row--top .header__columns {
+      min-height: 64px;
+      padding-block: 8px;
     }
   }
 
