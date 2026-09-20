@@ -86,7 +86,7 @@
     display: grid;
     place-items: center;
     height: 190px;
-    margin-block-end: 18px;
+    margin-block-end: 22px;
   }
 
   .how-it-works__illustration img {
@@ -119,6 +119,10 @@
     grid-template-columns: 48px minmax(0, 1fr);
     gap: 14px;
     align-items: start;
+    position: relative;
+    z-index: 1;
+    padding-block: 0 8px;
+    background: var(--how-it-works-bg, #fff);
   }
 
   .how-it-works__number {
