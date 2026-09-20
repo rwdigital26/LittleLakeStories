@@ -664,16 +664,17 @@
     max-width: 1240px;
     margin-inline: auto;
     padding-inline: clamp(24px, 7vw, 104px);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(2, 210px);
+    grid-auto-rows: auto;
+    column-gap: 18px;
+    row-gap: 0;
     align-items: center;
     justify-content: center;
-    row-gap: 0;
   }
 
   .hero-wrapper:first-child .hero__content-wrapper > * {
-    flex: 0 0 auto;
+    min-width: 0;
   }
 
   .hero-wrapper:first-child .hero__content-wrapper h1,
@@ -693,16 +694,20 @@
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(2, 210px);
+    column-gap: 18px;
     align-content: center;
     justify-content: center;
     align-items: center;
     width: min(52%, 700px);
     margin-inline-start: clamp(24px, 7vw, 104px);
-    padding-block: 48px;
+    padding-block: 20px 48px;
     z-index: var(--layer-raised);
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
+    grid-column: 1 / -1;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block p {
@@ -718,7 +723,7 @@
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block h1 {
     max-width: 620px;
     margin-inline: auto;
-    font-size: clamp(2.25rem, 4.3vw, 4.6rem);
+    font-size: clamp(2.25rem, 3.8vw, 4rem);
     line-height: 0.98;
   }
 
@@ -792,11 +797,15 @@
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
       width: 100%;
       margin-inline-start: 0;
-      flex-direction: column;
+      grid-template-columns: 1fr;
       row-gap: 0;
       align-content: center;
       justify-content: center;
       padding-inline: 24px;
+    }
+
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
+      grid-column: auto;
     }
 
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block h1 {
