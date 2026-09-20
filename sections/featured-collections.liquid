@@ -1,0 +1,224 @@
+{% liquid
+  assign cards = '1,2,3' | split: ','
+%}
+
+<section class="featured-collections section section--page-width" style="--featured-collections-bg: {{ section.settings.background_color }};">
+  <div class="featured-collections__intro">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="featured-collections__grid">
+    {% for card_number in cards %}
+      {% liquid
+        assign collection_key = 'collection_' | append: card_number
+        assign image_key = 'image_' | append: card_number
+        assign title_key = 'title_' | append: card_number
+        assign description_key = 'description_' | append: card_number
+        assign button_key = 'button_' | append: card_number
+        assign link_key = 'link_' | append: card_number
+        assign card_collection = section.settings[collection_key]
+        assign card_image = section.settings[image_key]
+        assign card_title = section.settings[title_key]
+        assign card_description = section.settings[description_key]
+        assign card_button = section.settings[button_key]
+        assign card_link = section.settings[link_key]
+
+        if card_collection != blank
+          assign card_image = card_collection.featured_image
+          assign card_title = card_collection.title
+          assign card_link = card_collection.url
+        endif
+      %}
+
+      <article class="featured-collections__card featured-collections__card--{{ card_number }}">
+        <div class="featured-collections__media">
+          {% if card_image != blank %}
+            {{ card_image | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 28vw, 92vw', alt: card_title, loading: 'lazy' }}
+          {% else %}
+            {{ 'collection-apparel-1' | placeholder_svg_tag: 'featured-collections__placeholder' }}
+          {% endif %}
+        </div>
+
+        <div class="featured-collections__copy">
+          <h3>{{ card_title }}</h3>
+          <p>{{ card_description }}</p>
+          {% if card_button != blank %}
+            <a class="featured-collections__button" href="{{ card_link | default: routes.all_products_collection_url }}">
+              {{ card_button }}
+            </a>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .featured-collections {
+    --featured-collections-ink: #143d63;
+    --featured-collections-blue: #4f9bc3;
+    padding-block: 72px 88px;
+    background: var(--featured-collections-bg, #fff);
+    color: var(--featured-collections-ink);
+  }
+
+  .featured-collections__intro {
+    max-width: 620px;
+    margin: 0 auto 34px;
+    text-align: center;
+  }
+
+  .featured-collections__intro h2,
+  .featured-collections__intro p,
+  .featured-collections__copy h3,
+  .featured-collections__copy p {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .featured-collections__intro h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1;
+  }
+
+  .featured-collections__intro p {
+    margin: 10px 0 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .featured-collections__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .featured-collections__card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 20px;
+    min-height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .featured-collections__card--1,
+  .featured-collections__card--3 {
+    background: #fff7ed;
+  }
+
+  .featured-collections__card--2 {
+    background: #edf9fb;
+  }
+
+  .featured-collections__media {
+    aspect-ratio: 1 / 1.2;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 8px 18px rgb(20 61 99 / 14%);
+  }
+
+  .featured-collections__media img,
+  .featured-collections__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .featured-collections__copy h3 {
+    margin: 0;
+    font-size: clamp(1.2rem, 1.65vw, 1.8rem);
+    line-height: 1.05;
+  }
+
+  .featured-collections__copy p {
+    margin: 18px 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .featured-collections__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding-inline: 18px;
+    border: 2px solid #b7d8e7;
+    border-radius: 999px;
+    color: var(--featured-collections-ink);
+    background: rgb(255 255 255 / 76%);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .featured-collections__button:hover {
+    border-color: var(--featured-collections-blue);
+    background: #fff;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .featured-collections__card {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .featured-collections {
+      padding-block: 52px 64px;
+    }
+
+    .featured-collections__grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .featured-collections__card {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      min-height: 240px;
+      padding: 16px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Featured collections",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Featured Collections" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Cherished places. Unforgettable stories." },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "header", "content": "Collection one" },
+    { "type": "collection", "id": "collection_1", "label": "Collection" },
+    { "type": "image_picker", "id": "image_1", "label": "Fallback image" },
+    { "type": "text", "id": "title_1", "label": "Title", "default": "Delavan Lake Adventures" },
+    { "type": "textarea", "id": "description_1", "label": "Description", "default": "Custom stories set on the sparkling shores of Delavan Lake." },
+    { "type": "text", "id": "button_1", "label": "Button label", "default": "Explore Delavan Lake" },
+    { "type": "url", "id": "link_1", "label": "Button link" },
+    { "type": "header", "content": "Collection two" },
+    { "type": "collection", "id": "collection_2", "label": "Collection" },
+    { "type": "image_picker", "id": "image_2", "label": "Fallback image" },
+    { "type": "text", "id": "title_2", "label": "Title", "default": "Lake Geneva Adventures" },
+    { "type": "textarea", "id": "description_2", "label": "Description", "default": "Personalized books inspired by the magic of Lake Geneva." },
+    { "type": "text", "id": "button_2", "label": "Button label", "default": "Explore Lake Geneva" },
+    { "type": "url", "id": "link_2", "label": "Button link" },
+    { "type": "header", "content": "Collection three" },
+    { "type": "collection", "id": "collection_3", "label": "Collection" },
+    { "type": "image_picker", "id": "image_3", "label": "Fallback image" },
+    { "type": "text", "id": "title_3", "label": "Title", "default": "Grandparents & Me" },
+    { "type": "textarea", "id": "description_3", "label": "Description", "default": "A special bond. A special place. Stories to treasure together." },
+    { "type": "text", "id": "button_3", "label": "Button label", "default": "Explore Collection" },
+    { "type": "url", "id": "link_3", "label": "Button link" }
+  ],
+  "presets": [
+    { "name": "Featured collections" }
+  ]
+}
+{% endschema %}
