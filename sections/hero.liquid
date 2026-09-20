@@ -670,6 +670,8 @@
   .hero-wrapper:first-child .hero__content-wrapper h2 {
     color: #143d63;
     text-wrap: balance;
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-weight: 700;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__media-grid {
@@ -699,6 +701,11 @@
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block p {
     max-width: 520px;
     margin-inline: auto;
+    color: #143d63;
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: clamp(1rem, 1.4vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.25;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block h1 {
@@ -708,19 +715,37 @@
     line-height: 0.98;
   }
 
-  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button {
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
+    min-height: 56px;
+    padding-inline: 30px;
+    border: 2px solid #4f9bc3;
+    border-radius: 999px;
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
     margin-block-start: 12px;
   }
 
-  .hero-wrapper:first-child .hero__content-wrapper .button {
-    border-color: #2d86b6;
-    background: #2d86b6;
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button {
+    background: #4f9bc3;
     color: #fff;
   }
 
-  .hero-wrapper:first-child .hero__content-wrapper .button:hover {
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button-secondary {
+    background: rgb(255 255 255 / 88%);
+    color: #143d63;
+  }
+
+  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-secondary) {
+    border-color: #2d86b6;
+  }
+
+  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-secondary):hover {
     border-color: #143d63;
     background: #143d63;
+    color: #fff;
   }
 
   @media screen and (min-width: 750px) {
@@ -763,8 +788,11 @@
       font-size: clamp(2.5rem, 11vw, 4rem);
     }
 
-    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .button {
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
       margin-block-start: 8px;
+      min-height: 52px;
+      padding-inline: 22px;
+      font-size: 0.95rem;
     }
   }
 
