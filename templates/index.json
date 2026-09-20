@@ -15,7 +15,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Their Lake Adventure.<br> Their Story.</h1><p>Personalized children's books inspired by summer vacations on Delavan Lake and Lake Geneva.</p>",
+            "text": "<h1>Their Lake Adventure. Their Story.</h1><p>Personalized children's books inspired by summer vacations on Delavan Lake and Lake Geneva.</p>",
             "text_color": "#143d63",
             "width": "fit-content",
             "max_width": "normal",
