@@ -63,10 +63,9 @@
   }
 
   .best-sellers__header {
-    position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: end;
-    justify-content: space-between;
     gap: 24px;
     max-width: 1740px;
     margin-inline: auto;
@@ -75,7 +74,7 @@
   }
 
   .best-sellers__header > div {
-    flex: 1;
+    grid-column: 2;
     text-align: center;
   }
 
@@ -100,11 +99,9 @@
   }
 
   .best-sellers__view-all {
-    flex: 0 0 auto;
-    position: absolute;
-    inset-inline-end: 0;
-    inset-block-start: 50%;
-    transform: translateY(-50%);
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
     color: #2d86b6;
     font-size: 1rem;
     font-weight: 700;
@@ -210,8 +207,6 @@
     }
 
     .best-sellers__view-all {
-      position: static;
-      transform: none;
       display: inline-block;
       margin-block-start: 14px;
     }
