@@ -14,10 +14,35 @@
     "header_announcements_9jGBFp": {
       "type": "header-announcements",
       "blocks": {
-        "announcement_BxgCk9": {
+        "announcement_usa": {
           "type": "_announcement",
           "settings": {
-            "text": "Printed in the USA   |   Free shipping on 2+ books   |   Meaningful stories. Brighter tomorrows.",
+            "text": "Printed in the USA",
+            "icon": "flag",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_shipping": {
+          "type": "_announcement",
+          "settings": {
+            "text": "Free shipping on 2+ books",
+            "icon": "heart",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_stories": {
+          "type": "_announcement",
+          "settings": {
+            "text": "Meaningful stories. Brighter tomorrows.",
+            "icon": "gift",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
             "letter_spacing": "normal",
@@ -27,7 +52,9 @@
         }
       },
       "block_order": [
-        "announcement_BxgCk9"
+        "announcement_usa",
+        "announcement_shipping",
+        "announcement_stories"
       ],
       "name": "t:names.announcement_bar",
       "settings": {

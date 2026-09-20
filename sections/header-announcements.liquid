@@ -58,24 +58,73 @@
 
   .announcement-bar__slides {
     display: grid;
-    grid: [stack] auto / [stack] auto;
-    width: calc(100% - var(--button-size) * 2);
-    max-width: 680px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    max-width: none;
     margin-inline: auto;
   }
 
   .announcement-bar__slides > * {
-    grid-area: stack;
+    grid-area: auto;
   }
 
   .announcement-bar__slide {
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    padding-inline: 16px;
+    transition: none;
     content-visibility: visible;
 
     &[aria-hidden='true'] {
-      opacity: 0;
-      visibility: hidden;
+      opacity: 1;
+      visibility: visible;
     }
+  }
+
+  .announcement-bar__content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 20px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .announcement-bar__icon {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    color: currentColor;
+  }
+
+  .announcement-bar__icon svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  .announcement-bar__flag {
+    display: block;
+    width: 19px;
+    height: 13px;
+    overflow: hidden;
+    color: transparent;
+    background: repeating-linear-gradient(to bottom, #ef6351 0 2px, #fff 2px 4px);
+    border-radius: 1px;
+    position: relative;
+  }
+
+  .announcement-bar__flag::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 8px;
+    height: 7px;
+    background: #28528c;
   }
 
   .announcement-bar__slider slideshow-arrows {
@@ -117,6 +166,36 @@
 
   .announcement-bar__text:first-child {
     margin: 0;
+  }
+
+  .announcement-bar__text {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .announcement-bar__slides {
+      display: flex;
+      justify-content: center;
+    }
+
+    .announcement-bar__slides > * {
+      display: none;
+    }
+
+    .announcement-bar__slides > *:first-child {
+      display: grid;
+    }
+
+    .announcement-bar__slide {
+      width: 100%;
+      padding-inline: 8px;
+    }
+
+    .announcement-bar__content {
+      gap: 7px;
+      font-size: 0.6875rem;
+    }
   }
 
   .announcement-bar__link {

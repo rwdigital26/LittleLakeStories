@@ -29,9 +29,25 @@
     {{ block.shopify_attributes }}
     aria-hidden="{% if block_index == 0 %}false{% else %}true{% endif %}"
   >
-    <p class="announcement-bar__text">
+    <div class="announcement-bar__content">
+      <span class="announcement-bar__icon" aria-hidden="true">
+        {% case block_settings.icon %}
+          {% when 'flag' %}
+            <span class="announcement-bar__flag">USA</span>
+          {% when 'heart' %}
+            <svg viewBox="0 0 20 20" role="presentation">
+              {% render 'icon', icon: 'heart' %}
+            </svg>
+          {% when 'gift' %}
+            <svg viewBox="0 0 20 20" role="presentation">
+              {% render 'icon', icon: 'box' %}
+            </svg>
+        {% endcase %}
+      </span>
+      <p class="announcement-bar__text">
       {{ block.settings.text }}
-    </p>
+      </p>
+    </div>
 
     {% if block_settings.link != blank %}
       <a
@@ -56,6 +72,17 @@
       "id": "text",
       "label": "t:settings.text",
       "default": "t:text_defaults.shop_our_latest_arrivals"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        { "value": "flag", "label": "USA flag" },
+        { "value": "heart", "label": "Heart" },
+        { "value": "gift", "label": "Gift" }
+      ],
+      "default": "heart"
     },
     {
       "type": "url",
