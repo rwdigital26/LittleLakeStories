@@ -103,7 +103,8 @@
     flex: 0 0 auto;
     position: absolute;
     inset-inline-end: 0;
-    inset-block-end: 0;
+    inset-block-start: 50%;
+    transform: translateY(-50%);
     color: #2d86b6;
     font-size: 1rem;
     font-weight: 700;
@@ -210,6 +211,7 @@
 
     .best-sellers__view-all {
       position: static;
+      transform: none;
       display: inline-block;
       margin-block-start: 14px;
     }
