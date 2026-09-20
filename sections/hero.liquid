@@ -328,7 +328,7 @@
 
   {% if media_count == 0 %}
     <img
-      src="{{ 'little-lake-hero.png' | asset_url }}"
+      src="{{ 'little-lake-hero-art.png' | asset_url }}"
       alt="A family sharing a story beside a lake"
       class="hero__media hero__media--fallback"
       width="520"
@@ -468,7 +468,7 @@
 
 <div
   id="Hero-{{ section.id }}"
-  class="hero{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}{% if section.blocks.size == 0 and section.settings.section_height == 'auto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %}"
+  class="hero{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}{% if section.blocks.size == 0 and section.settings.section_height == 'auto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %}{% if media_count == 0 %} hero--reference-art{% endif %}"
   style="
     --hero-border-style: {{ section.settings.border }};
     --hero-border-width: {{ section.settings.border_width }}px;
@@ -651,6 +651,15 @@
     background: #dff3fb;
   }
 
+  .hero-wrapper:first-child .hero--reference-art {
+    min-height: 0;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__container {
+    min-height: 0;
+    aspect-ratio: 941 / 286;
+  }
+
   .hero-wrapper:first-child .hero__content-wrapper {
     max-width: 1240px;
     margin-inline: auto;
@@ -661,6 +670,20 @@
   .hero-wrapper:first-child .hero__content-wrapper h2 {
     color: #143d63;
     text-wrap: balance;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__media-grid {
+    inset-inline-start: 42%;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__media--fallback {
+    object-position: center;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
+    align-content: center;
+    justify-content: center;
+    z-index: var(--layer-raised);
   }
 
   .hero-wrapper:first-child .hero__content-wrapper .button {
@@ -675,14 +698,9 @@
   }
 
   @media screen and (min-width: 750px) {
-    .hero-wrapper:first-child .hero {
-      min-height: min(520px, calc(100svh - var(--header-group-height)));
-    }
-
     .hero-wrapper:first-child .hero__media--fallback {
-      object-position: right center;
-      transform: scale(1.8);
-      transform-origin: right center;
+      object-position: center center;
+      transform: none;
     }
   }
 
@@ -692,7 +710,21 @@
     }
 
     .hero-wrapper:first-child .hero__media--fallback {
-      opacity: 0.45;
+      object-position: center center;
+    }
+
+    .hero-wrapper:first-child .hero--reference-art .hero__container {
+      aspect-ratio: 1 / 1.05;
+    }
+
+    .hero-wrapper:first-child .hero--reference-art .hero__media-grid {
+      inset-inline-start: 0;
+      opacity: 0.3;
+    }
+
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
+      align-content: center;
+      justify-content: center;
     }
   }
 
