@@ -684,8 +684,9 @@
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
+    column-gap: 18px;
     align-content: center;
     justify-content: center;
     align-items: center;
@@ -714,11 +715,11 @@
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
     flex: 0 0 auto;
-    width: 200px;
+    width: 210px;
     justify-content: center;
-    min-height: 56px;
-    padding-inline: 30px;
-    border: 2px solid #4f9bc3;
+    min-height: 58px;
+    padding-inline: 24px;
+    border: 2px solid #4f9bc3 !important;
     border-radius: 999px !important;
     font-family: Georgia, 'Times New Roman', serif !important;
     font-size: 1rem;
@@ -779,6 +780,8 @@
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
       width: 100%;
       margin-inline-start: 0;
+      flex-direction: column;
+      row-gap: 0;
       align-content: center;
       justify-content: center;
       padding-inline: 24px;
@@ -790,8 +793,8 @@
 
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
       margin-block-start: 8px;
-      width: min(200px, 82vw);
-      min-height: 52px;
+      width: min(210px, 82vw);
+      min-height: 58px;
       padding-inline: 22px;
       font-size: 0.95rem;
     }
