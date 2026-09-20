@@ -127,6 +127,24 @@
         "link_3": "shopify://collections/all"
       }
     },
+    "best_sellers_home": {
+      "type": "best-sellers",
+      "settings": {
+        "heading": "Best Sellers",
+        "subheading": "Family favorites for lake-loving kids.",
+        "view_all_label": "View All Books",
+        "view_all_link": "shopify://collections/all",
+        "rating_label": "5 out of 5 stars",
+        "review_count": "128",
+        "placeholder_price": "$29.95",
+        "placeholder_title_1": "My Adventures at Delavan Lake",
+        "placeholder_title_2": "My Summer at Lake Geneva",
+        "placeholder_title_3": "Grandma & Grandpa's Lake Day",
+        "placeholder_title_4": "A Day on the Boat",
+        "placeholder_title_5": "Little Lake Explorer",
+        "background_color": "#ffffff"
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -317,6 +335,7 @@
   "order": [
     "hero_jVaWmY",
     "featured_collections_home",
+    "best_sellers_home",
     "product_list_fa6P9H"
   ]
 }

@@ -1,0 +1,245 @@
+{% liquid
+  assign products = section.settings.products
+  assign product_slots = '1,2,3,4,5' | split: ','
+%}
+
+<section class="best-sellers section section--page-width" style="--best-sellers-bg: {{ section.settings.background_color }};">
+  <div class="best-sellers__header">
+    <div>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+    {% if section.settings.view_all_label != blank %}
+      <a class="best-sellers__view-all" href="{{ section.settings.view_all_link | default: routes.all_products_collection_url }}">
+        {{ section.settings.view_all_label }} <span aria-hidden="true">→</span>
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="best-sellers__grid">
+    {% if products != blank %}
+      {% for product in products limit: 5 %}
+        <article class="best-sellers__card">
+          <a class="best-sellers__image" href="{{ product.url }}">
+            {% if product.featured_image != blank %}
+              {{ product.featured_image | image_url: width: 700 | image_tag: widths: '280, 420, 560, 700', sizes: '(min-width: 1100px) 18vw, (min-width: 750px) 30vw, 80vw', alt: product.featured_image.alt | default: product.title, loading: 'lazy' }}
+            {% else %}
+              {{ 'product-apparel-1' | placeholder_svg_tag: 'best-sellers__placeholder' }}
+            {% endif %}
+          </a>
+          <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+          <div class="best-sellers__rating" aria-label="{{ section.settings.rating_label }}">★★★★★ <span>({{ section.settings.review_count }})</span></div>
+          <div class="best-sellers__price">{{ product.price | money }}</div>
+          <div class="best-sellers__tags">
+            <span>Personalized</span>
+            <span>Hardcover</span>
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+      {% for slot in product_slots %}
+        {% assign placeholder_title_key = 'placeholder_title_' | append: slot %}
+        <article class="best-sellers__card best-sellers__card--placeholder">
+          <div class="best-sellers__image">
+            {{ 'product-apparel-1' | placeholder_svg_tag: 'best-sellers__placeholder' }}
+          </div>
+          <h3>{{ section.settings[placeholder_title_key] }}</h3>
+          <div class="best-sellers__rating" aria-hidden="true">★★★★★ <span>({{ section.settings.review_count }})</span></div>
+          <div class="best-sellers__price">{{ section.settings.placeholder_price }}</div>
+          <div class="best-sellers__tags"><span>Personalized</span><span>Hardcover</span></div>
+        </article>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .best-sellers {
+    --best-sellers-ink: #143d63;
+    --best-sellers-orange: #f2a21b;
+    padding-block: 72px 88px;
+    background: var(--best-sellers-bg, #fff);
+    color: var(--best-sellers-ink);
+  }
+
+  .best-sellers__header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1740px;
+    margin-inline: auto;
+    margin-block-end: 30px;
+    text-align: center;
+  }
+
+  .best-sellers__header > div {
+    flex: 1;
+  }
+
+  .best-sellers h2,
+  .best-sellers h3,
+  .best-sellers p,
+  .best-sellers__price,
+  .best-sellers__view-all {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .best-sellers h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1;
+  }
+
+  .best-sellers__header p {
+    margin: 8px 0 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .best-sellers__view-all {
+    flex: 0 0 auto;
+    color: #2d86b6;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .best-sellers__view-all span {
+    font-size: 1.3em;
+  }
+
+  .best-sellers__grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .best-sellers__card {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #edf0f2;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgb(20 61 99 / 5%);
+  }
+
+  .best-sellers__image {
+    display: block;
+    aspect-ratio: 1 / 1.18;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #eef8fb;
+  }
+
+  .best-sellers__image img,
+  .best-sellers__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .best-sellers__card h3 {
+    margin: 16px 0 8px;
+    font-size: clamp(1rem, 1.15vw, 1.3rem);
+    line-height: 1.15;
+  }
+
+  .best-sellers__card h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .best-sellers__rating {
+    color: var(--best-sellers-orange);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .best-sellers__rating span {
+    color: #8aa0b1;
+    font-size: 0.75rem;
+    letter-spacing: 0;
+  }
+
+  .best-sellers__price {
+    margin-block: 7px 12px;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  .best-sellers__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .best-sellers__tags span {
+    padding: 5px 10px;
+    border-radius: 999px;
+    color: #2d6688;
+    background: #e5f3f8;
+    font-size: 0.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .best-sellers__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .best-sellers {
+      padding-block: 52px 64px;
+    }
+
+    .best-sellers__header {
+      display: block;
+      margin-block-end: 24px;
+    }
+
+    .best-sellers__view-all {
+      display: inline-block;
+      margin-block-start: 14px;
+    }
+
+    .best-sellers__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .best-sellers__card {
+      padding: 10px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Best sellers",
+  "settings": [
+    { "type": "product_list", "id": "products", "label": "Products", "limit": 5 },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Best Sellers" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Family favorites for lake-loving kids." },
+    { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View All Books" },
+    { "type": "url", "id": "view_all_link", "label": "View all link" },
+    { "type": "text", "id": "rating_label", "label": "Rating accessibility label", "default": "5 out of 5 stars" },
+    { "type": "text", "id": "review_count", "label": "Fallback review count", "default": "128" },
+    { "type": "text", "id": "placeholder_price", "label": "Fallback price", "default": "$29.95" },
+    { "type": "text", "id": "placeholder_title_1", "label": "Placeholder title 1", "default": "My Adventures at Delavan Lake" },
+    { "type": "text", "id": "placeholder_title_2", "label": "Placeholder title 2", "default": "My Summer at Lake Geneva" },
+    { "type": "text", "id": "placeholder_title_3", "label": "Placeholder title 3", "default": "Grandma & Grandpa's Lake Day" },
+    { "type": "text", "id": "placeholder_title_4", "label": "Placeholder title 4", "default": "A Day on the Boat" },
+    { "type": "text", "id": "placeholder_title_5", "label": "Placeholder title 5", "default": "Little Lake Explorer" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" }
+  ],
+  "presets": [
+    { "name": "Best sellers" }
+  ]
+}
+{% endschema %}
