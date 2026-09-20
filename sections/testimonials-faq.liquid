@@ -1,0 +1,220 @@
+<section class="testimonials-faq section section--page-width" style="--testimonials-faq-bg: {{ section.settings.background_color }};">
+  <div class="testimonials-faq__testimonials">
+    <header class="testimonials-faq__header">
+      <h2>{{ section.settings.testimonials_heading }}</h2>
+      <p>{{ section.settings.testimonials_subheading }}</p>
+    </header>
+
+    <div class="testimonials-faq__cards">
+      {% assign testimonial_slots = '1,2,3' | split: ',' %}
+      {% for slot in testimonial_slots %}
+        {% liquid
+          assign quote_key = 'quote_' | append: slot
+          assign name_key = 'name_' | append: slot
+          assign role_key = 'role_' | append: slot
+        %}
+        <article class="testimonials-faq__testimonial">
+          <p class="testimonials-faq__quote">“{{ section.settings[quote_key] }}”</p>
+          <div class="testimonials-faq__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonials-faq__name">— {{ section.settings[name_key] }}</p>
+          <p class="testimonials-faq__role">{{ section.settings[role_key] }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="testimonials-faq__faq">
+    <header class="testimonials-faq__header">
+      <h2>{{ section.settings.faq_heading }}</h2>
+    </header>
+    {% assign faq_slots = '1,2,3,4,5' | split: ',' %}
+    <div class="testimonials-faq__list">
+      {% for slot in faq_slots %}
+        {% liquid
+          assign question_key = 'question_' | append: slot
+          assign answer_key = 'answer_' | append: slot
+        %}
+        <details class="testimonials-faq__item">
+          <summary>{{ section.settings[question_key] }}<span aria-hidden="true">+</span></summary>
+          <p>{{ section.settings[answer_key] }}</p>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .testimonials-faq {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(360px, 1fr);
+    gap: clamp(32px, 5vw, 80px);
+    padding-block: 72px 88px;
+    background: var(--testimonials-faq-bg, #fff);
+    color: #143d63;
+  }
+
+  .testimonials-faq__header {
+    margin-block-end: 28px;
+  }
+
+  .testimonials-faq h2,
+  .testimonials-faq p,
+  .testimonials-faq summary {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .testimonials-faq h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1;
+  }
+
+  .testimonials-faq__header > p {
+    margin: 8px 0 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .testimonials-faq__cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .testimonials-faq__testimonial {
+    min-height: 238px;
+    padding: 22px;
+    border: 1px solid #e2e9ed;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgb(20 61 99 / 5%);
+  }
+
+  .testimonials-faq__quote {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .testimonials-faq__stars {
+    margin-block: 18px 10px;
+    color: #f2a21b;
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+  }
+
+  .testimonials-faq__name,
+  .testimonials-faq__role {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .testimonials-faq__role {
+    padding-inline-start: 20px;
+    color: #6f8798;
+    font-size: 0.85rem;
+  }
+
+  .testimonials-faq__list {
+    display: grid;
+    gap: 7px;
+  }
+
+  .testimonials-faq__item {
+    border: 1px solid #e2e9ed;
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .testimonials-faq__item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    list-style: none;
+  }
+
+  .testimonials-faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .testimonials-faq__item summary span {
+    margin-inline-start: 16px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .testimonials-faq__item[open] summary span {
+    transform: rotate(45deg);
+  }
+
+  .testimonials-faq__item > p {
+    margin: 0;
+    padding: 0 16px 16px;
+    color: #486b83;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .testimonials-faq {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .testimonials-faq {
+      padding-block: 52px 64px;
+    }
+
+    .testimonials-faq__cards {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonials-faq__testimonial {
+      min-height: 0;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Testimonials and FAQ",
+  "settings": [
+    { "type": "text", "id": "testimonials_heading", "label": "Testimonials heading", "default": "What Families Are Saying" },
+    { "type": "text", "id": "testimonials_subheading", "label": "Testimonials subheading", "default": "Real stories. Real smiles." },
+    { "type": "textarea", "id": "quote_1", "label": "Quote 1", "default": "This book was the perfect gift for our grandkids! It captured our Lake Geneva vacations beautifully. They read it over and over!" },
+    { "type": "text", "id": "name_1", "label": "Name 1", "default": "Mary K." },
+    { "type": "text", "id": "role_1", "label": "Role 1", "default": "Proud Grandma" },
+    { "type": "textarea", "id": "quote_2", "label": "Quote 2", "default": "Such a special keepsake. The illustrations are gorgeous and the personalization made it so meaningful for our family." },
+    { "type": "text", "id": "name_2", "label": "Name 2", "default": "Josh R." },
+    { "type": "text", "id": "role_2", "label": "Role 2", "default": "Lake Geneva Dad" },
+    { "type": "textarea", "id": "quote_3", "label": "Quote 3", "default": "Our grandson felt like the star of the story! A beautiful way to celebrate our summers at Delavan Lake." },
+    { "type": "text", "id": "name_3", "label": "Name 3", "default": "Linda S." },
+    { "type": "text", "id": "role_3", "label": "Role 3", "default": "Happy Grandparent" },
+    { "type": "text", "id": "faq_heading", "label": "FAQ heading", "default": "Frequently Asked Questions" },
+    { "type": "text", "id": "question_1", "label": "Question 1", "default": "How long does it take to receive my book?" },
+    { "type": "textarea", "id": "answer_1", "label": "Answer 1", "default": "Your personalized book will arrive in approximately 7–10 business days." },
+    { "type": "text", "id": "question_2", "label": "Question 2", "default": "Can I personalize multiple characters?" },
+    { "type": "textarea", "id": "answer_2", "label": "Answer 2", "default": "Yes, you can include family members and friends in your story." },
+    { "type": "text", "id": "question_3", "label": "Question 3", "default": "What ages are the books best for?" },
+    { "type": "textarea", "id": "answer_3", "label": "Answer 3", "default": "Our stories are made for lake-loving children and families of all ages." },
+    { "type": "text", "id": "question_4", "label": "Question 4", "default": "Are the books printed in the USA?" },
+    { "type": "textarea", "id": "answer_4", "label": "Answer 4", "default": "Yes, every book is proudly printed in the USA." },
+    { "type": "text", "id": "question_5", "label": "Question 5", "default": "Can I include a special message?" },
+    { "type": "textarea", "id": "answer_5", "label": "Answer 5", "default": "Yes, add a meaningful note to make your keepsake even more personal." },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" }
+  ],
+  "presets": [
+    { "name": "Testimonials and FAQ" }
+  ]
+}
+{% endschema %}

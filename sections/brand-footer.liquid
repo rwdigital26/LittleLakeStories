@@ -1,0 +1,292 @@
+<footer class="brand-footer" style="--brand-footer-bg: {{ section.settings.background_color }};">
+  <div class="brand-footer__main section section--page-width">
+    <div class="brand-footer__brand">
+      <a href="{{ routes.root_url }}" class="brand-footer__logo">
+        <img src="{{ 'little-lake-logo.png' | asset_url }}" alt="{{ shop.name }}" width="300" height="62" loading="lazy">
+      </a>
+      <p>{{ section.settings.brand_message }}</p>
+    </div>
+
+    <div class="brand-footer__newsletter">
+      <h2>{{ section.settings.newsletter_heading }}</h2>
+      <p>{{ section.settings.newsletter_copy }}</p>
+      {% form 'customer', class: 'brand-footer__form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="BrandFooterEmail">Email address</label>
+        <input id="BrandFooterEmail" type="email" name="contact[email]" value="{{ form.email }}" autocomplete="email" placeholder="Your email address" required>
+        <button type="submit">{{ section.settings.newsletter_button }}</button>
+        {% if form.posted_successfully? %}<p class="brand-footer__success">{{ section.settings.success_message }}</p>{% endif %}
+        {{ form.errors | default_errors }}
+      {% endform %}
+    </div>
+
+    <nav class="brand-footer__nav" aria-label="Footer">
+      <div>
+        <h3>{{ section.settings.shop_heading }}</h3>
+        <a href="{{ routes.all_products_collection_url }}">All Books</a>
+        <a href="{{ routes.all_products_collection_url }}">Best Sellers</a>
+        <a href="{{ routes.root_url }}">Gift Cards</a>
+      </div>
+      <div>
+        <h3>{{ section.settings.about_heading }}</h3>
+        <a href="{{ routes.root_url }}#our-story">Our Story</a>
+        <a href="{{ routes.root_url }}#how-it-works">How It Works</a>
+        <a href="{{ routes.contact_url }}">Contact Us</a>
+      </div>
+      <div>
+        <h3>{{ section.settings.help_heading }}</h3>
+        <a href="{{ routes.root_url }}#faq">FAQ</a>
+        <a href="{{ routes.root_url }}#shipping">Shipping</a>
+        <a href="{{ routes.root_url }}#returns">Returns</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="brand-footer__utility">
+    <div class="brand-footer__utility-inner section section--page-width">
+      <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+      <p>{{ section.settings.utility_message }} <span aria-hidden="true">♥</span></p>
+      <div class="brand-footer__socials">
+        {% if section.settings.instagram_url != blank %}<a href="{{ section.settings.instagram_url }}" aria-label="Instagram">◎</a>{% endif %}
+        {% if section.settings.facebook_url != blank %}<a href="{{ section.settings.facebook_url }}" aria-label="Facebook">f</a>{% endif %}
+        {% if section.settings.pinterest_url != blank %}<a href="{{ section.settings.pinterest_url }}" aria-label="Pinterest">p</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% stylesheet %}
+  .brand-footer {
+    color: #143d63;
+    background: var(--brand-footer-bg, #fff);
+  }
+
+  .brand-footer__main {
+    display: grid;
+    grid-template-columns: minmax(190px, 1fr) minmax(330px, 1.55fr) minmax(300px, 1.35fr);
+    gap: clamp(28px, 4vw, 70px);
+    align-items: start;
+    padding-block: 56px 42px;
+  }
+
+  .brand-footer__logo {
+    display: block;
+    max-width: 290px;
+  }
+
+  .brand-footer__logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .brand-footer__brand > p {
+    max-width: 210px;
+    margin: 18px 0 0;
+    color: #5e7c91;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .brand-footer h2,
+  .brand-footer h3,
+  .brand-footer p,
+  .brand-footer a,
+  .brand-footer button,
+  .brand-footer input {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .brand-footer h2 {
+    margin: 0;
+    font-size: 1.55rem;
+  }
+
+  .brand-footer__newsletter > p {
+    margin: 6px 0 14px;
+    color: #5e7c91;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .brand-footer__form {
+    display: flex;
+    max-width: 540px;
+    gap: 8px;
+  }
+
+  .brand-footer__form input {
+    min-width: 0;
+    flex: 1;
+    min-height: 48px;
+    padding: 10px 16px;
+    border: 2px solid #d4e3e9;
+    border-radius: 999px;
+    color: #143d63;
+    background: #fff;
+    font-size: 1rem;
+  }
+
+  .brand-footer__form button {
+    min-height: 48px;
+    padding-inline: 26px;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    background: #2d86b6;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .brand-footer__form button:hover {
+    background: #143d63;
+  }
+
+  .brand-footer__success {
+    color: #2d86b6;
+    font-weight: 700;
+  }
+
+  .brand-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .brand-footer__nav h3 {
+    margin: 0 0 12px;
+    font-size: 1.15rem;
+  }
+
+  .brand-footer__nav a {
+    display: block;
+    width: fit-content;
+    margin-block: 7px;
+    color: #5e7c91;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .brand-footer__nav a:hover {
+    color: #2d86b6;
+  }
+
+  .brand-footer__utility {
+    min-height: 76px;
+    background: #ccecf6;
+    border-block-start: 1px solid #b7dfe9;
+  }
+
+  .brand-footer__utility-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    gap: 24px;
+    min-height: 76px;
+  }
+
+  .brand-footer__utility p {
+    margin: 0;
+    color: #47718a;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .brand-footer__utility p:nth-child(2) {
+    text-align: center;
+  }
+
+  .brand-footer__utility p span {
+    color: #2d86b6;
+    font-size: 1.15rem;
+  }
+
+  .brand-footer__socials {
+    display: flex;
+    gap: 12px;
+  }
+
+  .brand-footer__socials a {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #fff;
+    background: #2d86b6;
+    font-family: Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 989px) {
+    .brand-footer__main {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .brand-footer__nav {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .brand-footer__main {
+      grid-template-columns: 1fr;
+      padding-block: 44px;
+    }
+
+    .brand-footer__brand,
+    .brand-footer__newsletter,
+    .brand-footer__nav {
+      grid-column: auto;
+    }
+
+    .brand-footer__form {
+      flex-direction: column;
+    }
+
+    .brand-footer__form button {
+      width: 100%;
+    }
+
+    .brand-footer__utility-inner {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 8px;
+      padding-block: 18px;
+    }
+
+    .brand-footer__utility p:nth-child(2) {
+      order: 3;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Brand footer",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "text", "id": "brand_message", "label": "Brand message", "default": "More kindness. More kids reading. A brighter tomorrow." },
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Join Our Lake Letter" },
+    { "type": "text", "id": "newsletter_copy", "label": "Newsletter copy", "default": "Be the first to know about new stories, special offers and more lake-day magic." },
+    { "type": "text", "id": "newsletter_button", "label": "Newsletter button", "default": "Sign Me Up" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks for joining our lake letter!" },
+    { "type": "text", "id": "shop_heading", "label": "Shop heading", "default": "Shop" },
+    { "type": "text", "id": "about_heading", "label": "About heading", "default": "About" },
+    { "type": "text", "id": "help_heading", "label": "Help heading", "default": "Help" },
+    { "type": "text", "id": "utility_message", "label": "Utility message", "default": "Dreamed up on the lakes of Wisconsin" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram URL" },
+    { "type": "url", "id": "facebook_url", "label": "Facebook URL" },
+    { "type": "url", "id": "pinterest_url", "label": "Pinterest URL" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" }
+  ]
+}
+{% endschema %}

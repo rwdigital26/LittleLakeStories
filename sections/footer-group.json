@@ -11,6 +11,21 @@
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
+    "brand_footer_home": {
+      "type": "brand-footer",
+      "settings": {
+        "brand_message": "More kindness. More kids reading. A brighter tomorrow.",
+        "newsletter_heading": "Join Our Lake Letter",
+        "newsletter_copy": "Be the first to know about new stories, special offers and more lake-day magic.",
+        "newsletter_button": "Sign Me Up",
+        "success_message": "Thanks for joining our lake letter!",
+        "shop_heading": "Shop",
+        "about_heading": "About",
+        "help_heading": "Help",
+        "utility_message": "Dreamed up on the lakes of Wisconsin",
+        "background_color": "#ffffff"
+      }
+    },
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
@@ -193,7 +208,7 @@
     }
   },
   "order": [
-    "footer_m9NzUG",
+    "brand_footer_home",
     "footer_utilities_jLGE8U"
   ]
 }

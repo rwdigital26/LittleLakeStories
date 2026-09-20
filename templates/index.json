@@ -145,6 +145,67 @@
         "background_color": "#ffffff"
       }
     },
+    "how_it_works_home": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "How It Works",
+        "subheading": "From our lake to your little one's imagination — in three simple steps.",
+        "background_color": "#ffffff",
+        "title_1": "Choose Your Lake",
+        "description_1": "Pick Delavan Lake, Lake Geneva, or a grandparents theme.",
+        "title_2": "Personalize Your Story",
+        "description_2": "Add your child's name, appearance, family members and favorite activities.",
+        "title_3": "Order Your Keepsake",
+        "description_3": "We bring the story to life and ship it to your door, ready to be loved for years to come."
+      }
+    },
+    "personalize_story_home": {
+      "type": "personalize-story",
+      "settings": {
+        "heading": "Make It Uniquely Theirs",
+        "subheading": "Personalize the details to create a one-of-a-kind adventure they'll treasure forever.",
+        "name_label": "Child's Name",
+        "name_value": "Emma",
+        "hair_label": "Hair Color",
+        "hair_value": "Blonde",
+        "activity_label": "Favorite Activity",
+        "activity_value": "Boating",
+        "companions_label": "Companions",
+        "companions_value": "Grandma & Grandpa",
+        "button_label": "Preview My Book",
+        "placeholder_book_title": "Emma's Lake Geneva Adventure",
+        "placeholder_note": "Every child has a story waiting on the lake.",
+        "background_color": "#eaf8fb"
+      }
+    },
+    "testimonials_faq_home": {
+      "type": "testimonials-faq",
+      "settings": {
+        "testimonials_heading": "What Families Are Saying",
+        "testimonials_subheading": "Real stories. Real smiles.",
+        "quote_1": "This book was the perfect gift for our grandkids! It captured our Lake Geneva vacations beautifully. They read it over and over!",
+        "name_1": "Mary K.",
+        "role_1": "Proud Grandma",
+        "quote_2": "Such a special keepsake. The illustrations are gorgeous and the personalization made it so meaningful for our family.",
+        "name_2": "Josh R.",
+        "role_2": "Lake Geneva Dad",
+        "quote_3": "Our grandson felt like the star of the story! A beautiful way to celebrate our summers at Delavan Lake.",
+        "name_3": "Linda S.",
+        "role_3": "Happy Grandparent",
+        "faq_heading": "Frequently Asked Questions",
+        "question_1": "How long does it take to receive my book?",
+        "answer_1": "Your personalized book will arrive in approximately 7–10 business days.",
+        "question_2": "Can I personalize multiple characters?",
+        "answer_2": "Yes, you can include family members and friends in your story.",
+        "question_3": "What ages are the books best for?",
+        "answer_3": "Our stories are made for lake-loving children and families of all ages.",
+        "question_4": "Are the books printed in the USA?",
+        "answer_4": "Yes, every book is proudly printed in the USA.",
+        "question_5": "Can I include a special message?",
+        "answer_5": "Yes, add a meaningful note to make your keepsake even more personal.",
+        "background_color": "#ffffff"
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -336,6 +397,9 @@
     "hero_jVaWmY",
     "featured_collections_home",
     "best_sellers_home",
+    "how_it_works_home",
+    "personalize_story_home",
+    "testimonials_faq_home",
     "product_list_fa6P9H"
   ]
 }

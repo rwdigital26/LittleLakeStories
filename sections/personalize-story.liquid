@@ -1,0 +1,241 @@
+<section class="personalize-story section section--page-width" style="--personalize-story-bg: {{ section.settings.background_color }};">
+  <div class="personalize-story__copy">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+
+    <div class="personalize-story__fields">
+      <label>
+        <span>{{ section.settings.name_label }}</span>
+        <input type="text" value="{{ section.settings.name_value }}" readonly>
+      </label>
+      <label>
+        <span>{{ section.settings.hair_label }}</span>
+        <span class="personalize-story__select"><i aria-hidden="true"></i>{{ section.settings.hair_value }}</span>
+      </label>
+      <label>
+        <span>{{ section.settings.activity_label }}</span>
+        <span class="personalize-story__select"><i aria-hidden="true">♨</i>{{ section.settings.activity_value }}</span>
+      </label>
+      <label>
+        <span>{{ section.settings.companions_label }}</span>
+        <span class="personalize-story__select"><i aria-hidden="true">♟</i>{{ section.settings.companions_value }}</span>
+      </label>
+    </div>
+
+    <a class="personalize-story__button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+      {{ section.settings.button_label }} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <div class="personalize-story__art">
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 750px) 58vw, 100vw', alt: section.settings.image.alt | default: section.settings.heading, loading: 'lazy' }}
+    {% else %}
+      <div class="personalize-story__art-placeholder">
+        <div class="personalize-story__book">{{ section.settings.placeholder_book_title }}</div>
+        <span>{{ section.settings.placeholder_note }}</span>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .personalize-story {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.45fr);
+    align-items: stretch;
+    gap: clamp(26px, 5vw, 80px);
+    padding-block: 72px 88px;
+    padding-inline: clamp(24px, 5vw, 76px);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--personalize-story-bg, #eaf8fb);
+    color: #143d63;
+  }
+
+  .personalize-story__copy {
+    align-self: center;
+    max-width: 560px;
+  }
+
+  .personalize-story h2,
+  .personalize-story p,
+  .personalize-story label,
+  .personalize-story__button,
+  .personalize-story__art-placeholder {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .personalize-story h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 3.15rem);
+    line-height: 1;
+  }
+
+  .personalize-story__copy > p {
+    max-width: 500px;
+    margin: 14px 0 24px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .personalize-story__fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
+  }
+
+  .personalize-story label {
+    display: grid;
+    gap: 7px;
+    color: #143d63;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .personalize-story input,
+  .personalize-story__select {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1px solid #c6dce6;
+    border-radius: 9px;
+    color: #345d78;
+    background: #fff;
+    font: inherit;
+    font-size: 1rem;
+  }
+
+  .personalize-story__select i {
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    margin-inline-end: 9px;
+    border-radius: 50%;
+    color: #527791;
+    background: #f2d38b;
+    font-style: normal;
+    text-align: center;
+  }
+
+  .personalize-story__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    margin-block-start: 26px;
+    padding-inline: 30px;
+    border-radius: 999px;
+    color: #fff;
+    background: #2d86b6;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .personalize-story__button span {
+    margin-inline-start: 8px;
+    font-size: 1.2em;
+  }
+
+  .personalize-story__button:hover {
+    background: #143d63;
+  }
+
+  .personalize-story__art {
+    min-height: 360px;
+  }
+
+  .personalize-story__art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .personalize-story__art-placeholder {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    align-items: center;
+    gap: 28px;
+    height: 100%;
+    min-height: 360px;
+    padding: 32px;
+    color: #143d63;
+    background: linear-gradient(135deg, #d8f1fa, #fff);
+  }
+
+  .personalize-story__book {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 0.78;
+    padding: 22px;
+    color: #fff;
+    background: linear-gradient(145deg, #4f9bc3, #143d63);
+    box-shadow: 14px 16px 0 rgb(20 61 99 / 12%);
+    font-size: clamp(1.4rem, 2.5vw, 2.7rem);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .personalize-story__art-placeholder > span {
+    align-self: center;
+    font-size: clamp(1.5rem, 2vw, 2.4rem);
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  @media screen and (max-width: 749px) {
+    .personalize-story {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-block: 48px;
+      border-radius: 0;
+    }
+
+    .personalize-story__fields {
+      grid-template-columns: 1fr;
+    }
+
+    .personalize-story__art {
+      min-height: 280px;
+    }
+
+    .personalize-story__art-placeholder {
+      min-height: 280px;
+      padding: 22px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Personalize your story",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Artwork" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Make It Uniquely Theirs" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Personalize the details to create a one-of-a-kind adventure they'll treasure forever." },
+    { "type": "text", "id": "name_label", "label": "Name field label", "default": "Child's Name" },
+    { "type": "text", "id": "name_value", "label": "Name field value", "default": "Emma" },
+    { "type": "text", "id": "hair_label", "label": "Hair field label", "default": "Hair Color" },
+    { "type": "text", "id": "hair_value", "label": "Hair field value", "default": "Blonde" },
+    { "type": "text", "id": "activity_label", "label": "Activity field label", "default": "Favorite Activity" },
+    { "type": "text", "id": "activity_value", "label": "Activity field value", "default": "Boating" },
+    { "type": "text", "id": "companions_label", "label": "Companions field label", "default": "Companions" },
+    { "type": "text", "id": "companions_value", "label": "Companions field value", "default": "Grandma & Grandpa" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Preview My Book" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "placeholder_book_title", "label": "Fallback book title", "default": "Emma's Lake Geneva Adventure" },
+    { "type": "text", "id": "placeholder_note", "label": "Fallback artwork note", "default": "Every child has a story waiting on the lake." },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#eaf8fb" }
+  ],
+  "presets": [
+    { "name": "Personalize your story" }
+  ]
+}
+{% endschema %}
