@@ -195,6 +195,7 @@
         "step_4": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/We_Create_Their_Book.png",
             "heading": "We Create Their Book",
             "description": "Our team writes an original story from scratch and creates custom illustrations inspired by your memories, photos, and the details you share."
           }
@@ -202,6 +203,7 @@
         "step_5": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Review_Your_Story.png",
             "heading": "Review Your Story",
             "description": "You’ll receive a preview of your book to review. Let us know if you’d like any revisions until it’s just right."
           }
@@ -209,6 +211,7 @@
         "step_6": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Your_Keepsake_Is_On_Its_Way.png",
             "heading": "Your Keepsake Is on Its Way",
             "description": "Once you approve your final proof, we send your book to print. You’ll receive a shipping notification as soon as it’s on its way."
           }
