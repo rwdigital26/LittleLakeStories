@@ -14,6 +14,9 @@
     "brand_footer_home": {
       "type": "brand-footer",
       "settings": {
+        "cta_heading": "Ready to Create Their Story?",
+        "cta_copy": "Turn your family's lake memories into a beautifully illustrated keepsake.",
+        "cta_button": "Shop Our Books",
         "brand_message": "More kindness. More kids reading. A brighter tomorrow.",
         "newsletter_heading": "Join Our Lake Letter",
         "newsletter_copy": "Be the first to know about new stories, special offers and more lake-day magic.",
@@ -23,7 +26,10 @@
         "about_heading": "About",
         "help_heading": "Help",
         "utility_message": "Dreamed up on the lakes of Wisconsin",
-        "background_color": "#ffffff"
+        "instagram_url": "",
+        "facebook_url": "",
+        "pinterest_url": "",
+        "background_color": "#F1F1F1"
       }
     }
   },
