@@ -10,10 +10,16 @@
     </div>
 
     <nav class="brand-footer__reference-nav" aria-label="Footer">
-      <a href="{{ routes.all_products_collection_url }}">Shop Our Books</a>
-      <a href="{{ routes.root_url }}#how-it-works">How It Works</a>
-      <a href="{{ routes.root_url }}#our-story">About Us</a>
-      <a href="{{ routes.contact_url }}">Contact</a>
+      {% if section.settings.footer_menu != blank %}
+        {% for link in section.settings.footer_menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="{{ routes.all_products_collection_url }}">Shop Our Books</a>
+        <a href="{{ routes.root_url }}#how-it-works">How It Works</a>
+        <a href="{{ routes.root_url }}#our-story">About Us</a>
+        <a href="{{ routes.contact_url }}">Contact</a>
+      {% endif %}
     </nav>
 
     <div class="brand-footer__reference-newsletter">
@@ -636,6 +642,7 @@
     { "type": "text", "id": "newsletter_copy", "label": "Newsletter copy", "default": "Be the first to know about new stories, special offers and more lake-day magic." },
     { "type": "text", "id": "newsletter_button", "label": "Newsletter button", "default": "Subscribe" },
     { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks for joining our lake letter!" },
+    { "type": "link_list", "id": "footer_menu", "label": "Footer menu" },
     { "type": "text", "id": "shop_heading", "label": "Shop heading", "default": "Shop" },
     { "type": "text", "id": "about_heading", "label": "About heading", "default": "About" },
     { "type": "text", "id": "help_heading", "label": "Help heading", "default": "Help" },
