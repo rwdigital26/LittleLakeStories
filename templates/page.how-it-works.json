@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "how_it_works_hero": {
@@ -8,20 +17,9 @@
         "description": "Creating a one-of-a-kind Little Lake Story is easy. You choose the book, we'll guide you through the rest. In just a few simple steps, your child's real adventures become a beautifully illustrated keepsake.",
         "background_color": "#eaf8fb"
       }
-    },
-    "how_it_works_steps": {
-      "type": "how-it-works-steps",
-      "settings": {
-        "heading": "Six Simple Steps to Their Story",
-        "subheading": "A meaningful, stress-free experience from start to finish.",
-        "background_color": "#ffffff",
-        "padding_top": 56,
-        "padding_bottom": 80
-      }
     }
   },
   "order": [
-    "how_it_works_hero",
-    "how_it_works_steps"
+    "how_it_works_hero"
   ]
 }
