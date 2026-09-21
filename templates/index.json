@@ -184,6 +184,46 @@
     },
     "personalize_story_home": {
       "type": "personalize-story",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "number": "1",
+            "heading": "A Story Written Just for Them",
+            "description": "We write every story from scratch using your answers, memories, and ideas."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "number": "2",
+            "heading": "Their Favorite People, Brought to Life",
+            "description": "Upload photos of your child, family members, and beloved pets."
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "number": "3",
+            "heading": "Real Places. Magical Adventures.",
+            "description": "We use your memories to recreate meaningful places in beautiful illustrations."
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "number": "4",
+            "heading": "It's the Little Details That Matter",
+            "description": "The silly nickname, favorite ice cream, and family traditions make every story feel like home."
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ],
       "settings": {
         "heading": "Not Just Personalized. Truly Their Story.",
         "subheading": "Every child has a story worth telling. We turn their real memories, favorite people, and special places into a one-of-a-kind illustrated adventure, written from scratch just for them.",

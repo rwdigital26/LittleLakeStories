@@ -74,6 +74,7 @@
 
   .brand-footer__main > .brand-footer__brand {
     grid-column: 1;
+    align-self: center;
   }
 
   .brand-footer__main > .brand-footer__newsletter {
@@ -86,13 +87,16 @@
 
   .brand-footer__logo {
     display: block;
-    max-width: 240px;
+    width: min(180px, 100%);
+    height: 120px;
+    overflow: hidden;
   }
 
   .brand-footer__logo img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
   }
 
   .brand-footer h2,
