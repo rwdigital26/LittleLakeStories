@@ -167,6 +167,61 @@
     },
     "how_it_works_home": {
       "type": "how-it-works",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Choose_Your_Book.png",
+            "heading": "Choose Your Book",
+            "description": "Browse our lake collections and select the book that’s right for your family. Pick your lake, format, and quantity, then place your order through our secure checkout."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Complete_Your_Purchase.png",
+            "heading": "Complete Your Purchase",
+            "description": "Check out just like any other online order. Once your order is confirmed, you’ll receive an email with a secure link to complete your story details."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Order_Your_Keepsake.png",
+            "heading": "Share Their Story",
+            "description": "Use your secure link to complete our step-by-step questionnaire. Tell us about your child, share favorite memories, and upload photos of the special people and places you’d like included."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "heading": "We Create Their Book",
+            "description": "Our team writes an original story from scratch and creates custom illustrations inspired by your memories, photos, and the details you share."
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "heading": "Review Your Story",
+            "description": "You’ll receive a preview of your book to review. Let us know if you’d like any revisions until it’s just right."
+          }
+        },
+        "step_6": {
+          "type": "step",
+          "settings": {
+            "heading": "Your Keepsake Is on Its Way",
+            "description": "Once you approve your final proof, we send your book to print. You’ll receive a shipping notification as soon as it’s on its way."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5",
+        "step_6"
+      ],
       "settings": {
         "heading": "How It Works",
         "subheading": "From our lake to your little one's imagination — in three simple steps.",
