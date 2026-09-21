@@ -695,13 +695,12 @@
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
     display: grid;
-    grid-template-columns: repeat(2, minmax(210px, 210px));
-    column-gap: 16px;
+    grid-template-columns: 1fr 210px 16px 210px 1fr;
     align-content: center;
     justify-content: center;
     align-items: center;
-    width: min(62%, 880px);
-    margin-inline-start: calc(clamp(24px, 7vw, 104px) - 20px);
+    width: min(52%, 760px);
+    margin-inline-start: clamp(24px, 5vw, 80px);
     padding-block: 20px 48px;
     transform: translateY(-64px);
     z-index: var(--layer-raised);
@@ -709,6 +708,14 @@
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
     grid-column: 1 / -1;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > :is(.button, .button-custom) {
+    grid-column: 2;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .button-secondary {
+    grid-column: 4;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block p {
@@ -721,15 +728,30 @@
     line-height: 1.25;
   }
 
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block::before {
+    content: '';
+    position: absolute;
+    inset: -30px -56px -24px;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgb(255 255 255 / 68%) 0%, rgb(255 255 255 / 46%) 46%, rgb(255 255 255 / 16%) 72%, rgb(255 255 255 / 0%) 100%);
+    pointer-events: none;
+  }
+
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block h1 {
-    max-width: 860px;
+    max-width: 760px;
     margin-inline: auto;
     font-size: clamp(2.25rem, 3.4vw, 4rem);
     line-height: 0.98;
     white-space: nowrap;
   }
 
-  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-secondary) {
+  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-custom, .button-secondary) {
     flex: 0 0 auto;
     width: 210px !important;
     min-width: 210px;
@@ -745,12 +767,12 @@
     font-weight: 700;
     letter-spacing: 0;
     line-height: 1;
-    margin-block-start: 12px;
+    margin-block-start: 5px;
     white-space: nowrap;
     justify-self: center;
   }
 
-  .hero-wrapper:first-child .hero__content-wrapper .button {
+  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-custom) {
     background: #4f9bc3 !important;
     color: #fff !important;
     border-color: #fff !important;
@@ -761,17 +783,17 @@
     color: #143d63 !important;
   }
 
-  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-secondary) {
+  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-custom, .button-secondary) {
     border-color: #2d86b6;
   }
 
-  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-secondary):hover {
+  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-custom, .button-secondary):hover {
     border-color: #143d63;
     background: #143d63;
     color: #fff;
   }
 
-  .hero-wrapper:first-child .hero__content-wrapper .button:hover {
+  .hero-wrapper:first-child .hero__content-wrapper :is(.button, .button-custom):hover {
     border-color: #fff;
     background: #4f9bc3;
     box-shadow: 0 6px 14px rgb(20 61 99 / 24%);
@@ -816,7 +838,17 @@
       transform: none;
     }
 
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block::before {
+      inset: -28px -20px -20px;
+      background: radial-gradient(ellipse at center, rgb(255 255 255 / 62%) 0%, rgb(255 255 255 / 38%) 52%, rgb(255 255 255 / 0%) 100%);
+    }
+
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
+      grid-column: auto;
+    }
+
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > :is(.button, .button-custom),
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .button-secondary {
       grid-column: auto;
     }
 
@@ -825,7 +857,7 @@
       white-space: normal;
     }
 
-    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-secondary) {
+    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper :is(.button, .button-custom, .button-secondary) {
       margin-block-start: 8px;
       width: min(210px, 82vw) !important;
       min-width: min(210px, 82vw);
