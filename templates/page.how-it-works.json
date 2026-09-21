@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "how_it_works_hero": {
+      "type": "how-it-works-hero",
+      "settings": {
+        "heading": "How It Works",
+        "subheading": "From your memories to their favorite book.",
+        "description": "Creating a one-of-a-kind Little Lake Story is easy. You choose the book, we'll guide you through the rest. In just a few simple steps, your child's real adventures become a beautifully illustrated keepsake.",
+        "background_color": "#eaf8fb"
+      }
+    },
+    "how_it_works_steps": {
+      "type": "how-it-works-steps",
+      "settings": {
+        "heading": "Six Simple Steps to Their Story",
+        "subheading": "A meaningful, stress-free experience from start to finish.",
+        "background_color": "#ffffff",
+        "padding_top": 56,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "how_it_works_hero",
+    "how_it_works_steps"
+  ]
+}
