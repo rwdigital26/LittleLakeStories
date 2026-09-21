@@ -483,11 +483,13 @@
   }
 
   .brand-footer--reference .brand-footer__form {
+    width: 100%;
     max-width: 315px;
     gap: 6px;
   }
 
   .brand-footer--reference .brand-footer__form input {
+    width: 100%;
     min-height: 34px;
     padding: 8px 11px;
     border-radius: 3px;
@@ -608,7 +610,15 @@
     }
 
     .brand-footer--reference .brand-footer__form {
-      flex-direction: row;
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .brand-footer--reference .brand-footer__form input,
+    .brand-footer--reference .brand-footer__form button {
+      width: 100%;
+      min-height: 48px;
     }
 
     .brand-footer--reference .brand-footer__socials {
