@@ -171,15 +171,15 @@
         "heading": "How It Works",
         "subheading": "From our lake to your little one's imagination — in three simple steps.",
         "background_color": "#ffffff",
-        "image_1": "shopify://shop_images/ChooseYourLake.png",
-        "title_1": "Choose Your Lake",
-        "description_1": "Pick your location or theme.",
-        "image_2": "shopify://shop_images/Personalize_Your_Story.png",
-        "title_2": "Personalize Your Story",
-        "description_2": "Add your child's name, appearance, family members, activities, favorite activities and photos.",
+        "image_1": "shopify://shop_images/Choose_Your_Book.png",
+        "title_1": "Choose Your Book",
+        "description_1": "Browse our lake collections and select the book that’s right for your family. Pick your lake, format, and quantity, then place your order through our secure checkout.",
+        "image_2": "shopify://shop_images/Complete_Your_Purchase.png",
+        "title_2": "Complete Your Purchase",
+        "description_2": "Check out just like any other online order. Once your order is confirmed, you’ll receive an email with a secure link to complete your story details.",
         "image_3": "shopify://shop_images/Order_Your_Keepsake.png",
-        "title_3": "Order Your Keepsake",
-        "description_3": "We bring the story to life and ship it to your door, ready to be loved for years to come."
+        "title_3": "Share Their Story",
+        "description_3": "Use your secure link to complete our step-by-step questionnaire. Tell us about your child, share favorite memories, and upload photos of the special people and places you’d like included."
       }
     },
     "personalize_story_home": {
