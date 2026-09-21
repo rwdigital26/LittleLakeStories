@@ -1,4 +1,4 @@
-<footer class="brand-footer" style="--brand-footer-bg: {{ section.settings.background_color }};">
+<footer class="brand-footer" style="--brand-footer-bg: {{ section.settings.background_color }}; --brand-footer-image: url('{{ 'footer-background.png' | asset_url }}');">
   <div class="brand-footer__main section section--page-width">
     <div class="brand-footer__brand">
       <a href="{{ routes.root_url }}" class="brand-footer__logo">
@@ -58,7 +58,11 @@
 {% stylesheet %}
   .brand-footer {
     color: #143d63;
-    background: var(--brand-footer-bg, #fff);
+    background-color: var(--brand-footer-bg, #fff);
+    background-image: var(--brand-footer-image);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .brand-footer__main {
@@ -67,6 +71,7 @@
     gap: clamp(28px, 4vw, 70px);
     align-items: start;
     padding-block: 56px 42px;
+    background: rgb(255 255 255 / 78%);
   }
 
   .brand-footer__logo {
@@ -179,7 +184,7 @@
 
   .brand-footer__utility {
     min-height: 76px;
-    background: #ccecf6;
+    background: rgb(204 236 246 / 58%);
     border-block-start: 1px solid #b7dfe9;
   }
 
