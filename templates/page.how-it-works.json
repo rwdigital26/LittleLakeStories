@@ -20,15 +20,11 @@
     },
     "how_it_works_steps": {
       "type": "how-it-works",
-      "settings": {
-        "heading": "Six Simple Steps to Their Story",
-        "subheading": "A meaningful, stress-free experience from start to finish.",
-        "background_color": "#ffffff"
-      },
       "blocks": {
         "step_1": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Choose_Your_Book.png",
             "heading": "Choose Your Book",
             "description": "Browse our lake collections and select the book that’s right for your family. Pick your lake, format, and quantity, then place your order through our secure checkout."
           }
@@ -36,6 +32,7 @@
         "step_2": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Complete_Your_Purchase.png",
             "heading": "Complete Your Purchase",
             "description": "Check out just like any other online order. Once your order is confirmed, you’ll receive an email with a secure link to complete your story details."
           }
@@ -43,6 +40,7 @@
         "step_3": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Share_Their_Story.png",
             "heading": "Share Their Story",
             "description": "Use your secure link to complete our step-by-step questionnaire. Tell us about your child, share favorite memories, and upload photos of the special people and places you’d like included."
           }
@@ -50,6 +48,7 @@
         "step_4": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/We_Create_Their_Book.png",
             "heading": "We Create Their Book",
             "description": "Our team writes an original story from scratch and creates custom illustrations inspired by your memories, photos, and the details you share."
           }
@@ -57,6 +56,7 @@
         "step_5": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Review_Your_Story.png",
             "heading": "Review Your Story",
             "description": "You’ll receive a preview of your book to review. Let us know if you’d like any revisions (limited revisions are included) until it’s just right."
           }
@@ -64,6 +64,7 @@
         "step_6": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Your_Keepsake_Is_On_Its_Way.png",
             "heading": "Your Keepsake Is on Its Way",
             "description": "Once you approve your final proof, we send your book to print. You’ll receive a shipping notification as soon as it’s on its way."
           }
@@ -76,15 +77,21 @@
         "step_4",
         "step_5",
         "step_6"
-      ]
+      ],
+      "settings": {
+        "heading": "Six Simple Steps to Their Story",
+        "subheading": "A meaningful, stress-free experience from start to finish.",
+        "background_color": "#ffffff",
+        "title_1": "Choose Your Lake",
+        "description_1": "Pick Delavan Lake, Lake Geneva, or a grandparents theme.",
+        "title_2": "Personalize Your Story",
+        "description_2": "Add your child's name, appearance, family members and favorite activities.",
+        "title_3": "Order Your Keepsake",
+        "description_3": "We bring the story to life and ship it to your door, ready to be loved for years to come."
+      }
     },
     "peace_of_mind": {
       "type": "peace-of-mind",
-      "settings": {
-        "eyebrow": "A Few Things to Know",
-        "heading": "Your Peace of Mind Matters",
-        "background_color": "#f4fbff"
-      },
       "blocks": {
         "point_1": {
           "type": "point",
@@ -124,7 +131,12 @@
         "point_2",
         "point_3",
         "point_4"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "A Few Things to Know",
+        "heading": "Your Peace of Mind Matters",
+        "background_color": "#f4fbff"
+      }
     }
   },
   "order": [
