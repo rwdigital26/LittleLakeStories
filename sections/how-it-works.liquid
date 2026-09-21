@@ -154,7 +154,6 @@
   .how-it-works__illustration {
     display: grid;
     place-items: center;
-    height: 210px;
     margin-block-end: 14px;
     overflow: hidden;
     border-radius: 22px;
@@ -165,9 +164,7 @@
   .how-it-works__illustration img {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
   }
 
   .how-it-works__placeholder {
@@ -197,7 +194,7 @@
     z-index: 1;
     flex: 0 0 auto;
     width: 100%;
-    margin-block-start: 8px;
+    margin-block-start: 28px;
     padding-block: 8px 2px;
     background: transparent;
   }
@@ -245,9 +242,6 @@
       gap: 32px;
     }
 
-    .how-it-works__illustration {
-      height: 150px;
-    }
   }
 {% endstylesheet %}
 

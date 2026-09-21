@@ -137,11 +137,20 @@
         "heading": "Your Peace of Mind Matters",
         "background_color": "#F4F1F1"
       }
+    },
+    "how_it_works_cta": {
+      "type": "how-it-works-cta",
+      "settings": {
+        "heading": "Ready to Create Their Story?",
+        "text": "Turn your family's lake memories into a beautiful personalized keepsake.",
+        "button_label": "Shop Our Books"
+      }
     }
   },
   "order": [
     "how_it_works_hero",
     "how_it_works_steps",
-    "peace_of_mind"
+    "peace_of_mind",
+    "how_it_works_cta"
   ]
 }

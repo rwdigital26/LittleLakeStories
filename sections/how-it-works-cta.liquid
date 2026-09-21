@@ -1,0 +1,127 @@
+{% liquid
+  assign cta_link = section.settings.button_link | default: routes.all_products_collection_url
+%}
+
+<section
+  class="how-it-works-cta"
+  {% if section.settings.background_image != blank %}
+    style="background-image: url('{{ section.settings.background_image | image_url: width: 3000 }}');"
+  {% else %}
+    style="background-image: url('{{ 'footer-background.png' | asset_url }}');"
+  {% endif %}
+>
+  <div class="how-it-works-cta__content section section--page-width">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <p>{{ section.settings.text }}</p>
+    {% endif %}
+
+    {% if section.settings.button_label != blank %}
+      <a class="how-it-works-cta__button" href="{{ cta_link }}">
+        {{ section.settings.button_label }}
+        <span aria-hidden="true">→</span>
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .how-it-works-cta {
+    position: relative;
+    display: grid;
+    min-height: 270px;
+    overflow: hidden;
+    place-items: center;
+    background-color: #eaf8fb;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #143d63;
+  }
+
+  .how-it-works-cta::before {
+    position: absolute;
+    inset: 0;
+    background: rgb(255 255 255 / 8%);
+    content: "";
+  }
+
+  .how-it-works-cta__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    max-width: 700px;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 50px;
+    text-align: center;
+  }
+
+  .how-it-works-cta h2 {
+    margin: 0;
+    color: #143d63;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 3.3vw, 3.35rem);
+    line-height: 1.05;
+  }
+
+  .how-it-works-cta p {
+    max-width: 550px;
+    margin: 10px 0 22px;
+    color: #143d63;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .how-it-works-cta__button {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: #1d5785;
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 160ms ease, transform 160ms ease;
+  }
+
+  .how-it-works-cta__button:hover {
+    background: #143d63;
+    transform: translateY(-2px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .how-it-works-cta {
+      min-height: 230px;
+      background-position: center bottom;
+    }
+
+    .how-it-works-cta__content {
+      padding-block: 40px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "How it works CTA",
+  "settings": [
+    { "type": "image_picker", "id": "background_image", "label": "Background image" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ready to Create Their Story?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Turn your family's lake memories into a beautiful personalized keepsake." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Our Books" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [
+    { "name": "How it works CTA" }
+  ]
+}
+{% endschema %}

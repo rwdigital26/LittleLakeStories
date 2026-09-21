@@ -1,34 +1,24 @@
-<footer class="brand-footer" style="--brand-footer-bg: {{ section.settings.background_color }};">
-  <div class="brand-footer__cta">
-    <div class="brand-footer__cta-inner section section--page-width">
-      <div class="brand-footer__cta-copy">
-        <h2>{{ section.settings.cta_heading }}</h2>
-        <p>{{ section.settings.cta_copy }}</p>
-      </div>
-      <a class="brand-footer__cta-button" href="{{ routes.all_products_collection_url }}">
-        {{ section.settings.cta_button }}
-        <span aria-hidden="true">→</span>
+<footer
+  class="brand-footer brand-footer--reference"
+  style="--brand-footer-bg: {{ section.settings.background_color }};"
+>
+  <div class="brand-footer__reference-main section section--page-width">
+    <div class="brand-footer__reference-brand">
+      <a href="{{ routes.root_url }}" class="brand-footer__reference-logo" aria-label="Little Lake Stories home">
+        <img src="{{ 'vertical-logo.png' | asset_url }}" alt="Little Lake Stories" width="500" height="500" loading="lazy">
       </a>
     </div>
-  </div>
 
-  <div class="brand-footer__main section section--page-width">
-    <div class="brand-footer__brand">
-      <div class="brand-footer__brand-mark">Little Lake Stories</div>
-      <div class="brand-footer__brand-tag">Real Places. Brighter Stories.</div>
-    </div>
+    <nav class="brand-footer__reference-nav" aria-label="Footer">
+      <a href="{{ routes.all_products_collection_url }}">Shop Our Books</a>
+      <a href="{{ routes.root_url }}#how-it-works">How It Works</a>
+      <a href="{{ routes.root_url }}#our-story">About Us</a>
+      <a href="{{ routes.contact_url }}">Contact</a>
+    </nav>
 
-    <div class="brand-footer__links">
-      <nav class="brand-footer__nav" aria-label="Footer">
-        <a href="{{ routes.all_products_collection_url }}">Shop Our Books</a>
-        <a href="{{ routes.root_url }}#how-it-works">How It Works</a>
-        <a href="{{ routes.root_url }}#our-story">About Us</a>
-        <a href="{{ routes.contact_url }}">Contact</a>
-      </nav>
-    </div>
-
-    <div class="brand-footer__newsletter">
-      <h3>{{ section.settings.newsletter_heading }}</h3>
+    <div class="brand-footer__reference-newsletter">
+      <h2>{{ section.settings.newsletter_heading }}</h2>
+      <p>{{ section.settings.newsletter_copy }}</p>
       {% form 'customer', class: 'brand-footer__form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <label class="visually-hidden" for="BrandFooterEmail">Email address</label>
@@ -37,34 +27,29 @@
         {% if form.posted_successfully? %}<p class="brand-footer__success">{{ section.settings.success_message }}</p>{% endif %}
         {{ form.errors | default_errors }}
       {% endform %}
-    </div>
-
-    <div class="brand-footer__scribble" aria-label="Lake Days">
-      <span>More</span>
-      <span>Lake Days</span>
-      <span>Please</span>
-      <span>♡</span>
-    </div>
-  </div>
-
-  <div class="brand-footer__utility">
-    <div class="brand-footer__utility-inner section section--page-width">
-      <p>© {{ 'now' | date: '%Y' }} Little Lake Stories. All rights reserved.</p>
-
-      <div class="brand-footer__utility-links">
-        <a href="{{ routes.root_url }}#privacy-policy">Privacy Policy</a>
-        <span>|</span>
-        <a href="{{ routes.root_url }}#terms-of-service">Terms of Service</a>
-        <span>|</span>
-        <a href="{{ routes.root_url }}#shipping">Shipping Info</a>
-        <span>|</span>
-        <a href="{{ routes.root_url }}#faqs">FAQs</a>
-      </div>
-
       <div class="brand-footer__socials">
         {% if section.settings.instagram_url != blank %}<a href="{{ section.settings.instagram_url }}" aria-label="Instagram">◎</a>{% endif %}
         {% if section.settings.facebook_url != blank %}<a href="{{ section.settings.facebook_url }}" aria-label="Facebook">f</a>{% endif %}
         {% if section.settings.pinterest_url != blank %}<a href="{{ section.settings.pinterest_url }}" aria-label="Pinterest">p</a>{% endif %}
+      </div>
+    </div>
+
+    <div class="brand-footer__reference-note" aria-label="More lake days please">
+      <span>More</span>
+      <span>Lake Days</span>
+      <span>Please</span>
+      <span aria-hidden="true">♡</span>
+    </div>
+  </div>
+
+  <div class="brand-footer__reference-utility">
+    <div class="section section--page-width">
+      <p>© {{ 'now' | date: '%Y' }} Little Lake Stories. All rights reserved.</p>
+      <div>
+        <a href="{{ routes.root_url }}#privacy-policy">Privacy Policy</a>
+        <a href="{{ routes.root_url }}#terms-of-service">Terms of Service</a>
+        <a href="{{ routes.root_url }}#shipping">Shipping Info</a>
+        <a href="{{ routes.root_url }}#faqs">FAQs</a>
       </div>
     </div>
   </div>
@@ -80,7 +65,7 @@
   .brand-footer__cta {
     position: relative;
     overflow: hidden;
-    background-image: url('{{ 'footer-banner-lake.png' | asset_url }}');
+    background-image: var(--brand-footer-cta-image);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -417,6 +402,222 @@
     }
 
     .brand-footer__socials {
+      justify-content: center;
+    }
+  }
+
+  .brand-footer--reference {
+    background: #fff;
+  }
+
+  .brand-footer--reference .brand-footer__reference-main {
+    display: grid;
+    grid-template-areas: "brand navigation newsletter note";
+    grid-template-columns: minmax(240px, 1.2fr) minmax(150px, 0.75fr) minmax(300px, 1.5fr) minmax(130px, 0.65fr);
+    align-items: start;
+    gap: 28px;
+    padding-inline: 25px;
+    padding-block: 40px 32px;
+  }
+
+  .brand-footer--reference .brand-footer__reference-brand {
+    grid-area: brand;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .brand-footer--reference .brand-footer__reference-logo {
+    display: block;
+    width: 175px;
+    line-height: 0;
+  }
+
+  .brand-footer--reference .brand-footer__reference-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .brand-footer--reference .brand-footer__reference-nav {
+    grid-area: navigation;
+    display: grid;
+    gap: 8px;
+    padding-top: 5px;
+  }
+
+  .brand-footer--reference .brand-footer__reference-nav a {
+    color: #143d63;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .brand-footer--reference .brand-footer__reference-nav a:hover {
+    color: #2d86b6;
+  }
+
+  .brand-footer--reference .brand-footer__reference-newsletter h2 {
+    margin: 0;
+    color: #143d63;
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  .brand-footer--reference .brand-footer__reference-newsletter {
+    grid-area: newsletter;
+  }
+
+  .brand-footer--reference .brand-footer__reference-newsletter > p {
+    max-width: 310px;
+    margin: 6px 0 12px;
+    color: #4c7285;
+    font-size: 0.76rem;
+    line-height: 1.4;
+  }
+
+  .brand-footer--reference .brand-footer__form {
+    max-width: 315px;
+    gap: 6px;
+  }
+
+  .brand-footer--reference .brand-footer__form input {
+    min-height: 34px;
+    padding: 8px 11px;
+    border-radius: 3px;
+    font-size: 0.78rem;
+  }
+
+  .brand-footer--reference .brand-footer__form button {
+    min-height: 34px;
+    padding: 8px 12px;
+    border-radius: 3px;
+    background: #1d5785;
+    font-size: 0.76rem;
+  }
+
+  .brand-footer--reference .brand-footer__socials {
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+
+  .brand-footer--reference .brand-footer__socials a {
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    background: #1d5785;
+    font-size: 0.7rem;
+  }
+
+  .brand-footer--reference .brand-footer__reference-note {
+    grid-area: note;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: end;
+    padding-top: 7px;
+    color: #2d86b6;
+    font-family: 'Bradley Hand', 'Segoe Print', cursive;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 0.93;
+    text-align: center;
+    transform: rotate(-6deg);
+  }
+
+  .brand-footer--reference .brand-footer__reference-note span:last-child {
+    margin-top: 4px;
+    font-size: 1.3rem;
+  }
+
+  .brand-footer--reference .brand-footer__reference-utility {
+    border-top: 1px solid rgb(20 61 99 / 14%);
+  }
+
+  .brand-footer--reference .brand-footer__reference-utility > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 45px;
+    padding-inline: 25px;
+  }
+
+  .brand-footer--reference .brand-footer__reference-utility p,
+  .brand-footer--reference .brand-footer__reference-utility a {
+    margin: 0;
+    color: #4c7285;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .brand-footer--reference .brand-footer__reference-utility div div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 14px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .brand-footer--reference .brand-footer__reference-main {
+      grid-template-areas:
+        "brand navigation"
+        "newsletter note";
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .brand-footer--reference .brand-footer__reference-note {
+      justify-self: start;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .brand-footer--reference .brand-footer__reference-main {
+      grid-template-areas:
+        "brand"
+        "navigation"
+        "newsletter"
+        "note";
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 24px;
+      padding-block: 34px 28px;
+      text-align: center;
+    }
+
+    .brand-footer--reference .brand-footer__reference-brand,
+    .brand-footer--reference .brand-footer__reference-note {
+      align-items: center;
+      justify-self: center;
+    }
+
+    .brand-footer--reference .brand-footer__reference-nav {
+      justify-items: center;
+    }
+
+    .brand-footer--reference .brand-footer__reference-newsletter > p {
+      max-width: 300px;
+    }
+
+    .brand-footer--reference .brand-footer__form {
+      flex-direction: row;
+    }
+
+    .brand-footer--reference .brand-footer__socials {
+      justify-content: center;
+    }
+
+    .brand-footer--reference .brand-footer__reference-utility > div {
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      padding-block: 14px;
+      text-align: center;
+    }
+
+    .brand-footer--reference .brand-footer__reference-utility div div {
       justify-content: center;
     }
   }
