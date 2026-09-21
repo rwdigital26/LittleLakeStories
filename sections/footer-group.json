@@ -22,6 +22,7 @@
         "newsletter_copy": "Be the first to know about new stories, special offers and more lake-day magic.",
         "newsletter_button": "Sign Me Up",
         "success_message": "Thanks for joining our lake letter!",
+        "footer_menu": "footer",
         "shop_heading": "Shop",
         "about_heading": "About",
         "help_heading": "Help",
@@ -29,7 +30,7 @@
         "instagram_url": "",
         "facebook_url": "",
         "pinterest_url": "",
-        "background_color": "#F1F1F1"
+        "background_color": "#f1f1f1"
       }
     }
   },
