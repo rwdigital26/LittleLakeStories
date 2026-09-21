@@ -1,0 +1,61 @@
+<section class="about-difference" style="--about-difference-bg: {{ section.settings.background_color }};">
+  <div class="about-difference__inner section section--page-width">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="about-difference__grid">
+      {% for block in section.blocks %}
+        <article class="about-difference__item" {{ block.shopify_attributes }}>
+          <div class="about-difference__icon" aria-hidden="true">
+            {% if block.settings.icon_image != blank %}
+              {{ block.settings.icon_image | image_url: width: 180 | image_tag: widths: '90, 180', alt: '', loading: 'lazy' }}
+            {% else %}
+              <span>{{ block.settings.icon }}</span>
+            {% endif %}
+          </div>
+          {% if block.settings.heading != blank %}<h3>{{ block.settings.heading }}</h3>{% endif %}
+          {% if block.settings.text != blank %}<p>{{ block.settings.text }}</p>{% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-difference { padding-block: 60px; background: var(--about-difference-bg, #fffdf8); color: #143d63; }
+  .about-difference__inner { text-align: center; }
+  .about-difference h2 { margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2rem, 3.3vw, 3.5rem); line-height: 1; }
+  .about-difference__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 34px; }
+  .about-difference__item { position: relative; padding: 0 clamp(18px, 2vw, 34px); }
+  .about-difference__item + .about-difference__item::before { position: absolute; top: 8%; bottom: 8%; left: 0; width: 1px; background: rgb(20 61 99 / 18%); content: ''; }
+  .about-difference__icon { display: grid; width: 78px; height: 65px; place-items: center; margin: 0 auto 12px; color: #2d86b6; }
+  .about-difference__icon img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+  .about-difference__icon span { font-family: Georgia, 'Times New Roman', serif; font-size: 3.2rem; line-height: 1; }
+  .about-difference h3 { max-width: 230px; margin: 0 auto 10px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.15rem, 1.55vw, 1.55rem); line-height: 1.1; }
+  .about-difference p { max-width: 250px; margin: 0 auto; font-family: Georgia, 'Times New Roman', serif; font-size: .98rem; line-height: 1.42; }
+  @media screen and (max-width: 749px) { .about-difference__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 0; } .about-difference__item:nth-child(odd)::before { display: none; } .about-difference__item:nth-child(3)::after, .about-difference__item:nth-child(4)::after { position: absolute; top: -15px; right: 8%; left: 8%; height: 1px; background: rgb(20 61 99 / 18%); content: ''; } }
+  @media screen and (max-width: 480px) { .about-difference__grid { grid-template-columns: 1fr; } .about-difference__item + .about-difference__item::before { display: none; } .about-difference__item + .about-difference__item::after { position: absolute; top: -15px; right: 15%; left: 15%; height: 1px; background: rgb(20 61 99 / 18%); content: ''; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About difference",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What Makes Little Lake Stories Different" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#fffdf8" }
+  ],
+  "blocks": [{
+    "type": "point",
+    "name": "Point",
+    "settings": [
+      { "type": "image_picker", "id": "icon_image", "label": "Icon image" },
+      { "type": "text", "id": "icon", "label": "Fallback icon", "default": "*" },
+      { "type": "text", "id": "heading", "label": "Heading", "default": "Every Story Is Written from Scratch" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Each book is a unique, customized story - no templates, no generic books." }
+    ]
+  }],
+  "presets": [{ "name": "About difference", "blocks": [{ "type": "point", "settings": { "icon": "*", "heading": "Every Story Is Written from Scratch", "text": "Each book is a unique, customized story - no templates, no generic books." } }, { "type": "point", "settings": { "icon": "☀", "heading": "Based on Real Family Memories", "text": "Your favorite lake moments, inside jokes, and traditions bring the story to life." } }, { "type": "point", "settings": { "icon": "♡", "heading": "Your Photos Help Bring the Story to Life", "text": "We use your photos to create illustrated characters that resemble the real people you love." } }, { "type": "point", "settings": { "icon": "♥", "heading": "A Keepsake for Generations", "text": "These aren't just stories - they're lasting treasures your family can share for years to come." } }] }]
+}
+{% endschema %}

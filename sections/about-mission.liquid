@@ -1,0 +1,44 @@
+<section class="about-mission" style="--about-mission-bg: {{ section.settings.background_color }};">
+  <div class="about-mission__inner">
+    <div class="about-mission__image">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '480, 720, 1200', sizes: '(min-width: 750px) 35vw, 90vw', alt: section.settings.image.alt | default: section.settings.heading, loading: 'lazy' }}
+      {% else %}
+        <div class="about-mission__placeholder">Upload mission artwork</div>
+      {% endif %}
+    </div>
+    <div class="about-mission__content">
+      {% if section.settings.heading != blank %}<h2>{{ section.settings.heading }}</h2>{% endif %}
+      {% if section.settings.text != blank %}<div>{{ section.settings.text }}</div>{% endif %}
+      {% if section.settings.note != blank %}<p>{{ section.settings.note }}</p>{% endif %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-mission { padding-block: 54px 74px; background: var(--about-mission-bg, #fffdf8); color: #143d63; }
+  .about-mission__inner { display: grid; width: min(calc(100% - 48px), 1120px); grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr); align-items: center; gap: clamp(28px, 5vw, 76px); margin-inline: auto; }
+  .about-mission__image { width: min(100%, 370px); justify-self: center; }
+  .about-mission__image img, .about-mission__placeholder { display: block; width: 100%; border-radius: 6px; }
+  .about-mission__placeholder { display: grid; min-height: 200px; place-items: center; color: #4c7285; background: #eaf8fb; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; text-align: center; }
+  .about-mission__content { max-width: 700px; }
+  .about-mission h2 { margin: 0 0 10px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2rem, 3vw, 3.45rem); line-height: 1; }
+  .about-mission__content div { font-family: Georgia, 'Times New Roman', serif; font-size: 1.06rem; line-height: 1.46; }
+  .about-mission__content div p { margin: 0; }
+  .about-mission__content > p { margin: 16px 0 0; color: #2d86b6; font-family: 'Bradley Hand', 'Segoe Print', cursive; font-size: 1.05rem; text-align: right; }
+  @media screen and (max-width: 749px) { .about-mission__inner { width: min(calc(100% - 32px), 1120px); grid-template-columns: 1fr; gap: 24px; } .about-mission__content { text-align: center; } .about-mission__content > p { text-align: center; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About mission",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Mission artwork" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our Mission" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We want every child to feel excited when they open a book and see themselves as the main character. We want parents and grandparents to feel pride, excitement, and pure joy when they give a book that captures the memories that matter most. My hope is that every Little Lake Stories book becomes a personal, meaningful gift that shares your memories and stories for generations to come.</p>" },
+    { "type": "text", "id": "note", "label": "Handwritten note", "default": "Stories made for generations." },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#fffdf8" }
+  ],
+  "presets": [{ "name": "About mission" }]
+}
+{% endschema %}

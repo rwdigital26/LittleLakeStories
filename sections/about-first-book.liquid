@@ -1,0 +1,133 @@
+<section
+  class="about-first-book"
+  {% if section.settings.background_image != blank %}
+    style="--about-first-book-image: url('{{ section.settings.background_image | image_url: width: 2400 }}'); --about-first-book-bg: {{ section.settings.background_color }};"
+  {% else %}
+    style="--about-first-book-bg: {{ section.settings.background_color }};"
+  {% endif %}
+>
+  <div class="about-first-book__inner">
+    <div class="about-first-book__book">
+      {% if section.settings.book_image != blank %}
+        {{ section.settings.book_image | image_url: width: 1000 | image_tag: widths: '480, 720, 1000', sizes: '(min-width: 750px) 32vw, 80vw', alt: section.settings.heading, loading: 'lazy' }}
+      {% else %}
+        <div class="about-first-book__placeholder">Upload book artwork</div>
+      {% endif %}
+    </div>
+
+    <div class="about-first-book__content">
+      {% if section.settings.heading != blank %}<h2>{{ section.settings.heading }}</h2>{% endif %}
+      {% if section.settings.text != blank %}<div>{{ section.settings.text }}</div>{% endif %}
+      {% if section.settings.note != blank %}<p>{{ section.settings.note }}</p>{% endif %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-first-book {
+    position: relative;
+    overflow: hidden;
+    padding-block: 38px;
+    background-color: var(--about-first-book-bg, #eaf8fb);
+    background-image: var(--about-first-book-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #143d63;
+  }
+
+  .about-first-book::before {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(234 248 251 / 75%), rgb(234 248 251 / 49%));
+    content: '';
+  }
+
+  .about-first-book__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: min(calc(100% - 48px), 1280px);
+    grid-template-columns: minmax(220px, .55fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(28px, 5vw, 76px);
+    margin-inline: auto;
+  }
+
+  .about-first-book__book {
+    justify-self: center;
+    width: min(100%, 315px);
+    transform: rotate(-5deg);
+  }
+
+  .about-first-book__book img,
+  .about-first-book__placeholder {
+    display: block;
+    width: 100%;
+    border: 7px solid #fff;
+    border-radius: 3px;
+    box-shadow: 0 12px 24px rgb(20 61 99 / 16%);
+  }
+
+  .about-first-book__placeholder {
+    display: grid;
+    min-height: 260px;
+    place-items: center;
+    color: #4c7285;
+    background: #fff;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .about-first-book__content {
+    max-width: 720px;
+    padding-block: 18px;
+  }
+
+  .about-first-book h2 {
+    margin: 0 0 13px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .about-first-book__content div {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.08rem;
+    line-height: 1.48;
+  }
+
+  .about-first-book__content div p {
+    margin: 0;
+  }
+
+  .about-first-book__content > p {
+    margin: 16px 0 0;
+    color: #2d86b6;
+    font-family: 'Bradley Hand', 'Segoe Print', cursive;
+    font-size: 1.05rem;
+    text-align: right;
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-first-book__inner { width: min(calc(100% - 32px), 1280px); grid-template-columns: 1fr; gap: 24px; }
+    .about-first-book__content { padding: 0 12px; text-align: center; }
+    .about-first-book__content > p { text-align: center; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About first book",
+  "settings": [
+    { "type": "image_picker", "id": "background_image", "label": "Lake background artwork" },
+    { "type": "image_picker", "id": "book_image", "label": "Book artwork" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The First Book" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>That first story was Bennett's Adventures at Delavan Lake. It included favorite family memories like catching bugs, beach days, fishing, boating, golf cart rides, tubing, bonfires, and movie nights. What made it so special was that Bennett wasn't the only main character - his siblings, parents, cousins, aunts, and uncles were part of the adventure too.</p>" },
+    { "type": "text", "id": "note", "label": "Handwritten note", "default": "Every memory has a story worth keeping." },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#eaf8fb" }
+  ],
+  "presets": [{ "name": "About first book" }]
+}
+{% endschema %}

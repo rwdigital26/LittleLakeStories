@@ -18,9 +18,93 @@
         "note": "Good stories keep the best memories close.",
         "background_color": "#eaf8fb"
       }
+    },
+    "about_story": {
+      "type": "about-story",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Our Story",
+        "text": "<p>Hi, I'm Rebecca - founder of Little Lake Stories, mom of five, and grandma of four. I live near Delavan Lake, where some of our best family memories are made.</p><p>The very first Little Lake Stories book was created for my grandson Bennett's fourth birthday after he said, 'I love it here.' I wanted to create something more lasting than a toy - something he could keep and someday share with his own family.</p>",
+        "caption": "Real families. Real stories. A brighter tomorrow.",
+        "background_color": "#ffffff"
+      }
+    },
+    "about_first_book": {
+      "type": "about-first-book",
+      "settings": {
+        "heading": "The First Book",
+        "text": "<p>That first story was Bennett's Adventures at Delavan Lake. It included favorite family memories like catching bugs, beach days, fishing, boating, golf cart rides, tubing, bonfires, and movie nights. What made it so special was that Bennett wasn't the only main character - his siblings, parents, cousins, aunts, and uncles were part of the adventure too.</p>",
+        "note": "Every memory has a story worth keeping.",
+        "background_color": "#eaf8fb"
+      }
+    },
+    "about_difference": {
+      "type": "about-difference",
+      "blocks": {
+        "scratch": {
+          "type": "point",
+          "settings": {
+            "icon": "*",
+            "heading": "Every Story Is Written from Scratch",
+            "text": "Each book is a unique, customized story - no templates, no generic books."
+          }
+        },
+        "memories": {
+          "type": "point",
+          "settings": {
+            "icon": "☀",
+            "heading": "Based on Real Family Memories",
+            "text": "Your favorite lake moments, inside jokes, and traditions bring the story to life."
+          }
+        },
+        "photos": {
+          "type": "point",
+          "settings": {
+            "icon": "♡",
+            "heading": "Your Photos Help Bring the Story to Life",
+            "text": "We use your photos to create illustrated characters that resemble the real people you love."
+          }
+        },
+        "keepsake": {
+          "type": "point",
+          "settings": {
+            "icon": "♥",
+            "heading": "A Keepsake for Generations",
+            "text": "These aren't just stories - they're lasting treasures your family can share for years to come."
+          }
+        }
+      },
+      "block_order": ["scratch", "memories", "photos", "keepsake"],
+      "settings": {
+        "heading": "What Makes Little Lake Stories Different",
+        "background_color": "#fffdf8"
+      }
+    },
+    "about_mission": {
+      "type": "about-mission",
+      "settings": {
+        "heading": "Our Mission",
+        "text": "<p>We want every child to feel excited when they open a book and see themselves as the main character. We want parents and grandparents to feel pride, excitement, and pure joy when they give a book that captures the memories that matter most. My hope is that every Little Lake Stories book becomes a personal, meaningful gift that shares your memories and stories for generations to come.</p>",
+        "note": "Stories made for generations.",
+        "background_color": "#fffdf8"
+      }
+    },
+    "about_cta": {
+      "type": "about-cta",
+      "settings": {
+        "heading": "Ready to Create Your Story?",
+        "text": "Turn your family's lake memories into a one-of-a-kind keepsake made with love.",
+        "button_label": "Create Your Story",
+        "background_color": "#eaf8fb"
+      }
     }
   },
   "order": [
-    "about_hero"
+    "about_hero",
+    "about_story",
+    "about_first_book",
+    "about_difference",
+    "about_mission",
+    "about_cta"
   ]
 }
