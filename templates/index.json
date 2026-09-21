@@ -185,9 +185,9 @@
     "personalize_story_home": {
       "type": "personalize-story",
       "settings": {
-        "heading": "Make It Uniquely Theirs",
-        "subheading": "Personalize the details to create a one-of-a-kind adventure they'll treasure forever.",
-        "name_label": "Child's Name",
+        "heading": "Not Just Personalized. Truly Their Story.",
+        "subheading": "Every child has a story worth telling. We turn their real memories, favorite people, and special places into a one-of-a-kind illustrated adventure, written from scratch just for them.",
+        "name_label": "Child's Nam",
         "name_value": "Emma",
         "hair_label": "Hair Color",
         "hair_value": "Blonde",
