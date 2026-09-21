@@ -1,0 +1,81 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about_hero": {
+      "type": "about-hero",
+      "settings": {
+        "heading": "It All Started with 'I Love It Here.'",
+        "text": "<p>Little Lake Stories began with one very special birthday gift for my grandson Bennett - a one-of-a-kind book inspired by the lake memories, family adventures, and the joy of creating something meaningful that could be treasured for years to come.</p>",
+        "note": "Good stories keep the best memories close.",
+        "background_color": "#eaf8fb"
+      }
+    },
+    "about_story": {
+      "type": "about-story",
+      "settings": {
+        "eyebrow": "Our Story",
+        "heading": "Stories Made at the Lake",
+        "text": "<p>Hi, I'm Rebecca - founder of Little Lake Stories, mom of five, and grandma of four. I live near Delavan Lake, where some of our best family memories are made. The very first Little Lake Stories book was created for my grandson Bennett's fourth birthday. After he said, 'I love it here' about the lake, I wanted to create something more lasting than a toy - something he could keep and someday share with his own family.</p>",
+        "caption": "Real families. Real stories. A brighter tomorrow.",
+        "background_color": "#ffffff"
+      }
+    },
+    "about_milestones": {
+      "type": "about-milestones",
+      "blocks": {
+        "first_book": {
+          "type": "milestone",
+          "settings": {
+            "heading": "The First Book",
+            "text": "That first story was Bennett's Adventures at Delavan Lake. It included favorite family memories like catching bugs, beach days, fishing, boating, golf cart rides, tubing, bonfires, and movie nights. What made it so special was that Bennett wasn't the only familiar face in the story - his siblings, parents, cousins, aunts, and uncles were part of the adventure too.",
+            "note": "A story that grows with your family."
+          }
+        },
+        "moment_i_knew": {
+          "type": "milestone",
+          "settings": {
+            "heading": "The Moment I Knew",
+            "text": "When my son, daughter-in-law, and grandson first saw the book, there was shock, surprise, smiles, and laughter. It was passed around the birthday party, and many guests said it was one of the best gifts of the day. Watching that pure happiness made me realize I wanted to bring that same joy to other families.",
+            "note": "Happiness looks good on every generation."
+          }
+        }
+      },
+      "block_order": ["first_book", "moment_i_knew"],
+      "settings": { "background_color": "#ffffff" }
+    },
+    "about_values": {
+      "type": "about-values",
+      "blocks": {
+        "difference": {
+          "type": "value",
+          "settings": {
+            "icon": "*",
+            "heading": "What Makes Little Lake Stories Different",
+            "text": "Every Little Lake Story is written from scratch based on your family's real stories and memories. Unlike typical personalized books that simply add a child's name to a prewritten story, these books are fully customized. Families can also upload photos so the illustrated characters feel inspired by the real people they love.",
+            "note": "Made to be treasured."
+          }
+        },
+        "mission": {
+          "type": "value",
+          "settings": {
+            "icon": "o",
+            "heading": "Our Mission",
+            "text": "I want every child to feel excited when they open a book and see themselves as the main character. I want parents and grandparents to feel pride, excitement, and pure joy when they give a book that captures the memories that matter most. My hope is that every Little Lake Stories book becomes a personalized gift that shares your memories and stories for generations to come.",
+            "note": "More than a book. A brighter tomorrow."
+          }
+        }
+      },
+      "block_order": ["difference", "mission"],
+      "settings": { "background_color": "#ffffff" }
+    }
+  },
+  "order": ["about_hero", "about_story", "about_milestones", "about_values"]
+}

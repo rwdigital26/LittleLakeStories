@@ -1,0 +1,48 @@
+<section class="about-milestones" style="--about-milestones-bg: {{ section.settings.background_color }};">
+  <div class="about-milestones__inner section section--page-width">
+    {% for block in section.blocks %}
+      <article class="about-milestones__item" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          {{ block.settings.image | image_url: width: 900 | image_tag: widths: '480, 720, 900', sizes: '(min-width: 750px) 40vw, 90vw', alt: block.settings.heading, loading: 'lazy' }}
+        {% endif %}
+        <div>
+          {% if block.settings.heading != blank %}<h2>{{ block.settings.heading }}</h2>{% endif %}
+          {% if block.settings.text != blank %}<p>{{ block.settings.text }}</p>{% endif %}
+          {% if block.settings.note != blank %}<span>{{ block.settings.note }}</span>{% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-milestones { padding-block: 0 58px; background: var(--about-milestones-bg, #fff); color: #143d63; }
+  .about-milestones__inner { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: hidden; border-radius: 12px; background: rgb(198 232 243 / 42%); }
+  .about-milestones__item { display: grid; grid-template-columns: minmax(150px, .75fr) minmax(0, 1fr); align-items: center; gap: 24px; padding: clamp(26px, 4vw, 52px); }
+  .about-milestones__item + .about-milestones__item { border-inline-start: 1px solid rgb(20 61 99 / 18%); }
+  .about-milestones__item img { display: block; width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgb(20 61 99 / 10%); }
+  .about-milestones h2 { margin: 0 0 10px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.5rem, 2.2vw, 2.4rem); line-height: 1.05; }
+  .about-milestones p { margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: .98rem; line-height: 1.45; }
+  .about-milestones span { display: block; margin-top: 16px; color: #2d86b6; font-family: 'Bradley Hand', 'Segoe Print', cursive; font-size: 1rem; text-align: right; }
+  @media screen and (max-width: 749px) { .about-milestones__inner { grid-template-columns: 1fr; } .about-milestones__item + .about-milestones__item { border-block-start: 1px solid rgb(20 61 99 / 18%); border-inline-start: 0; } }
+  @media screen and (max-width: 480px) { .about-milestones__item { grid-template-columns: 1fr; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About milestones",
+  "max_blocks": 2,
+  "blocks": [{
+    "type": "milestone",
+    "name": "Milestone",
+    "settings": [
+      { "type": "image_picker", "id": "image", "label": "Artwork" },
+      { "type": "text", "id": "heading", "label": "Heading", "default": "The First Book" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "That first story was Bennett's Adventures at Delavan Lake. It included favorite family memories, lake activities, and the people who make each summer special." },
+      { "type": "text", "id": "note", "label": "Handwritten note", "default": "Happiness looks good on every generation." }
+    ]
+  }],
+  "presets": [{ "name": "About milestones", "blocks": [{ "type": "milestone", "settings": { "heading": "The First Book" } }, { "type": "milestone", "settings": { "heading": "The Moment I Knew" } }] }],
+  "settings": [{ "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" }]
+}
+{% endschema %}
