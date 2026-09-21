@@ -33,6 +33,7 @@
     "about_first_book": {
       "type": "about-first-book",
       "settings": {
+        "background_image": "shopify://shop_images/The_First_Book_Background.png",
         "book_image": "shopify://shop_images/Bennett_s_4th_Birthday_Book_Cover.png",
         "heading": "The First Book",
         "text": "<p>That first story was Bennett's Adventures at Delavan Lake. It included favorite family memories like catching bugs, beach days, fishing, boating, golf cart rides, tubing, bonfires, and movie nights. What made it so special was that Bennett wasn't the only main character - his siblings, parents, cousins, aunts, and uncles were part of the adventure too.</p>",
@@ -46,6 +47,7 @@
         "scratch": {
           "type": "point",
           "settings": {
+            "icon_image": "shopify://shop_images/Your_photos.png",
             "icon": "*",
             "heading": "Every Story Is Written from Scratch",
             "text": "Each book is a unique, customized story - no templates, no generic books."
@@ -54,6 +56,7 @@
         "memories": {
           "type": "point",
           "settings": {
+            "icon_image": "shopify://shop_images/A_keepskae_for_generations.png",
             "icon": "☀",
             "heading": "Based on Real Family Memories",
             "text": "Your favorite lake moments, inside jokes, and traditions bring the story to life."
@@ -62,6 +65,7 @@
         "photos": {
           "type": "point",
           "settings": {
+            "icon_image": "shopify://shop_images/Based_on_real_family_memories.png",
             "icon": "♡",
             "heading": "Your Photos Help Bring the Story to Life",
             "text": "We use your photos to create illustrated characters that resemble the real people you love."
@@ -70,6 +74,7 @@
         "keepsake": {
           "type": "point",
           "settings": {
+            "icon_image": "shopify://shop_images/Every_story_written_by_scratch.png",
             "icon": "♥",
             "heading": "A Keepsake for Generations",
             "text": "These aren't just stories - they're lasting treasures your family can share for years to come."
@@ -90,6 +95,7 @@
     "about_mission": {
       "type": "about-mission",
       "settings": {
+        "image": "shopify://shop_images/our_mission.png",
         "heading": "Our Mission",
         "text": "<p>We want every child to feel excited when they open a book and see themselves as the main character. We want parents and grandparents to feel pride, excitement, and pure joy when they give a book that captures the memories that matter most. My hope is that every Little Lake Stories book becomes a personal, meaningful gift that shares your memories and stories for generations to come.</p>",
         "note": "Stories made for generations.",
