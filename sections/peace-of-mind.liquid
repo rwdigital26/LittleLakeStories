@@ -1,0 +1,209 @@
+<section class="peace-of-mind" style="--peace-of-mind-bg: {{ section.settings.background_color }};">
+  <div class="peace-of-mind__inner section section--page-width">
+    {% if section.settings.eyebrow != blank %}
+      <p class="peace-of-mind__eyebrow">{{ section.settings.eyebrow }}</p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h2 class="peace-of-mind__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="peace-of-mind__grid">
+      {% for block in section.blocks %}
+        <div class="peace-of-mind__item" {{ block.shopify_attributes }}>
+          <div class="peace-of-mind__icon" aria-hidden="true">
+            {% case block.settings.icon %}
+              {% when 'camera' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                  <rect x="12" y="18" width="40" height="30" rx="6" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <circle cx="32" cy="33" r="8.5" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <path d="M24 18l3.5-5h9l3.5 5" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% when 'heart' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                  <path d="M32 52s-17-10.7-21.3-20.8C8.5 25.3 13.2 15 22.4 15c5 0 8.1 2.8 9.6 5.1 1.5-2.3 4.6-5.1 9.6-5.1 9.2 0 13.9 10.3 11.7 16.2C49 41.3 32 52 32 52Z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% when 'users' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                  <circle cx="23" cy="25" r="8" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <path d="M12 49c1.8-6.2 6.4-9.4 11-9.4s9.2 3.2 11 9.4" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+                  <circle cx="43.5" cy="26" r="6.5" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <path d="M35 48c1.3-4.8 4.7-7.2 8.5-7.2 4.1 0 7.5 2.7 8.5 7.2" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+                </svg>
+              {% else %}
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                  <rect x="20" y="12" width="24" height="32" rx="5" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <path d="M26 25h12M26 33h12M26 41h8" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+                  <path d="M28 12V8h8v4" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+                  <circle cx="32" cy="52" r="6" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                </svg>
+            {% endcase %}
+          </div>
+
+          {% if block.settings.heading != blank %}
+            <h3>{{ block.settings.heading }}</h3>
+          {% endif %}
+
+          {% if block.settings.text != blank %}
+            <p>{{ block.settings.text }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .peace-of-mind {
+    background: var(--peace-of-mind-bg, #f4fbff);
+    color: #143d63;
+    padding: 28px 0 52px;
+  }
+
+  .peace-of-mind__inner {
+    padding: 32px 28px 18px;
+    border-radius: 18px;
+    text-align: center;
+    background: rgba(140, 197, 225, 0.18);
+  }
+
+  .peace-of-mind__eyebrow {
+    margin: 0 0 8px;
+    color: #2d86b6;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .peace-of-mind__heading {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+  }
+
+  .peace-of-mind__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 28px;
+  }
+
+  .peace-of-mind__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8px 18px 4px;
+  }
+
+  .peace-of-mind__item + .peace-of-mind__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18%;
+    bottom: 18%;
+    width: 1px;
+    background: rgba(20, 61, 99, 0.22);
+  }
+
+  .peace-of-mind__icon {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    color: #fff;
+    background: linear-gradient(135deg, #7cabc7 0%, #5e9ac0 100%);
+    box-shadow: 0 10px 18px rgb(20 61 99 / 10%);
+  }
+
+  .peace-of-mind__icon svg {
+    display: block;
+    width: 34px;
+    height: 34px;
+  }
+
+  .peace-of-mind__item h3 {
+    margin: 0 0 10px;
+    color: #143d63;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.1rem, 1.7vw, 1.6rem);
+    line-height: 1.2;
+  }
+
+  .peace-of-mind__item p {
+    margin: 0;
+    color: #143d63;
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  @media screen and (max-width: 749px) {
+    .peace-of-mind {
+      padding-block: 28px 42px;
+    }
+
+    .peace-of-mind__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 16px;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    .peace-of-mind__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Peace of mind",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Point",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "lock",
+          "options": [
+            { "label": "Secure & private", "value": "lock" },
+            { "label": "Camera", "value": "camera" },
+            { "label": "Heart", "value": "heart" },
+            { "label": "People", "value": "users" }
+          ]
+        },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Secure & Private" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Your photos and personal details are kept safe and are never shared." }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "A Few Things to Know" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your Peace of Mind Matters" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#f4fbff" }
+  ],
+  "presets": [
+    {
+      "name": "Peace of mind",
+      "blocks": [
+        { "type": "point", "settings": { "icon": "lock", "heading": "Secure & Private", "text": "Your photos and personal details are kept safe and are never shared." } },
+        { "type": "point", "settings": { "icon": "camera", "heading": "Complete at Your Pace", "text": "You can take your time gathering photos and memories. Your secure link will always be there." } },
+        { "type": "point", "settings": { "icon": "heart", "heading": "A Truly Custom Experience", "text": "Every story is written from scratch — no templates, no cookie-cutter books." } },
+        { "type": "point", "settings": { "icon": "users", "heading": "Real People, Real Support", "text": "Have a question? We’re here to help every step of the way." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,4 +1,7 @@
-{% assign steps = '1,2,3' | split: ',' %}
+{% assign has_blocks = false %}
+{% if section.blocks.size > 0 %}
+  {% assign has_blocks = true %}
+{% endif %}
 
 <section class="how-it-works section section--page-width" style="--how-it-works-bg: {{ section.settings.background_color }};">
   <header class="how-it-works__header">
@@ -7,35 +10,62 @@
   </header>
 
   <div class="how-it-works__steps">
-    {% for step in steps %}
-      {% liquid
-        assign image_key = 'image_' | append: step
-        assign title_key = 'title_' | append: step
-        assign description_key = 'description_' | append: step
-      %}
-      <article class="how-it-works__step">
-        <div class="how-it-works__illustration">
-          {% if section.settings[image_key] != blank %}
-            {{ section.settings[image_key] | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 30vw, 90vw', alt: section.settings[title_key], loading: 'lazy' }}
-          {% else %}
-            <div class="how-it-works__placeholder" aria-hidden="true">
-              {% case step %}
-                {% when '1' %}<span>↔</span>
-                {% when '2' %}<span>✦</span>
-                {% when '3' %}<span>▤</span>
-              {% endcase %}
-            </div>
-          {% endif %}
-        </div>
-        <div class="how-it-works__step-copy">
-          <span class="how-it-works__number">{{ step }}</span>
-          <div>
-            <h3>{{ section.settings[title_key] }}</h3>
-            <p>{{ section.settings[description_key] }}</p>
+    {% if has_blocks %}
+      {% for block in section.blocks %}
+        <article class="how-it-works__step" {{ block.shopify_attributes }}>
+          <div class="how-it-works__illustration">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 30vw, 90vw', alt: block.settings.heading, loading: 'lazy' }}
+            {% else %}
+              <div class="how-it-works__placeholder" aria-hidden="true">
+                <span>{{ forloop.index }}</span>
+              </div>
+            {% endif %}
           </div>
-        </div>
-      </article>
-    {% endfor %}
+          <div class="how-it-works__step-copy">
+            <span class="how-it-works__number">{{ forloop.index }}</span>
+            <div>
+              <h3>{{ block.settings.heading }}</h3>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+      {% assign steps = '1,2,3,4,5,6' | split: ',' %}
+      {% for step in steps %}
+        {% liquid
+          assign image_key = 'image_' | append: step
+          assign title_key = 'title_' | append: step
+          assign description_key = 'description_' | append: step
+        %}
+        <article class="how-it-works__step">
+          <div class="how-it-works__illustration">
+            {% if section.settings[image_key] != blank %}
+              {{ section.settings[image_key] | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 30vw, 90vw', alt: section.settings[title_key], loading: 'lazy' }}
+            {% else %}
+              <div class="how-it-works__placeholder" aria-hidden="true">
+                {% case step %}
+                  {% when '1' %}<span>↔</span>
+                  {% when '2' %}<span>✦</span>
+                  {% when '3' %}<span>▤</span>
+                  {% when '4' %}<span>✎</span>
+                  {% when '5' %}<span>✓</span>
+                  {% when '6' %}<span>✧</span>
+                {% endcase %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="how-it-works__step-copy">
+            <span class="how-it-works__number">{{ step }}</span>
+            <div>
+              <h3>{{ section.settings[title_key] }}</h3>
+              <p>{{ section.settings[description_key] }}</p>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    {% endif %}
   </div>
 </section>
 
@@ -43,14 +73,14 @@
   .how-it-works {
     --how-it-works-ink: #143d63;
     --how-it-works-blue: #2d86b6;
-    padding-block: 0 75px;
-    background: var(--how-it-works-bg, #fff);
+    padding-block: 24px 90px;
+    background: linear-gradient(180deg, #ffffff 0%, #f6fbfe 100%);
     color: var(--how-it-works-ink);
   }
 
   .how-it-works__header {
-    max-width: 820px;
-    margin: 0 auto 38px;
+    max-width: 900px;
+    margin: 0 auto 42px;
     text-align: center;
   }
 
@@ -60,43 +90,84 @@
     font-family: Georgia, 'Times New Roman', serif;
   }
 
-  .how-it-works h2 {
-    margin: 0;
-    font-size: clamp(2rem, 3vw, 3rem);
-    line-height: 1;
+  .how-it-works__header p {
+    margin: 0 0 12px;
+    color: #2d86b6;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    line-height: 1.3;
+    text-transform: uppercase;
   }
 
-  .how-it-works__header p {
-    margin: 10px 0 0;
-    font-size: 1.1rem;
-    font-weight: 700;
+  .how-it-works h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .how-it-works__header p:last-child {
+    margin-top: 12px;
+    color: #143d63;
+    font-size: 1.12rem;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   .how-it-works__steps {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 42px;
+    gap: 32px 54px;
+    align-items: start;
   }
 
   .how-it-works__step {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
   }
 
+  .how-it-works__step:not(:nth-child(3n))::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    top: 110px;
+    width: 30px;
+    height: 2px;
+    background: #2d86b6;
+  }
+
+  .how-it-works__step:not(:nth-child(3n))::before {
+    content: "";
+    position: absolute;
+    right: -32px;
+    top: 102px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 11px solid #2d86b6;
+  }
+
   .how-it-works__illustration {
     display: grid;
     place-items: center;
-    height: 180px;
-    margin-block-end: 5px;
+    height: 210px;
+    margin-block-end: 14px;
     overflow: hidden;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #edf9ff 0%, #f7f6ef 100%);
+    box-shadow: 0 18px 28px rgb(20 61 99 / 10%);
   }
 
   .how-it-works__illustration img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
   }
 
   .how-it-works__placeholder {
@@ -119,42 +190,49 @@
 
   .how-it-works__step-copy {
     display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
-    gap: 14px;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 16px;
     align-items: start;
     position: relative;
     z-index: 1;
     flex: 0 0 auto;
     width: 100%;
-    margin-block-start: 50px;
-    padding-block: 5px 8px;
-    background: var(--how-it-works-bg, #fff);
+    margin-block-start: 8px;
+    padding-block: 8px 2px;
+    background: transparent;
   }
 
   .how-it-works__number {
     display: grid;
     place-items: center;
-    width: 44px;
+    width: 48px;
     aspect-ratio: 1;
     border-radius: 50%;
     color: #fff;
-    background: var(--how-it-works-blue);
+    background: linear-gradient(135deg, #2d86b6, #143d63);
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     font-weight: 700;
+    box-shadow: 0 8px 18px rgb(20 61 99 / 14%);
   }
 
   .how-it-works h3 {
-    margin: 4px 0 8px;
-    font-size: clamp(1.2rem, 1.6vw, 1.7rem);
-    line-height: 1.1;
+    margin: 2px 0 8px;
+    font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+    line-height: 1.08;
   }
 
   .how-it-works__step-copy p {
     margin: 0;
     font-size: 1rem;
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.4;
+  }
+
+  @media screen and (min-width: 750px) {
+    .how-it-works__step:nth-child(3n + 1) { grid-column: 1; }
+    .how-it-works__step:nth-child(3n + 2) { grid-column: 2; }
+    .how-it-works__step:nth-child(3n + 3) { grid-column: 3; }
   }
 
   @media screen and (max-width: 749px) {
@@ -176,25 +254,47 @@
 {% schema %}
 {
   "name": "How it works",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Illustration" },
+        { "type": "text", "id": "heading", "label": "Title", "default": "Choose Your Lake" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Pick Delavan Lake, Lake Geneva, or a grandparents theme." }
+      ]
+    }
+  ],
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "How It Works" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "From our lake to your little one's imagination — in three simple steps." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Six Simple Steps to Their Story" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "A meaningful, stress-free experience from start to finish." },
     { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" },
-    { "type": "header", "content": "Step one" },
+    { "type": "header", "content": "Legacy step one" },
     { "type": "image_picker", "id": "image_1", "label": "Illustration" },
     { "type": "text", "id": "title_1", "label": "Title", "default": "Choose Your Lake" },
     { "type": "textarea", "id": "description_1", "label": "Description", "default": "Pick Delavan Lake, Lake Geneva, or a grandparents theme." },
-    { "type": "header", "content": "Step two" },
+    { "type": "header", "content": "Legacy step two" },
     { "type": "image_picker", "id": "image_2", "label": "Illustration" },
     { "type": "text", "id": "title_2", "label": "Title", "default": "Personalize Your Story" },
     { "type": "textarea", "id": "description_2", "label": "Description", "default": "Add your child's name, appearance, family members and favorite activities." },
-    { "type": "header", "content": "Step three" },
+    { "type": "header", "content": "Legacy step three" },
     { "type": "image_picker", "id": "image_3", "label": "Illustration" },
     { "type": "text", "id": "title_3", "label": "Title", "default": "Order Your Keepsake" },
     { "type": "textarea", "id": "description_3", "label": "Description", "default": "We bring the story to life and ship it to your door, ready to be loved for years to come." }
   ],
   "presets": [
-    { "name": "How it works" }
+    {
+      "name": "How it works",
+      "blocks": [
+        { "type": "step", "settings": { "heading": "Choose Your Book", "description": "Browse our lake collections and select the book that’s right for your family. Pick your lake, format, and quantity, then place your order through our secure checkout." } },
+        { "type": "step", "settings": { "heading": "Complete Your Purchase", "description": "Check out just like any other online order. Once your order is confirmed, you’ll receive an email with a secure link to complete your story details." } },
+        { "type": "step", "settings": { "heading": "Share Their Story", "description": "Use your secure link to complete our step-by-step questionnaire. Tell us about your child, share favorite memories, and upload photos of the special people and places you’d like included." } },
+        { "type": "step", "settings": { "heading": "We Create Their Book", "description": "Our team writes an original story from scratch and creates custom illustrations inspired by your memories, photos, and the details you share." } },
+        { "type": "step", "settings": { "heading": "Review Your Story", "description": "You’ll receive a preview of your book to review. Let us know if you’d like any revisions (limited revisions are included) until it’s just right." } },
+        { "type": "step", "settings": { "heading": "Your Keepsake Is on Its Way", "description": "Once you approve your final proof, we send your book to print. You’ll receive a shipping notification as soon as it’s on its way." } }
+      ]
+    }
   ]
 }
 {% endschema %}

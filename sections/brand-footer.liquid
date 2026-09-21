@@ -1,14 +1,34 @@
-<footer class="brand-footer" style="--brand-footer-bg: {{ section.settings.background_color }}; --brand-footer-image: url('{{ 'footer-background.png' | asset_url }}');">
+<footer class="brand-footer" style="--brand-footer-bg: {{ section.settings.background_color }};">
+  <div class="brand-footer__cta">
+    <div class="brand-footer__cta-inner section section--page-width">
+      <div class="brand-footer__cta-copy">
+        <h2>{{ section.settings.cta_heading }}</h2>
+        <p>{{ section.settings.cta_copy }}</p>
+      </div>
+      <a class="brand-footer__cta-button" href="{{ routes.all_products_collection_url }}">
+        {{ section.settings.cta_button }}
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
   <div class="brand-footer__main section section--page-width">
     <div class="brand-footer__brand">
-      <a href="{{ routes.root_url }}" class="brand-footer__logo">
-        <img src="{{ 'vertical-logo.png' | asset_url }}" alt="{{ shop.name }}" width="1254" height="1254" loading="lazy">
-      </a>
+      <div class="brand-footer__brand-mark">Little Lake Stories</div>
+      <div class="brand-footer__brand-tag">Real Places. Brighter Stories.</div>
+    </div>
+
+    <div class="brand-footer__links">
+      <nav class="brand-footer__nav" aria-label="Footer">
+        <a href="{{ routes.all_products_collection_url }}">Shop Our Books</a>
+        <a href="{{ routes.root_url }}#how-it-works">How It Works</a>
+        <a href="{{ routes.root_url }}#our-story">About Us</a>
+        <a href="{{ routes.contact_url }}">Contact</a>
+      </nav>
     </div>
 
     <div class="brand-footer__newsletter">
-      <h2>{{ section.settings.newsletter_heading }}</h2>
-      <p>{{ section.settings.newsletter_copy }}</p>
+      <h3>{{ section.settings.newsletter_heading }}</h3>
       {% form 'customer', class: 'brand-footer__form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <label class="visually-hidden" for="BrandFooterEmail">Email address</label>
@@ -19,32 +39,28 @@
       {% endform %}
     </div>
 
-    <nav class="brand-footer__nav" aria-label="Footer">
-      <div>
-        <h3>{{ section.settings.shop_heading }}</h3>
-        <a href="{{ routes.all_products_collection_url }}">All Books</a>
-        <a href="{{ routes.all_products_collection_url }}">Best Sellers</a>
-        <a href="{{ routes.root_url }}">Gift Cards</a>
-      </div>
-      <div>
-        <h3>{{ section.settings.about_heading }}</h3>
-        <a href="{{ routes.root_url }}#our-story">Our Story</a>
-        <a href="{{ routes.root_url }}#how-it-works">How It Works</a>
-        <a href="{{ routes.contact_url }}">Contact Us</a>
-      </div>
-      <div>
-        <h3>{{ section.settings.help_heading }}</h3>
-        <a href="{{ routes.root_url }}#faq">FAQ</a>
-        <a href="{{ routes.root_url }}#shipping">Shipping</a>
-        <a href="{{ routes.root_url }}#returns">Returns</a>
-      </div>
-    </nav>
+    <div class="brand-footer__scribble" aria-label="Lake Days">
+      <span>More</span>
+      <span>Lake Days</span>
+      <span>Please</span>
+      <span>♡</span>
+    </div>
   </div>
 
   <div class="brand-footer__utility">
     <div class="brand-footer__utility-inner section section--page-width">
-      <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
-      <p>{{ section.settings.utility_message }} <span aria-hidden="true">♥</span></p>
+      <p>© {{ 'now' | date: '%Y' }} Little Lake Stories. All rights reserved.</p>
+
+      <div class="brand-footer__utility-links">
+        <a href="{{ routes.root_url }}#privacy-policy">Privacy Policy</a>
+        <span>|</span>
+        <a href="{{ routes.root_url }}#terms-of-service">Terms of Service</a>
+        <span>|</span>
+        <a href="{{ routes.root_url }}#shipping">Shipping Info</a>
+        <span>|</span>
+        <a href="{{ routes.root_url }}#faqs">FAQs</a>
+      </div>
+
       <div class="brand-footer__socials">
         {% if section.settings.instagram_url != blank %}<a href="{{ section.settings.instagram_url }}" aria-label="Instagram">◎</a>{% endif %}
         {% if section.settings.facebook_url != blank %}<a href="{{ section.settings.facebook_url }}" aria-label="Facebook">f</a>{% endif %}
@@ -57,192 +73,281 @@
 {% stylesheet %}
   .brand-footer {
     color: #143d63;
-    background-color: var(--brand-footer-bg, #fff);
-    background-image: var(--brand-footer-image);
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .brand-footer__main {
-    display: grid;
-    grid-template-columns: minmax(240px, 1.05fr) minmax(360px, 1.45fr) minmax(180px, 0.85fr) minmax(180px, 0.85fr);
-    gap: clamp(32px, 4vw, 72px);
-    align-items: start;
-    padding-block: 28px 26px;
-  }
-
-  .brand-footer__main > .brand-footer__brand {
-    grid-column: 1;
-    align-self: center;
-  }
-
-  .brand-footer__main > .brand-footer__newsletter {
-    grid-column: 2;
-  }
-
-  .brand-footer__main > .brand-footer__nav {
-    grid-column: 3 / -1;
-  }
-
-  .brand-footer__logo {
-    display: block;
-    width: min(180px, 100%);
-    height: 120px;
-    overflow: hidden;
-  }
-
-  .brand-footer__logo img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .brand-footer h2,
-  .brand-footer h3,
-  .brand-footer p,
-  .brand-footer a,
-  .brand-footer button,
-  .brand-footer input {
+    background: var(--brand-footer-bg, #fff);
     font-family: Georgia, 'Times New Roman', serif;
   }
 
-  .brand-footer h2 {
-    margin: 0;
-    font-size: 1.35rem;
+  .brand-footer__cta {
+    position: relative;
+    overflow: hidden;
+    background-image: url('{{ 'footer-banner-lake.png' | asset_url }}');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1px solid rgba(20, 61, 99, 0.1);
   }
 
-  .brand-footer__newsletter > p {
-    margin: 4px 0 12px;
-    color: #5e7c91;
-    font-size: 0.9rem;
-    font-weight: 700;
+  .brand-footer__cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(135, 202, 229, 0.74), rgba(149, 214, 231, 0.7));
   }
 
-  .brand-footer__form {
+  .brand-footer__cta::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 30px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.2),
+      rgba(255,255,255,0.2) 10px,
+      rgba(255,255,255,0) 10px,
+      rgba(255,255,255,0) 20px
+    );
+    opacity: 0.7;
+  }
+
+  .brand-footer__cta-inner {
+    position: relative;
+    z-index: 1;
     display: flex;
-    max-width: 560px;
-    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    min-height: 140px;
+    padding-block: 20px 28px;
+    text-align: center;
   }
 
-  .brand-footer__form input {
-    min-width: 0;
-    flex: 1;
+  .brand-footer__cta-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .brand-footer__cta h2 {
+    margin: 0;
+    color: #143d63;
+    font-size: clamp(2.1rem, 3vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.06em;
+  }
+
+  .brand-footer__cta p {
+    margin: 0;
+    color: #143d63;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .brand-footer__cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     min-height: 44px;
-    padding: 8px 16px;
-    border: 2px solid #d4e3e9;
+    padding: 9px 18px;
+    border: 1.5px solid rgba(20, 61, 99, 0.75);
     border-radius: 999px;
     color: #143d63;
-    background: #fff;
+    background: rgba(255,255,255,0.18);
     font-size: 1rem;
-  }
-
-  .brand-footer__form button {
-    min-height: 44px;
-    padding-inline: 24px;
-    border: 0;
-    border-radius: 999px;
-    color: #fff;
-    background: #2d86b6;
-    font-size: 1rem;
-    font-weight: 700;
-    white-space: nowrap;
-    cursor: pointer;
-  }
-
-  .brand-footer__form button:hover {
-    background: #143d63;
-  }
-
-  .brand-footer__success {
-    color: #2d86b6;
-    font-weight: 700;
-  }
-
-  .brand-footer__nav {
-    display: grid;
-    grid-column: 3 / -1;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-
-  .brand-footer__nav h3 {
-    margin: 0 0 8px;
-    font-size: 1rem;
-  }
-
-  .brand-footer__nav a {
-    display: block;
-    width: fit-content;
-    margin-block: 5px;
-    color: #5e7c91;
-    font-size: 0.85rem;
     font-weight: 700;
     text-decoration: none;
   }
 
-  .brand-footer__nav a:hover {
+  .brand-footer__cta-button span {
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .brand-footer__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr 0.8fr;
+    align-items: center;
+    gap: 18px;
+    padding-block: 30px 26px;
+    min-height: 260px;
+  }
+
+  .brand-footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 8px;
+  }
+
+  .brand-footer__brand-mark {
+    color: #143d63;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-footer__brand-tag {
+    margin-top: 6px;
     color: #2d86b6;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .brand-footer__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-footer__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .brand-footer__nav a {
+    color: #143d63;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .brand-footer__nav a:hover {
+    opacity: 0.75;
+  }
+
+  .brand-footer__newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .brand-footer__newsletter h3 {
+    margin: 0;
+    color: #143d63;
+    font-size: 1.15rem;
+  }
+
+  .brand-footer__form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .brand-footer__form input {
+    flex: 1;
+    min-width: 0;
+    min-height: 38px;
+    padding: 10px 14px;
+    border: 1px solid rgba(20, 61, 99, 0.26);
+    border-radius: 999px;
+    color: #143d63;
+    background: rgba(255,255,255,0.82);
+    font-size: 0.92rem;
+  }
+
+  .brand-footer__form button {
+    min-height: 38px;
+    padding: 9px 18px;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    background: #2d86b6;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .brand-footer__success {
+    margin: 0;
+    color: #2d86b6;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .brand-footer__scribble {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #143d63;
+    font-family: 'Bradley Hand', 'Segoe Print', cursive;
+    font-size: 1.7rem;
+    line-height: 1;
+    transform: rotate(-6deg);
+    white-space: nowrap;
+  }
+
+  .brand-footer__scribble span:last-child {
+    color: #2d86b6;
+    font-size: 1.6rem;
   }
 
   .brand-footer__utility {
-    min-height: 62px;
-    background: rgb(160 219 239 / 45%);
-    border-block-start: 1px solid rgb(183 223 233 / 70%);
+    border-top: 1px solid rgba(20, 61, 99, 0.12);
+    background: rgba(188, 228, 239, 0.4);
   }
 
   .brand-footer__utility-inner {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1.2fr 1.5fr 0.5fr;
     align-items: center;
-    gap: 24px;
-    min-height: 62px;
-  }
-
-  .brand-footer__utility-inner > p:first-child {
-    grid-column: 1;
-  }
-
-  .brand-footer__utility-inner > p:nth-child(2) {
-    grid-column: 2;
-  }
-
-  .brand-footer__utility-inner > .brand-footer__socials {
-    grid-column: 3;
+    gap: 18px;
+    min-height: 52px;
+    padding-block: 12px;
   }
 
   .brand-footer__utility p {
     margin: 0;
-    color: #47718a;
-    font-size: 0.8rem;
+    color: #4c7285;
+    font-size: 0.72rem;
     font-weight: 700;
+    line-height: 1.5;
   }
 
-  .brand-footer__utility p:nth-child(2) {
-    text-align: end;
+  .brand-footer__utility-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #4c7285;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-wrap: wrap;
   }
 
-  .brand-footer__utility p span {
-    color: #2d86b6;
-    font-size: 1.15rem;
+  .brand-footer__utility-links a,
+  .brand-footer__utility-links span {
+    color: inherit;
+    text-decoration: none;
   }
 
   .brand-footer__socials {
     display: flex;
-    gap: 12px;
+    justify-content: flex-end;
+    gap: 10px;
   }
 
   .brand-footer__socials a {
     display: grid;
     place-items: center;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     color: #143d63;
-    background: transparent;
+    background: rgba(255,255,255,0.55);
     font-family: Arial, sans-serif;
-    font-size: 1.25rem;
+    font-size: 0.9rem;
     font-weight: 700;
     text-decoration: none;
   }
@@ -250,48 +355,69 @@
   @media screen and (max-width: 989px) {
     .brand-footer__main {
       grid-template-columns: 1fr 1fr;
+      row-gap: 18px;
     }
 
-    .brand-footer__main > .brand-footer__nav {
-      grid-column: 1 / -1;
+    .brand-footer__brand,
+    .brand-footer__newsletter,
+    .brand-footer__nav,
+    .brand-footer__scribble {
+      justify-self: start;
+    }
+
+    .brand-footer__scribble {
+      grid-column: 2;
+      justify-self: end;
+    }
+
+    .brand-footer__utility-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+      padding-block: 14px;
     }
   }
 
   @media screen and (max-width: 749px) {
-    .brand-footer__main {
-      grid-template-columns: 1fr;
-      padding-block: 44px;
+    .brand-footer__cta-inner {
+      flex-direction: column;
+      min-height: 170px;
+      padding-block: 24px;
     }
 
-    .brand-footer__main > .brand-footer__brand,
-    .brand-footer__main > .brand-footer__newsletter,
-    .brand-footer__main > .brand-footer__nav {
-      grid-column: auto;
+    .brand-footer__main {
+      grid-template-columns: 1fr;
+      padding-block: 26px 18px;
+    }
+
+    .brand-footer__brand,
+    .brand-footer__newsletter,
+    .brand-footer__nav,
+    .brand-footer__scribble {
+      justify-self: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .brand-footer__nav {
+      align-items: center;
     }
 
     .brand-footer__form {
       flex-direction: column;
+      width: 100%;
     }
 
     .brand-footer__form button {
       width: 100%;
     }
 
-    .brand-footer__utility-inner {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      gap: 8px;
-      padding-block: 18px;
+    .brand-footer__scribble {
+      margin-top: 6px;
     }
 
-    .brand-footer__utility-inner > p:first-child,
-    .brand-footer__utility-inner > p:nth-child(2),
-    .brand-footer__utility-inner > .brand-footer__socials {
-      grid-column: auto;
-    }
-
-    .brand-footer__utility p:nth-child(2) {
-      order: 3;
+    .brand-footer__socials {
+      justify-content: center;
     }
   }
 {% endstylesheet %}
@@ -301,10 +427,13 @@
   "name": "Brand footer",
   "enabled_on": { "groups": ["footer"] },
   "settings": [
+    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Ready to Create Their Story?" },
+    { "type": "text", "id": "cta_copy", "label": "CTA copy", "default": "Turn your family's lake memories into a beautifully illustrated keepsake." },
+    { "type": "text", "id": "cta_button", "label": "CTA button", "default": "Shop Our Books" },
     { "type": "text", "id": "brand_message", "label": "Brand message", "default": "More kindness. More kids reading. A brighter tomorrow." },
-    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Join Our Lake Letter" },
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Join Our Mailing List" },
     { "type": "text", "id": "newsletter_copy", "label": "Newsletter copy", "default": "Be the first to know about new stories, special offers and more lake-day magic." },
-    { "type": "text", "id": "newsletter_button", "label": "Newsletter button", "default": "Sign Me Up" },
+    { "type": "text", "id": "newsletter_button", "label": "Newsletter button", "default": "Subscribe" },
     { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks for joining our lake letter!" },
     { "type": "text", "id": "shop_heading", "label": "Shop heading", "default": "Shop" },
     { "type": "text", "id": "about_heading", "label": "About heading", "default": "About" },
