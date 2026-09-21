@@ -189,6 +189,7 @@
           "type": "feature",
           "settings": {
             "number": "1",
+            "image": "shopify://shop_images/A_Story_Written_Just_for_Them.png",
             "heading": "A Story Written Just for Them",
             "description": "We write every story from scratch using your answers, memories, and ideas."
           }
@@ -197,6 +198,7 @@
           "type": "feature",
           "settings": {
             "number": "2",
+            "image": "shopify://shop_images/Their_Favorite_People_Brought_to_Life.png",
             "heading": "Their Favorite People, Brought to Life",
             "description": "Upload photos of your child, family members, and beloved pets."
           }
@@ -205,6 +207,7 @@
           "type": "feature",
           "settings": {
             "number": "3",
+            "image": "shopify://shop_images/Real_Place._Magical_Adventures.png",
             "heading": "Real Places. Magical Adventures.",
             "description": "We use your memories to recreate meaningful places in beautiful illustrations."
           }
@@ -213,6 +216,7 @@
           "type": "feature",
           "settings": {
             "number": "4",
+            "image": "shopify://shop_images/It_s_the_Little_Details_that_Matter.png",
             "heading": "It's the Little Details That Matter",
             "description": "The silly nickname, favorite ice cream, and family traditions make every story feel like home."
           }
