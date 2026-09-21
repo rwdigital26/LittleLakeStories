@@ -694,7 +694,6 @@
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 10px;
@@ -706,26 +705,10 @@
     padding-block: 20px 48px;
     transform: translateY(-32px);
     z-index: var(--layer-raised);
-    isolation: isolate;
-  }
-
-  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: -48px -96px -48px -112px;
-    z-index: -1;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgb(255 255 255 / 94%) 0%, rgb(255 255 255 / 82%) 48%, rgb(255 255 255 / 0%) 100%);
-    pointer-events: none;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
     grid-column: 1 / -1;
-  }
-
-  .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > * {
-    position: relative;
-    z-index: 1;
   }
 
   .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper .text-block p {
@@ -754,8 +737,9 @@
     justify-content: center;
     min-height: 58px;
     padding-inline: 24px;
-    border: 2px solid #4f9bc3 !important;
+    border: 3px solid #fff !important;
     border-radius: 999px !important;
+    box-shadow: 0 5px 12px rgb(20 61 99 / 18%);
     font-family: Georgia, 'Times New Roman', serif !important;
     font-size: 1rem;
     font-weight: 700;
@@ -790,6 +774,7 @@
   .hero-wrapper:first-child .hero__content-wrapper .button:hover {
     border-color: #fff;
     background: #4f9bc3;
+    box-shadow: 0 6px 14px rgb(20 61 99 / 24%);
   }
 
   @media screen and (min-width: 750px) {
@@ -829,11 +814,6 @@
       justify-content: center;
       padding-inline: 24px;
       transform: none;
-    }
-
-    .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper::before {
-      inset: -40px -24px;
-      background: radial-gradient(ellipse at center, rgb(255 255 255 / 92%) 0%, rgb(255 255 255 / 72%) 58%, rgb(255 255 255 / 0%) 100%);
     }
 
     .hero-wrapper:first-child .hero--reference-art .hero__content-wrapper > .text-block {
