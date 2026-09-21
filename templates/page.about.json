@@ -13,7 +13,7 @@
       "type": "about-hero",
       "settings": {
         "image": "shopify://shop_images/Rebecca_and_grandkids.png",
-        "heading": "It All Started with<br> 'I Love It Here.'",
+        "heading": "It All Started with 'I Love It Here.'",
         "text": "<p>Little Lake Stories began with one very special birthday gift for my grandson Bennett - a one-of-a-kind book inspired by the lake memories, family adventures, and the joy of creating something meaningful that could be treasured for years to come.</p><p></p>",
         "note": "Good stories keep the best memories close.",
         "background_color": "#eaf8fb"
@@ -25,6 +25,7 @@
         "eyebrow": "",
         "heading": "Our Story",
         "text": "<p>Hi, I'm Rebecca - founder of Little Lake Stories, mom of five, and grandma of four. I live near Delavan Lake, where some of our best family memories are made.</p><p>The very first Little Lake Stories book was created for my grandson Bennett's fourth birthday after he said, 'I love it here.' I wanted to create something more lasting than a toy - something he could keep and someday share with his own family.</p>",
+        "image": "shopify://shop_images/Grandma_and_Bennett.png",
         "caption": "Real families. Real stories. A brighter tomorrow.",
         "background_color": "#ffffff"
       }
@@ -32,6 +33,7 @@
     "about_first_book": {
       "type": "about-first-book",
       "settings": {
+        "book_image": "shopify://shop_images/Bennett_s_4th_Birthday_Book_Cover.png",
         "heading": "The First Book",
         "text": "<p>That first story was Bennett's Adventures at Delavan Lake. It included favorite family memories like catching bugs, beach days, fishing, boating, golf cart rides, tubing, bonfires, and movie nights. What made it so special was that Bennett wasn't the only main character - his siblings, parents, cousins, aunts, and uncles were part of the adventure too.</p>",
         "note": "Every memory has a story worth keeping.",
@@ -74,7 +76,12 @@
           }
         }
       },
-      "block_order": ["scratch", "memories", "photos", "keepsake"],
+      "block_order": [
+        "scratch",
+        "memories",
+        "photos",
+        "keepsake"
+      ],
       "settings": {
         "heading": "What Makes Little Lake Stories Different",
         "background_color": "#fffdf8"
@@ -95,6 +102,7 @@
         "heading": "Ready to Create Your Story?",
         "text": "Turn your family's lake memories into a one-of-a-kind keepsake made with love.",
         "button_label": "Create Your Story",
+        "button_link": "",
         "background_color": "#eaf8fb"
       }
     }
