@@ -12,6 +12,7 @@
     "about_hero": {
       "type": "about-hero",
       "settings": {
+        "image": "shopify://shop_images/Rebecca_and_grandkids.png",
         "heading": "It All Started with 'I Love It Here.'",
         "text": "<p>Little Lake Stories began with one very special birthday gift for my grandson Bennett - a one-of-a-kind book inspired by the lake memories, family adventures, and the joy of creating something meaningful that could be treasured for years to come.</p>",
         "note": "Good stories keep the best memories close.",
@@ -48,8 +49,13 @@
           }
         }
       },
-      "block_order": ["first_book", "moment_i_knew"],
-      "settings": { "background_color": "#ffffff" }
+      "block_order": [
+        "first_book",
+        "moment_i_knew"
+      ],
+      "settings": {
+        "background_color": "#ffffff"
+      }
     },
     "about_values": {
       "type": "about-values",
@@ -73,9 +79,19 @@
           }
         }
       },
-      "block_order": ["difference", "mission"],
-      "settings": { "background_color": "#ffffff" }
+      "block_order": [
+        "difference",
+        "mission"
+      ],
+      "settings": {
+        "background_color": "#ffffff"
+      }
     }
   },
-  "order": ["about_hero", "about_story", "about_milestones", "about_values"]
+  "order": [
+    "about_hero",
+    "about_story",
+    "about_milestones",
+    "about_values"
+  ]
 }
