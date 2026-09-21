@@ -46,15 +46,26 @@
 {% stylesheet %}
   .testimonials-faq {
     display: grid;
+    grid-template-areas: 'testimonials faq';
     grid-template-columns: minmax(0, 1.45fr) minmax(360px, 1fr);
     gap: clamp(32px, 5vw, 80px);
-    padding-block: 72px 88px;
+    padding-block: 0 75px;
     background: var(--testimonials-faq-bg, #fff);
     color: #143d63;
   }
 
   .testimonials-faq__header {
     margin-block-end: 28px;
+  }
+
+  .testimonials-faq__testimonials {
+    grid-area: testimonials;
+    min-width: 0;
+  }
+
+  .testimonials-faq__faq {
+    grid-area: faq;
+    min-width: 0;
   }
 
   .testimonials-faq h2,
@@ -164,15 +175,16 @@
     line-height: 1.4;
   }
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 749px) {
     .testimonials-faq {
+      grid-template-areas: 'testimonials' 'faq';
       grid-template-columns: 1fr;
     }
   }
 
   @media screen and (max-width: 749px) {
     .testimonials-faq {
-      padding-block: 52px 64px;
+      padding-block: 0 75px;
     }
 
     .testimonials-faq__cards {
