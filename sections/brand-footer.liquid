@@ -2,9 +2,8 @@
   <div class="brand-footer__main section section--page-width">
     <div class="brand-footer__brand">
       <a href="{{ routes.root_url }}" class="brand-footer__logo">
-        <img src="{{ 'little-lake-logo.png' | asset_url }}" alt="{{ shop.name }}" width="300" height="62" loading="lazy">
+        <img src="{{ 'vertical-logo.png' | asset_url }}" alt="{{ shop.name }}" width="1254" height="1254" loading="lazy">
       </a>
-      <p>{{ section.settings.brand_message }}</p>
     </div>
 
     <div class="brand-footer__newsletter">
@@ -75,24 +74,13 @@
 
   .brand-footer__logo {
     display: block;
-    max-width: 370px;
+    max-width: 240px;
   }
 
   .brand-footer__logo img {
     display: block;
     width: 100%;
     height: auto;
-  }
-
-  .brand-footer__brand > p {
-    max-width: 270px;
-    margin: 10px 0 0;
-    color: #5e7c91;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 0.95rem;
-    font-style: italic;
-    font-weight: 700;
-    line-height: 1.25;
   }
 
   .brand-footer h2,
@@ -190,7 +178,7 @@
 
   .brand-footer__utility-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: 1fr auto auto;
     align-items: center;
     gap: 24px;
     min-height: 62px;
@@ -204,7 +192,7 @@
   }
 
   .brand-footer__utility p:nth-child(2) {
-    text-align: center;
+    text-align: end;
   }
 
   .brand-footer__utility p span {
