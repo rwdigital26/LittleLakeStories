@@ -785,7 +785,7 @@
                 "accordion_row_guarantee": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Surprise & Delight Guarantee",
+                    "heading": "Our Guarantee to You",
                     "open_by_default": true,
                     "icon": "none",
                     "width": 20
@@ -794,7 +794,7 @@
                     "text_guarantee": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We are so confident you will love our Little Lake Stories books that we guarantee it!</p><ul><li>Your loved one will love it or we will replace or refund</li><li>Perfect gift for 0–7 year olds*</li><li>Surprise & Delight Guarantee or we will replace or refund</li><li>Little Lake Stories books make amazing keepsake gifts</li><li>Approved by families world wide</li></ul>",
+                        "text": "<p>We are so confident you will love our Little Lake Stories books that we guarantee it!</p><ul><li>Your loved one will love it or we will replace or refund</li><li>Perfect gift for 0–7 year olds*</li><li>Surprise & Delight Guarantee or we will replace or refund</li><li>Little Lake Stories books make amazing keepsake gifts</li></ul>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
