@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -153,10 +154,10 @@
                 "review_h4kt2p": {
                   "type": "review",
                   "settings": {
+                    "stars_style": "outline",
                     "show_number": true,
                     "type_preset": "paragraph",
-                    "alignment": "left",
-                    "stars_style": "outline"
+                    "alignment": "left"
                   },
                   "blocks": {}
                 }
@@ -176,11 +177,7 @@
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "custom_width_mobile": 100
               },
               "blocks": {}
             },
@@ -257,14 +254,31 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "icon_guarantee_1": { "type": "icon", "settings": { "icon": "star", "width": 16 }, "blocks": {} },
+                    "icon_guarantee_1": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "star",
+                        "width": 16
+                      },
+                      "blocks": {}
+                    },
                     "text_guarantee_1": {
                       "type": "text",
-                      "settings": { "text": "<p>Surprise & Delight Guaranteed</p>", "alignment": "left", "padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0 },
+                      "settings": {
+                        "text": "<p>Surprise & Delight Guaranteed</p>",
+                        "alignment": "left",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
                       "blocks": {}
                     }
                   },
-                  "block_order": ["icon_guarantee_1", "text_guarantee_1"]
+                  "block_order": [
+                    "icon_guarantee_1",
+                    "text_guarantee_1"
+                  ]
                 },
                 "row_guarantee_2": {
                   "type": "group",
@@ -286,14 +300,31 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "icon_guarantee_2": { "type": "icon", "settings": { "icon": "heart", "width": 16 }, "blocks": {} },
+                    "icon_guarantee_2": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "heart",
+                        "width": 16
+                      },
+                      "blocks": {}
+                    },
                     "text_guarantee_2": {
                       "type": "text",
-                      "settings": { "text": "<p>Love It or Your Money Back*</p>", "alignment": "left", "padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0 },
+                      "settings": {
+                        "text": "<p>Love It or Your Money Back*</p>",
+                        "alignment": "left",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
                       "blocks": {}
                     }
                   },
-                  "block_order": ["icon_guarantee_2", "text_guarantee_2"]
+                  "block_order": [
+                    "icon_guarantee_2",
+                    "text_guarantee_2"
+                  ]
                 },
                 "row_guarantee_3": {
                   "type": "group",
@@ -315,14 +346,31 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "icon_guarantee_3": { "type": "icon", "settings": { "icon": "truck", "width": 16 }, "blocks": {} },
+                    "icon_guarantee_3": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "truck",
+                        "width": 16
+                      },
+                      "blocks": {}
+                    },
                     "text_guarantee_3": {
                       "type": "text",
-                      "settings": { "text": "<p>Free Shipping on 3+ Books</p>", "alignment": "left", "padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0 },
+                      "settings": {
+                        "text": "<p>Free Shipping on 3+ Books</p>",
+                        "alignment": "left",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
                       "blocks": {}
                     }
                   },
-                  "block_order": ["icon_guarantee_3", "text_guarantee_3"]
+                  "block_order": [
+                    "icon_guarantee_3",
+                    "text_guarantee_3"
+                  ]
                 },
                 "row_guarantee_4": {
                   "type": "group",
@@ -344,17 +392,39 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "icon_guarantee_4": { "type": "icon", "settings": { "icon": "map_pin", "width": 16 }, "blocks": {} },
+                    "icon_guarantee_4": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "map_pin",
+                        "width": 16
+                      },
+                      "blocks": {}
+                    },
                     "text_guarantee_4": {
                       "type": "text",
-                      "settings": { "text": "<p>Made and Shipped in the USA</p>", "alignment": "left", "padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0 },
+                      "settings": {
+                        "text": "<p>Made and Shipped in the USA</p>",
+                        "alignment": "left",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
                       "blocks": {}
                     }
                   },
-                  "block_order": ["icon_guarantee_4", "text_guarantee_4"]
+                  "block_order": [
+                    "icon_guarantee_4",
+                    "text_guarantee_4"
+                  ]
                 }
               },
-              "block_order": ["row_guarantee_1", "row_guarantee_2", "row_guarantee_3", "row_guarantee_4"]
+              "block_order": [
+                "row_guarantee_1",
+                "row_guarantee_2",
+                "row_guarantee_3",
+                "row_guarantee_4"
+              ]
             },
             "divider_VJhene": {
               "type": "_divider",
@@ -483,20 +553,26 @@
               "blocks": {
                 "accordion_row_shipping": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "Shipping Details" },
+                  "settings": {
+                    "heading": "Shipping Details"
+                  },
                   "blocks": {
                     "text_shipping": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Every book is printed and shipped from the USA. Standard orders arrive within 7\u201310 business days after your book is approved and sent to print.</p>"
+                        "text": "<p>Every book is printed and shipped from the USA. Standard orders arrive within 7–10 business days after your book is approved and sent to print.</p>"
                       }
                     }
                   },
-                  "block_order": ["text_shipping"]
+                  "block_order": [
+                    "text_shipping"
+                  ]
                 },
                 "accordion_row_size": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "Size & Dimensions" },
+                  "settings": {
+                    "heading": "Size & Dimensions"
+                  },
                   "blocks": {
                     "text_size": {
                       "type": "text",
@@ -505,23 +581,34 @@
                       }
                     }
                   },
-                  "block_order": ["text_size"]
+                  "block_order": [
+                    "text_size"
+                  ]
                 },
                 "accordion_row_guarantee": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "Surprise & Delight Guarantee", "open_by_default": true },
+                  "settings": {
+                    "heading": "Surprise & Delight Guarantee",
+                    "open_by_default": true
+                  },
                   "blocks": {
                     "text_guarantee": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We are so confident you will love our Little Lake Stories books that we guarantee it!</p><ul><li>Your loved one will love it or we will replace or refund</li><li>Perfect gift for 0\u20137 year olds*</li><li>Surprise & Delight Guarantee or we will replace or refund</li><li>Little Lake Stories books make amazing keepsake gifts</li><li>Approved by families world wide</li></ul>"
+                        "text": "<p>We are so confident you will love our Little Lake Stories books that we guarantee it!</p><ul><li>Your loved one will love it or we will replace or refund</li><li>Perfect gift for 0–7 year olds*</li><li>Surprise & Delight Guarantee or we will replace or refund</li><li>Little Lake Stories books make amazing keepsake gifts</li><li>Approved by families world wide</li></ul>"
                       }
                     }
                   },
-                  "block_order": ["text_guarantee"]
+                  "block_order": [
+                    "text_guarantee"
+                  ]
                 }
               },
-              "block_order": ["accordion_row_shipping", "accordion_row_size", "accordion_row_guarantee"]
+              "block_order": [
+                "accordion_row_shipping",
+                "accordion_row_size",
+                "accordion_row_guarantee"
+              ]
             }
           },
           "block_order": [
@@ -537,7 +624,6 @@
           ]
         }
       },
-      "block_order": [],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -578,7 +664,11 @@
           }
         }
       },
-      "block_order": ["item_1", "item_2", "item_3"],
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
       "settings": {
         "background_color": "#eaf3fb"
       }
