@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Their Lake Adventure.<br>Their Story.</h1><p>Personalized children's books inspired by summer vacations on Delavan Lake and Lake Geneva.</p>",
+            "text": "<h1>Their Lake Adventure.<br/>Their Story.</h1><p>Personalized children's books inspired by summer vacations on Delavan Lake and Lake Geneva.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "center",
@@ -114,73 +114,57 @@
         "padding-block-end": 72
       }
     },
-    "featured_collections_home": {
-      "type": "featured-collections",
-      "settings": {
-        "heading": "Featured Collections",
-        "subheading": "Cherished places. Unforgettable stories.",
-        "background_color": "#ffffff",
-        "collection_1": "",
-        "image_1": "shopify://shop_images/My_adventure_at_delavan_lake.png",
-        "title_1": "Delavan Lake Adventures",
-        "description_1": "Custom stories set on the sparkling shores of Delavan Lake.",
-        "button_1": "Explore Delavan Lake",
-        "link_1": "shopify://collections/all",
-        "collection_2": "",
-        "image_2": "shopify://shop_images/my_summer_at_lake_geneva.png",
-        "title_2": "Lake Geneva Adventures",
-        "description_2": "Personalized books inspired by the magic of Lake Geneva.",
-        "button_2": "Explore Lake Geneva",
-        "link_2": "shopify://collections/all",
-        "collection_3": "",
-        "image_3": "shopify://shop_images/grandma_and_granpas_lake_day.png",
-        "title_3": "Grandparents & Me",
-        "description_3": "A special bond. A special place. Stories to treasure together.",
-        "button_3": "Explore Collection",
-        "link_3": "shopify://collections/all"
-      }
-    },
     "storybook_formats_home": {
       "type": "storybook-formats",
       "blocks": {
         "format_1": {
           "type": "format",
           "settings": {
+            "image": "shopify://shop_images/The_Classic_Storybook2.png",
             "badge_icon": "♥",
             "badge": "Our Signature Format",
+            "badge_color": "#d8ecf6",
             "heading": "The Classic Storybook",
             "dimensions": "8.5 x 8.5 in | Hardcover",
             "description": "A timeless square book made for little hands and treasured memories.",
             "button_label": "Explore This Book",
-            "link": "shopify://collections/all"
+            "link": "shopify://products/the-classic-storybook"
           }
         },
         "format_2": {
           "type": "format",
           "settings": {
+            "image": "shopify://shop_images/The_Adventure_Storybook2.png",
             "badge_icon": "⛵",
             "badge": "Wide-Format Adventures",
+            "badge_color": "#d8ecf6",
             "heading": "The Adventure Storybook",
             "dimensions": "11 x 8.5 in | Hardcover",
             "description": "A wide canvas for boats, beaches, and unforgettable family adventures.",
             "button_label": "Explore This Book",
-            "link": "shopify://collections/all"
+            "link": "shopify://products/the-adventure-storybook"
           }
         },
         "format_3": {
           "type": "format",
           "settings": {
+            "image": "shopify://shop_images/The_Wonder_Storybook1_50a5d3f4-dcc5-459f-83d4-a1b7f4d56990.png",
             "badge_icon": "★",
             "badge": "Classic Portrait",
-            "heading": "The Heirloom Storybook",
+            "badge_color": "#d8ecf6",
+            "heading": "The Wonder Storybook",
             "dimensions": "8.5 x 11 in | Hardcover",
             "description": "An elegant keepsake filled with favorite faces and special moments.",
             "button_label": "Explore This Book",
-            "link": "shopify://collections/all"
+            "link": "shopify://products/the-wonder-storybook"
           }
         }
       },
-      "block_order": ["format_1", "format_2", "format_3"],
+      "block_order": [
+        "format_1",
+        "format_2",
+        "format_3"
+      ],
       "settings": {
         "heading": "Choose Your Storybook",
         "subheading": "Three beautiful formats. One story that's entirely theirs.",
@@ -358,7 +342,6 @@
   },
   "order": [
     "hero_jVaWmY",
-    "featured_collections_home",
     "storybook_formats_home",
     "how_it_works_home",
     "personalize_story_home",
