@@ -140,29 +140,52 @@
         "link_3": "shopify://collections/all"
       }
     },
-    "best_sellers_home": {
-      "type": "best-sellers",
+    "storybook_formats_home": {
+      "type": "storybook-formats",
+      "blocks": {
+        "format_1": {
+          "type": "format",
+          "settings": {
+            "badge_icon": "♥",
+            "badge": "Our Signature Format",
+            "heading": "The Classic Storybook",
+            "dimensions": "8.5 x 8.5 in | Hardcover",
+            "description": "A timeless square book made for little hands and treasured memories.",
+            "button_label": "Explore This Book",
+            "link": "shopify://collections/all"
+          }
+        },
+        "format_2": {
+          "type": "format",
+          "settings": {
+            "badge_icon": "⛵",
+            "badge": "Wide-Format Adventures",
+            "heading": "The Adventure Storybook",
+            "dimensions": "11 x 8.5 in | Hardcover",
+            "description": "A wide canvas for boats, beaches, and unforgettable family adventures.",
+            "button_label": "Explore This Book",
+            "link": "shopify://collections/all"
+          }
+        },
+        "format_3": {
+          "type": "format",
+          "settings": {
+            "badge_icon": "★",
+            "badge": "Classic Portrait",
+            "heading": "The Heirloom Storybook",
+            "dimensions": "8.5 x 11 in | Hardcover",
+            "description": "An elegant keepsake filled with favorite faces and special moments.",
+            "button_label": "Explore This Book",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": ["format_1", "format_2", "format_3"],
       "settings": {
-        "products": [
-          "my-summer-at-lake-geneva",
-          "my-adventure-at-delavan-lake",
-          "little-lake-explorer",
-          "grandma-grandpas-lake-day",
-          "a-day-on-the-boat"
-        ],
-        "heading": "Best Sellers",
-        "subheading": "Family favorites for lake-loving kids.",
-        "view_all_label": "View All Books",
-        "view_all_link": "shopify://collections/best-sellers",
-        "rating_label": "5 out of 5 stars",
-        "review_count": "128",
-        "placeholder_price": "$29.95",
-        "placeholder_title_1": "My Adventures at Delavan Lake",
-        "placeholder_title_2": "My Summer at Lake Geneva",
-        "placeholder_title_3": "Grandma & Grandpa's Lake Day",
-        "placeholder_title_4": "A Day on the Boat",
-        "placeholder_title_5": "Little Lake Explorer",
-        "background_color": "#ffffff"
+        "heading": "Choose Your Storybook",
+        "subheading": "Three beautiful formats. One story that's entirely theirs.",
+        "text": "Every book is written from scratch, illustrated with your memories, and made just for you.",
+        "background_color": "#f4fbff"
       }
     },
     "how_it_works_home": {
@@ -336,7 +359,7 @@
   "order": [
     "hero_jVaWmY",
     "featured_collections_home",
-    "best_sellers_home",
+    "storybook_formats_home",
     "how_it_works_home",
     "personalize_story_home",
     "testimonials_faq_home"

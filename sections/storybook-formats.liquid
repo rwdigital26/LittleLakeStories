@@ -1,0 +1,220 @@
+<section class="storybook-formats section section--page-width" style="--storybook-formats-bg: {{ section.settings.background_color }};">
+  <div class="storybook-formats__header">
+    {% if section.settings.heading != blank %}<h2>{{ section.settings.heading }}</h2>{% endif %}
+    {% if section.settings.subheading != blank %}<p class="storybook-formats__subheading">{{ section.settings.subheading }}</p>{% endif %}
+    {% if section.settings.text != blank %}<p class="storybook-formats__text">{{ section.settings.text }}</p>{% endif %}
+  </div>
+
+  <div class="storybook-formats__grid">
+    {% for block in section.blocks %}
+      <article class="storybook-formats__card" {{ block.shopify_attributes }}>
+        <a class="storybook-formats__image" href="{{ block.settings.link | default: '#' }}">
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 750px) 30vw, 90vw', alt: block.settings.heading, loading: 'lazy' }}
+          {% else %}
+            {{ 'product-apparel-1' | placeholder_svg_tag: 'storybook-formats__placeholder' }}
+          {% endif %}
+        </a>
+
+        {% if block.settings.badge != blank %}
+          <span class="storybook-formats__badge" style="--storybook-formats-badge-color: {{ block.settings.badge_color }};">
+            {% if block.settings.badge_icon != blank %}<span aria-hidden="true">{{ block.settings.badge_icon }}</span>{% endif %}
+            {{ block.settings.badge }}
+          </span>
+        {% endif %}
+
+        {% if block.settings.heading != blank %}
+          <h3><a href="{{ block.settings.link | default: '#' }}">{{ block.settings.heading }}</a></h3>
+        {% endif %}
+
+        {% if block.settings.dimensions != blank %}
+          <p class="storybook-formats__dimensions">{{ block.settings.dimensions }}</p>
+        {% endif %}
+
+        {% if block.settings.description != blank %}
+          <p class="storybook-formats__description">{{ block.settings.description }}</p>
+        {% endif %}
+
+        {% if block.settings.button_label != blank %}
+          <a href="{{ block.settings.link | default: '#' }}" class="storybook-formats__button">
+            {{ block.settings.button_label }} <span aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .storybook-formats {
+    padding-block: 0 75px;
+    background: var(--storybook-formats-bg, #f4fbff);
+    color: #143d63;
+  }
+
+  .storybook-formats__header {
+    max-width: 760px;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+
+  .storybook-formats h2,
+  .storybook-formats h3,
+  .storybook-formats p,
+  .storybook-formats__button {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .storybook-formats h2 {
+    margin: 0;
+    font-size: clamp(2.1rem, 3.4vw, 3.4rem);
+    line-height: 1.05;
+  }
+
+  .storybook-formats__subheading {
+    margin: 10px 0 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .storybook-formats__text {
+    margin: 8px 0 0;
+    color: #2d86b6;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .storybook-formats__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .storybook-formats__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 24px 32px;
+    border: 1px solid rgba(20, 61, 99, 0.1);
+    border-radius: 16px;
+    text-align: center;
+    background: #fff;
+  }
+
+  .storybook-formats__image {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .storybook-formats__image img,
+  .storybook-formats__placeholder {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+  }
+
+  .storybook-formats__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    color: #2d86b6;
+    background: var(--storybook-formats-badge-color, #d8ecf6);
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+
+  .storybook-formats__card h3 {
+    margin: 0 0 8px;
+    font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+    line-height: 1.15;
+  }
+
+  .storybook-formats__card h3 a,
+  .storybook-formats__image {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .storybook-formats__dimensions {
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    opacity: 0.75;
+  }
+
+  .storybook-formats__description {
+    margin: 0 0 20px;
+    font-size: 0.98rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .storybook-formats__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding: 12px 26px;
+    border-radius: 999px;
+    color: #fff;
+    background: #143d63;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .storybook-formats__button:hover {
+    background: #0e2c48;
+  }
+
+  @media screen and (max-width: 989px) {
+    .storybook-formats__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Choose your storybook",
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "format",
+      "name": "Format",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Book cover image" },
+        { "type": "text", "id": "badge_icon", "label": "Badge icon (emoji, optional)", "default": "♥" },
+        { "type": "text", "id": "badge", "label": "Badge text", "default": "Our Signature Format" },
+        { "type": "color", "id": "badge_color", "label": "Badge color", "default": "#d8ecf6" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "The Classic Storybook" },
+        { "type": "text", "id": "dimensions", "label": "Dimensions", "default": "8.5 x 8.5 in | Hardcover" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "A timeless square book made for little hands and treasured memories." },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Explore This Book" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose Your Storybook" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Three beautiful formats. One story that's entirely theirs." },
+    { "type": "text", "id": "text", "label": "Text", "default": "Every book is written from scratch, illustrated with your memories, and made just for you." },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#f4fbff" }
+  ],
+  "presets": [
+    {
+      "name": "Choose your storybook",
+      "blocks": [
+        { "type": "format", "settings": { "badge_icon": "♥", "badge": "Our Signature Format", "heading": "The Classic Storybook", "dimensions": "8.5 x 8.5 in | Hardcover", "description": "A timeless square book made for little hands and treasured memories.", "button_label": "Explore This Book" } },
+        { "type": "format", "settings": { "badge_icon": "⛵", "badge": "Wide-Format Adventures", "heading": "The Adventure Storybook", "dimensions": "11 x 8.5 in | Hardcover", "description": "A wide canvas for boats, beaches, and unforgettable family adventures.", "button_label": "Explore This Book" } },
+        { "type": "format", "settings": { "badge_icon": "★", "badge": "Classic Portrait", "heading": "The Heirloom Storybook", "dimensions": "8.5 x 11 in | Hardcover", "description": "An elegant keepsake filled with favorite faces and special moments.", "button_label": "Explore This Book" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
