@@ -94,8 +94,8 @@
           "type": "rate_row",
           "settings": {
             "option": "Standard U.S. Shipping",
-            "detail": "Estimated delivery: [X–X business days after printing]",
-            "price": "[$X.XX]"
+            "detail": "Estimated delivery: 3-5 business days after printing",
+            "price": "$8.99"
           }
         },
         "rate_2": {
@@ -103,7 +103,7 @@
           "settings": {
             "option": "Shipping destination",
             "detail": "",
-            "price": "United States only"
+            "price": "United States Only"
           }
         }
       },
