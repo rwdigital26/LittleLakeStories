@@ -178,24 +178,6 @@
               },
               "blocks": {}
             },
-            "button_preview_n3wv7q": {
-              "type": "button",
-              "settings": {
-                "label": "Preview Full Book",
-                "link": "",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
             "price_tVjtKg": {
               "type": "price",
               "settings": {
@@ -746,7 +728,7 @@
                 "accordion_row_size": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Number of Pages",
+                    "heading": "Our Little Likeness Promise.",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -755,7 +737,7 @@
                     "text_size": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Hardcover, 24 full-color pages.</p>",
+                        "text": "<p>Your little one should look like themselves! You'll have the chance to review and approve their illustrated likeness before your book goes to print, so every detail feels just right.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -832,7 +814,6 @@
           "block_order": [
             "group_icgrde",
             "text_aEtTtq",
-            "button_preview_n3wv7q",
             "price_tVjtKg",
             "group_guarantees_x8m2df",
             "divider_VJhene",
