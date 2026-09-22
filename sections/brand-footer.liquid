@@ -50,12 +50,21 @@
 
   <div class="brand-footer__reference-utility">
     <div class="section section--page-width">
-      <p>© {{ 'now' | date: '%Y' }} Little Lake Stories. All rights reserved.</p>
+      {% assign current_year = 'now' | date: '%Y' %}
+      <p>{{ section.settings.copyright_text | replace: '{year}', current_year }}</p>
       <div>
-        <a href="{{ routes.root_url }}#privacy-policy">Privacy Policy</a>
-        <a href="{{ routes.root_url }}#terms-of-service">Terms of Service</a>
-        <a href="{{ routes.root_url }}#shipping">Shipping Info</a>
-        <a href="{{ routes.root_url }}#faqs">FAQs</a>
+        {% if section.settings.policy_1_label != blank %}
+          <a href="{{ section.settings.policy_1_link | default: '#' }}">{{ section.settings.policy_1_label }}</a>
+        {% endif %}
+        {% if section.settings.policy_2_label != blank %}
+          <a href="{{ section.settings.policy_2_link | default: '#' }}">{{ section.settings.policy_2_label }}</a>
+        {% endif %}
+        {% if section.settings.policy_3_label != blank %}
+          <a href="{{ section.settings.policy_3_link | default: '#' }}">{{ section.settings.policy_3_label }}</a>
+        {% endif %}
+        {% if section.settings.policy_4_label != blank %}
+          <a href="{{ section.settings.policy_4_link | default: '#' }}">{{ section.settings.policy_4_label }}</a>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -660,6 +669,16 @@
     { "type": "url", "id": "instagram_url", "label": "Instagram URL" },
     { "type": "url", "id": "facebook_url", "label": "Facebook URL" },
     { "type": "url", "id": "pinterest_url", "label": "Pinterest URL" },
+    { "type": "header", "content": "Copyright bar" },
+    { "type": "text", "id": "copyright_text", "label": "Copyright text", "info": "Use {year} to insert the current year", "default": "© {year} Little Lake Stories. All rights reserved." },
+    { "type": "text", "id": "policy_1_label", "label": "Link 1 label", "default": "Privacy Policy" },
+    { "type": "url", "id": "policy_1_link", "label": "Link 1 URL" },
+    { "type": "text", "id": "policy_2_label", "label": "Link 2 label", "default": "Terms of Service" },
+    { "type": "url", "id": "policy_2_link", "label": "Link 2 URL" },
+    { "type": "text", "id": "policy_3_label", "label": "Link 3 label", "default": "Shipping Info" },
+    { "type": "url", "id": "policy_3_link", "label": "Link 3 URL" },
+    { "type": "text", "id": "policy_4_label", "label": "Link 4 label", "default": "FAQs" },
+    { "type": "url", "id": "policy_4_link", "label": "Link 4 URL" },
     { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" }
   ]
 }
