@@ -30,6 +30,15 @@
         "instagram_url": "",
         "facebook_url": "",
         "pinterest_url": "",
+        "copyright_text": "© [year] Little Lake Stories. All rights reserved.",
+        "policy_1_label": "Privacy Policy",
+        "policy_1_link": "shopify://policies/privacy-policy",
+        "policy_2_label": "Terms of Service",
+        "policy_2_link": "shopify://policies/terms-of-service",
+        "policy_3_label": "Shipping Info",
+        "policy_3_link": "shopify://pages/shipping-delivery",
+        "policy_4_label": "FAQs",
+        "policy_4_link": "",
         "background_color": "#f1f1f1"
       }
     }
