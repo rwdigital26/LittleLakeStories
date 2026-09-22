@@ -1,0 +1,249 @@
+<section class="shipping-rates-info" style="--shipping-rates-info-bg: {{ section.settings.background_color }};">
+  <div class="shipping-rates-info__inner section section--page-width">
+    <div class="shipping-rates-info__card shipping-rates-info__card--rates">
+      {% if section.settings.rates_heading != blank %}
+        <h2>{{ section.settings.rates_heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.rates_text != blank %}
+        <p class="shipping-rates-info__intro">{{ section.settings.rates_text }}</p>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <table class="shipping-rates-info__table">
+          <thead>
+            <tr>
+              <th>{{ section.settings.column_option_label }}</th>
+              <th>{{ section.settings.column_price_label }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              <tr {{ block.shopify_attributes }}>
+                <td>
+                  <strong>{{ block.settings.option }}</strong>
+                  {% if block.settings.detail != blank %}<span>{{ block.settings.detail }}</span>{% endif %}
+                </td>
+                <td>{{ block.settings.price }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+
+      {% if section.settings.disclaimer != blank %}
+        <div class="shipping-rates-info__disclaimer">{{ section.settings.disclaimer }}</div>
+      {% endif %}
+    </div>
+
+    <div class="shipping-rates-info__card shipping-rates-info__card--occasion">
+      <div class="shipping-rates-info__occasion-header">
+        <div class="shipping-rates-info__icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path d="M32 8 22 24h6l-9 14h8l-10 14h30l-10-14h8l-9-14h6Z" fill="#4f7a52" stroke="#3d5f40" stroke-width="1.4" stroke-linejoin="round"/>
+            <rect x="29" y="52" width="6" height="6" fill="#7a5a3a"/>
+          </svg>
+        </div>
+        {% if section.settings.occasion_heading != blank %}
+          <h2>{{ section.settings.occasion_heading }}</h2>
+        {% endif %}
+      </div>
+
+      {% if section.settings.occasion_text != blank %}
+        <div class="shipping-rates-info__occasion-text">{{ section.settings.occasion_text }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .shipping-rates-info {
+    background: var(--shipping-rates-info-bg, #ffffff);
+    color: #143d63;
+    padding-block: 0 64px;
+  }
+
+  .shipping-rates-info h2,
+  .shipping-rates-info p,
+  .shipping-rates-info__occasion-text {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .shipping-rates-info__inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .shipping-rates-info__card {
+    padding: clamp(28px, 3vw, 44px);
+    border-radius: 20px;
+  }
+
+  .shipping-rates-info__card--rates {
+    background: #faf3e8;
+  }
+
+  .shipping-rates-info__card--occasion {
+    background: #e4eef8;
+  }
+
+  .shipping-rates-info__card h2 {
+    margin: 0 0 12px;
+    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+    line-height: 1.05;
+  }
+
+  .shipping-rates-info__intro {
+    margin: 0 0 24px;
+    font-size: 1.02rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .shipping-rates-info__table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid rgba(20, 61, 99, 0.14);
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .shipping-rates-info__table th,
+  .shipping-rates-info__table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(20, 61, 99, 0.12);
+    font-size: 0.98rem;
+  }
+
+  .shipping-rates-info__table th {
+    background: rgba(20, 61, 99, 0.06);
+    font-weight: 700;
+  }
+
+  .shipping-rates-info__table th:last-child,
+  .shipping-rates-info__table td:last-child {
+    text-align: center;
+  }
+
+  .shipping-rates-info__table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .shipping-rates-info__table td strong {
+    display: block;
+  }
+
+  .shipping-rates-info__table td span {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .shipping-rates-info__disclaimer {
+    margin-top: 16px;
+    font-size: 0.88rem;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+
+  .shipping-rates-info__disclaimer p {
+    margin: 0;
+  }
+
+  .shipping-rates-info__occasion-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .shipping-rates-info__icon {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+  }
+
+  .shipping-rates-info__icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .shipping-rates-info__occasion-text p {
+    margin: 0 0 14px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .shipping-rates-info__occasion-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .shipping-rates-info__occasion-text strong {
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 749px) {
+    .shipping-rates-info__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shipping rates",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "rate_row",
+      "name": "Rate row",
+      "settings": [
+        { "type": "text", "id": "option", "label": "Shipping option", "default": "Standard U.S. Shipping" },
+        { "type": "text", "id": "detail", "label": "Detail", "default": "Estimated delivery: [X\u2013X business days after printing]" },
+        { "type": "text", "id": "price", "label": "Price", "default": "[$X.XX]" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "header", "content": "Shipping rates card" },
+    { "type": "text", "id": "rates_heading", "label": "Heading", "default": "Shipping Rates" },
+    { "type": "text", "id": "rates_text", "label": "Intro text", "default": "We keep shipping simple with flat-rate pricing for orders delivered within the United States." },
+    { "type": "text", "id": "column_option_label", "label": "Table column: option label", "default": "Shipping Option" },
+    { "type": "text", "id": "column_price_label", "label": "Table column: price label", "default": "Price" },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "<p><em>Shipping charges will be displayed during checkout before you complete your purchase.<br>At this time, we ship exclusively within the United States. International shipping is not available.</em></p>"
+    },
+    { "type": "header", "content": "Special occasion card" },
+    { "type": "text", "id": "occasion_heading", "label": "Heading", "default": "Planning for a Special Occasion?" },
+    {
+      "type": "richtext",
+      "id": "occasion_text",
+      "label": "Text",
+      "default": "<p>Creating a personalized storybook takes a little extra time, but the result is a keepsake worth waiting for!</p><p>If you're ordering for a birthday, holiday, family vacation, or another special celebration, we encourage you to place your order well in advance.</p><p>Please remember that your book must be created, reviewed, approved, printed, and shipped before it arrives.</p><p><strong>Delivery dates cannot be guaranteed.</strong></p>"
+    },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" }
+  ],
+  "presets": [
+    {
+      "name": "Shipping rates",
+      "blocks": [
+        { "type": "rate_row", "settings": { "option": "Standard U.S. Shipping", "detail": "Estimated delivery: [X\u2013X business days after printing]", "price": "[$X.XX]" } },
+        { "type": "rate_row", "settings": { "option": "Shipping destination", "detail": "", "price": "United States only" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

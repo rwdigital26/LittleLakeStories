@@ -1,0 +1,86 @@
+<section class="shipping-note" style="--shipping-note-bg: {{ section.settings.background_color }};">
+  <div class="shipping-note__inner section section--page-width">
+    <div class="shipping-note__box">
+      <div class="shipping-note__icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <path d="M14 50c8-22 24-30 36-32-2 12-10 28-32 36-2 .7-5.5-1-4-4Z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+          <path d="M18 46c8-6 16-14 22-24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <p class="shipping-note__text">
+        {% if section.settings.lead_in != blank %}<strong>{{ section.settings.lead_in }}</strong> {% endif %}{{ section.settings.text }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .shipping-note {
+    background: var(--shipping-note-bg, #ffffff);
+    padding-block: 0 64px;
+  }
+
+  .shipping-note__box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 32px;
+    border-radius: 16px;
+    background: #e4eef8;
+  }
+
+  .shipping-note__icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    color: #5c7a56;
+  }
+
+  .shipping-note__icon svg {
+    display: block;
+    width: 36px;
+    height: 36px;
+  }
+
+  .shipping-note__text {
+    margin: 0;
+    color: #143d63;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .shipping-note__text strong {
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 749px) {
+    .shipping-note__box {
+      align-items: flex-start;
+      padding: 20px 22px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shipping note",
+  "settings": [
+    { "type": "text", "id": "lead_in", "label": "Bold lead-in", "default": "Please note:" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "The 7\u201310 business day creative timeline does not include the time needed for customer approval, printing, or shipping. Additional time may be needed if changes are requested."
+    },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" }
+  ],
+  "presets": [
+    { "name": "Shipping note" }
+  ]
+}
+{% endschema %}

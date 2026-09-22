@@ -1,0 +1,84 @@
+<section
+  class="shipping-tagline"
+  {% if section.settings.background_image != blank %}
+    style="--shipping-tagline-image: url('{{ section.settings.background_image | image_url: width: 2400 }}'); --shipping-tagline-bg: {{ section.settings.background_color }};"
+  {% else %}
+    style="--shipping-tagline-bg: {{ section.settings.background_color }};"
+  {% endif %}
+>
+  <div class="shipping-tagline__content">
+    <div class="shipping-tagline__icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M32 52s-17-10.7-21.3-20.8C8.5 25.3 13.2 15 22.4 15c5 0 8.1 2.8 9.6 5.1 1.5-2.3 4.6-5.1 9.6-5.1 9.2 0 13.9 10.3 11.7 16.2C49 41.3 32 52 32 52Z" fill="currentColor"/>
+      </svg>
+    </div>
+
+    {% if section.settings.heading != blank %}
+      <p class="shipping-tagline__heading">{{ section.settings.heading }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .shipping-tagline {
+    position: relative;
+    display: grid;
+    min-height: 260px;
+    overflow: hidden;
+    place-items: end center;
+    padding: 36px 24px 44px;
+    background-color: var(--shipping-tagline-bg, #eaf8fb);
+    background-image: var(--shipping-tagline-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #143d63;
+    text-align: center;
+  }
+
+  .shipping-tagline__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .shipping-tagline__icon {
+    display: grid;
+    place-items: center;
+    margin: 0 auto 10px;
+    color: #b95c5c;
+  }
+
+  .shipping-tagline__icon svg {
+    display: block;
+    width: 26px;
+    height: 26px;
+  }
+
+  .shipping-tagline__heading {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  @media screen and (max-width: 749px) {
+    .shipping-tagline {
+      min-height: 220px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shipping tagline",
+  "settings": [
+    { "type": "image_picker", "id": "background_image", "label": "Lake background artwork" },
+    { "type": "text", "id": "heading", "label": "Tagline", "default": "Your Memories. Your Story. Your Keepsake." },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#eaf8fb" }
+  ],
+  "presets": [
+    { "name": "Shipping tagline" }
+  ]
+}
+{% endschema %}

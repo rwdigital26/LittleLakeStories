@@ -1,0 +1,285 @@
+<section class="shipping-timeline" style="--shipping-timeline-bg: {{ section.settings.background_color }};">
+  <div class="shipping-timeline__inner section section--page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="shipping-timeline__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="shipping-timeline__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="shipping-timeline__grid">
+      {% for block in section.blocks %}
+        <div
+          class="shipping-timeline__item shipping-timeline__item--{{ block.settings.color }}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="shipping-timeline__icon" aria-hidden="true">
+            {% case block.settings.icon %}
+              {% when 'heart' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                  <path d="M32 52s-17-10.7-21.3-20.8C8.5 25.3 13.2 15 22.4 15c5 0 8.1 2.8 9.6 5.1 1.5-2.3 4.6-5.1 9.6-5.1 9.2 0 13.9 10.3 11.7 16.2C49 41.3 32 52 32 52Z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% when 'printer' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                  <rect x="16" y="26" width="32" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <path d="M20 26v-9h24v9" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+                  <rect x="22" y="38" width="20" height="14" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <path d="M20 33h2" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+                </svg>
+              {% when 'truck' %}
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                  <rect x="8" y="24" width="28" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <path d="M36 30h10l8 8v4h-18z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+                  <circle cx="20" cy="46" r="4.5" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                  <circle cx="45" cy="46" r="4.5" fill="none" stroke="currentColor" stroke-width="2.8"/>
+                </svg>
+              {% else %}
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                  <path d="M32 18c-4-4-16-4-16 4v26c0-6 12-6 16-2z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+                  <path d="M32 18c4-4 16-4 16 4v26c0-6-12-6-16-2z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+                  <path d="M27 30l3 3 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            {% endcase %}
+          </div>
+
+          {% if block.settings.heading != blank %}
+            <h3>{{ forloop.index }}. {{ block.settings.heading }}</h3>
+          {% endif %}
+
+          {% if block.settings.badge != blank %}
+            <span class="shipping-timeline__badge">{{ block.settings.badge }}</span>
+          {% endif %}
+
+          {% if block.settings.description != blank %}
+            <p>{{ block.settings.description }}</p>
+          {% endif %}
+
+          {% if block.settings.note != blank %}
+            <p class="shipping-timeline__note">{{ block.settings.note }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .shipping-timeline {
+    background: var(--shipping-timeline-bg, #ffffff);
+    color: #143d63;
+    padding-block: 56px 64px;
+  }
+
+  .shipping-timeline__inner {
+    text-align: center;
+  }
+
+  .shipping-timeline h2,
+  .shipping-timeline h3,
+  .shipping-timeline p {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .shipping-timeline__heading {
+    margin: 0;
+    font-size: clamp(2rem, 3.4vw, 3.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+
+  .shipping-timeline__subheading {
+    max-width: 620px;
+    margin: 14px auto 0;
+    color: #2d86b6;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .shipping-timeline__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 44px;
+  }
+
+  .shipping-timeline__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 22px;
+  }
+
+  .shipping-timeline__item:not(:first-child)::before {
+    content: "\2192";
+    position: absolute;
+    left: 0;
+    top: 32px;
+    transform: translateX(-50%);
+    color: #2d86b6;
+    font-size: 1.6rem;
+  }
+
+  .shipping-timeline__icon {
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    color: #143d63;
+  }
+
+  .shipping-timeline__icon svg {
+    display: block;
+    width: 38px;
+    height: 38px;
+  }
+
+  .shipping-timeline__item--blue .shipping-timeline__icon {
+    color: #2d86b6;
+    background: #d8ecf6;
+  }
+
+  .shipping-timeline__item--pink .shipping-timeline__icon {
+    color: #b95c5c;
+    background: #f5dcdc;
+  }
+
+  .shipping-timeline__item--green .shipping-timeline__icon {
+    color: #5c7a56;
+    background: #e2ecda;
+  }
+
+  .shipping-timeline__item h3 {
+    margin: 0 0 12px;
+    font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+    line-height: 1.2;
+  }
+
+  .shipping-timeline__badge {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .shipping-timeline__item--blue .shipping-timeline__badge {
+    color: #2d86b6;
+    background: #d8ecf6;
+  }
+
+  .shipping-timeline__item--pink .shipping-timeline__badge {
+    color: #b95c5c;
+    background: #f5dcdc;
+  }
+
+  .shipping-timeline__item--green .shipping-timeline__badge {
+    color: #5c7a56;
+    background: #e2ecda;
+  }
+
+  .shipping-timeline__item p {
+    margin: 0;
+    color: #143d63;
+    font-size: 0.98rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .shipping-timeline__note {
+    margin-top: 12px;
+    color: #2d86b6;
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 989px) {
+    .shipping-timeline__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 0;
+    }
+
+    .shipping-timeline__item:nth-child(2n)::before {
+      display: none;
+    }
+
+    .shipping-timeline__item:nth-child(3)::before,
+    .shipping-timeline__item:nth-child(4)::before {
+      content: none;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    .shipping-timeline__grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .shipping-timeline__item::before {
+      content: none !important;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shipping timeline",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "book",
+          "options": [
+            { "label": "Book", "value": "book" },
+            { "label": "Heart", "value": "heart" },
+            { "label": "Printer", "value": "printer" },
+            { "label": "Truck", "value": "truck" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Color",
+          "default": "blue",
+          "options": [
+            { "label": "Blue", "value": "blue" },
+            { "label": "Pink", "value": "pink" },
+            { "label": "Green", "value": "green" }
+          ]
+        },
+        { "type": "text", "id": "heading", "label": "Title", "default": "Story Creation" },
+        { "type": "text", "id": "badge", "label": "Badge text", "default": "7\u201310 Business Days" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "We use your personalization details, memories, and photos to write and illustrate your unique storybook." },
+        { "type": "textarea", "id": "note", "label": "Note (optional)" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How Long Will My Book Take?" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Every Little Lake Stories book is custom-made just for you. Here's what to expect:" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" }
+  ],
+  "presets": [
+    {
+      "name": "Shipping timeline",
+      "blocks": [
+        { "type": "step", "settings": { "icon": "book", "color": "blue", "heading": "Story Creation", "badge": "7\u201310 Business Days", "description": "We use your personalization details, memories, and photos to write and illustrate your unique storybook." } },
+        { "type": "step", "settings": { "icon": "heart", "color": "pink", "heading": "Review & Approve", "badge": "Your Approval Required", "description": "You'll have the opportunity to review your personalized book before it goes to print. We'll wait for your approval before moving forward.", "note": "The time it takes to receive your approval may affect your delivery date." } },
+        { "type": "step", "settings": { "icon": "printer", "color": "green", "heading": "Printing Your Keepsake", "badge": "Printing Time TBD", "description": "Once approved, your book is sent to our U.S. printing partner, where it is printed just for you." } },
+        { "type": "step", "settings": { "icon": "truck", "color": "blue", "heading": "On Its Way to You", "badge": "Shipping Time TBD", "description": "Your finished book is packaged and shipped directly to your doorstep." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
