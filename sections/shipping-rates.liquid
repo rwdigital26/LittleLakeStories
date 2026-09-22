@@ -1,57 +1,59 @@
 <section class="shipping-rates-info" style="--shipping-rates-info-bg: {{ section.settings.background_color }};">
   <div class="shipping-rates-info__inner section section--page-width">
-    <div class="shipping-rates-info__card shipping-rates-info__card--rates">
-      {% if section.settings.rates_heading != blank %}
-        <h2>{{ section.settings.rates_heading }}</h2>
-      {% endif %}
+    <div class="shipping-rates-info__row">
+      <div class="shipping-rates-info__card shipping-rates-info__card--rates">
+        {% if section.settings.rates_heading != blank %}
+          <h2>{{ section.settings.rates_heading }}</h2>
+        {% endif %}
 
-      {% if section.settings.rates_text != blank %}
-        <p class="shipping-rates-info__intro">{{ section.settings.rates_text }}</p>
-      {% endif %}
+        {% if section.settings.rates_text != blank %}
+          <p class="shipping-rates-info__intro">{{ section.settings.rates_text }}</p>
+        {% endif %}
 
-      {% if section.blocks.size > 0 %}
-        <table class="shipping-rates-info__table">
-          <thead>
-            <tr>
-              <th>{{ section.settings.column_option_label }}</th>
-              <th>{{ section.settings.column_price_label }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for block in section.blocks %}
-              <tr {{ block.shopify_attributes }}>
-                <td>
-                  <strong>{{ block.settings.option }}</strong>
-                  {% if block.settings.detail != blank %}<span>{{ block.settings.detail }}</span>{% endif %}
-                </td>
-                <td>{{ block.settings.price }}</td>
+        {% if section.blocks.size > 0 %}
+          <table class="shipping-rates-info__table">
+            <thead>
+              <tr>
+                <th>{{ section.settings.column_option_label }}</th>
+                <th>{{ section.settings.column_price_label }}</th>
               </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      {% endif %}
+            </thead>
+            <tbody>
+              {% for block in section.blocks %}
+                <tr {{ block.shopify_attributes }}>
+                  <td>
+                    <strong>{{ block.settings.option }}</strong>
+                    {% if block.settings.detail != blank %}<span>{{ block.settings.detail }}</span>{% endif %}
+                  </td>
+                  <td>{{ block.settings.price }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
 
-      {% if section.settings.disclaimer != blank %}
-        <div class="shipping-rates-info__disclaimer">{{ section.settings.disclaimer }}</div>
-      {% endif %}
-    </div>
-
-    <div class="shipping-rates-info__card shipping-rates-info__card--occasion">
-      <div class="shipping-rates-info__occasion-header">
-        <div class="shipping-rates-info__icon" aria-hidden="true">
-          <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-            <path d="M32 8 22 24h6l-9 14h8l-10 14h30l-10-14h8l-9-14h6Z" fill="#4f7a52" stroke="#3d5f40" stroke-width="1.4" stroke-linejoin="round"/>
-            <rect x="29" y="52" width="6" height="6" fill="#7a5a3a"/>
-          </svg>
-        </div>
-        {% if section.settings.occasion_heading != blank %}
-          <h2>{{ section.settings.occasion_heading }}</h2>
+        {% if section.settings.disclaimer != blank %}
+          <div class="shipping-rates-info__disclaimer">{{ section.settings.disclaimer }}</div>
         {% endif %}
       </div>
 
-      {% if section.settings.occasion_text != blank %}
-        <div class="shipping-rates-info__occasion-text">{{ section.settings.occasion_text }}</div>
-      {% endif %}
+      <div class="shipping-rates-info__card shipping-rates-info__card--occasion">
+        <div class="shipping-rates-info__occasion-header">
+          <div class="shipping-rates-info__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <path d="M32 8 22 24h6l-9 14h8l-10 14h30l-10-14h8l-9-14h6Z" fill="#4f7a52" stroke="#3d5f40" stroke-width="1.4" stroke-linejoin="round"/>
+              <rect x="29" y="52" width="6" height="6" fill="#7a5a3a"/>
+            </svg>
+          </div>
+          {% if section.settings.occasion_heading != blank %}
+            <h2>{{ section.settings.occasion_heading }}</h2>
+          {% endif %}
+        </div>
+
+        {% if section.settings.occasion_text != blank %}
+          <div class="shipping-rates-info__occasion-text">{{ section.settings.occasion_text }}</div>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>
@@ -69,7 +71,7 @@
     font-family: Georgia, 'Times New Roman', serif;
   }
 
-  .shipping-rates-info__inner {
+  .shipping-rates-info__row {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
@@ -193,7 +195,7 @@
   }
 
   @media screen and (max-width: 749px) {
-    .shipping-rates-info__inner {
+    .shipping-rates-info__row {
       grid-template-columns: 1fr;
     }
   }
