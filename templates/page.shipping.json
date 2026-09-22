@@ -12,6 +12,7 @@
     "shipping_hero": {
       "type": "shipping-hero",
       "settings": {
+        "image": "shopify://shop_images/Shipping-Delivery-Hero-Image.png",
         "heading": "Shipping & Delivery",
         "subheading": "Made with love. Printed in the USA. Delivered to your door.",
         "description": "Every Little Lake Story book is a one-of-a-kind keepsake, thoughtfully created for your family and shipped with care.",
@@ -27,8 +28,9 @@
             "icon": "book",
             "color": "blue",
             "heading": "Story Creation",
-            "badge": "7\u201310 Business Days",
-            "description": "We use your personalization details, memories, and photos to write and illustrate your unique storybook."
+            "badge": "7–10 Business Days",
+            "description": "We use your personalization details, memories, and photos to write and illustrate your unique storybook.",
+            "note": ""
           }
         },
         "step_2": {
@@ -49,7 +51,8 @@
             "color": "green",
             "heading": "Printing Your Keepsake",
             "badge": "Printing Time TBD",
-            "description": "Once approved, your book is sent to our U.S. printing partner, where it is printed just for you."
+            "description": "Once approved, your book is sent to our U.S. printing partner, where it is printed just for you.",
+            "note": ""
           }
         },
         "step_4": {
@@ -59,7 +62,8 @@
             "color": "blue",
             "heading": "On Its Way to You",
             "badge": "Shipping Time TBD",
-            "description": "Your finished book is packaged and shipped directly to your doorstep."
+            "description": "Your finished book is packaged and shipped directly to your doorstep.",
+            "note": ""
           }
         }
       },
@@ -79,7 +83,7 @@
       "type": "shipping-note",
       "settings": {
         "lead_in": "Please note:",
-        "text": "The 7\u201310 business day creative timeline does not include the time needed for customer approval, printing, or shipping. Additional time may be needed if changes are requested.",
+        "text": "The 7–10 business day creative timeline does not include the time needed for customer approval, printing, or shipping. Additional time may be needed if changes are requested.",
         "background_color": "#ffffff"
       }
     },
@@ -90,7 +94,7 @@
           "type": "rate_row",
           "settings": {
             "option": "Standard U.S. Shipping",
-            "detail": "Estimated delivery: [X\u2013X business days after printing]",
+            "detail": "Estimated delivery: [X–X business days after printing]",
             "price": "[$X.XX]"
           }
         },
@@ -128,7 +132,9 @@
             "color": "green",
             "heading": "Tracking Your Order",
             "text": "<p>Once your book ships, tracking details will be provided if available through the selected shipping service.</p>",
-            "note": "Please note that shipping estimates begin after your personalized book has been approved and printed."
+            "note": "Please note that shipping estimates begin after your personalized book has been approved and printed.",
+            "button_label": "",
+            "button_link": ""
           }
         },
         "item_2": {
@@ -137,7 +143,10 @@
             "icon": "compass",
             "color": "blue",
             "heading": "Shipping Delays",
-            "text": "<p>While we work hard to get your special story to you as quickly as possible, delivery times may occasionally be affected by holidays, severe weather, shipping carrier delays, or other circumstances beyond our control.</p><p>We appreciate your patience as we bring your family's story to life.</p>"
+            "text": "<p>While we work hard to get your special story to you as quickly as possible, delivery times may occasionally be affected by holidays, severe weather, shipping carrier delays, or other circumstances beyond our control.</p><p>We appreciate your patience as we bring your family's story to life.</p>",
+            "note": "Please note that shipping estimates begin after your personalized book has been approved and printed.",
+            "button_label": "",
+            "button_link": ""
           }
         },
         "item_3": {
@@ -147,6 +156,7 @@
             "color": "pink",
             "heading": "Questions?",
             "text": "<p>We're here to help! If you have any questions about your order or delivery, please visit our Contact Us page. We'd love to hear from you!</p>",
+            "note": "Please note that shipping estimates begin after your personalized book has been approved and printed.",
             "button_label": "Contact Us",
             "button_link": "shopify://pages/contact"
           }
@@ -164,6 +174,7 @@
     "shipping_tagline": {
       "type": "shipping-tagline",
       "settings": {
+        "background_image": "shopify://shop_images/Your_Memories._Your_Story._Your_Keepsake.png",
         "heading": "Your Memories. Your Story. Your Keepsake.",
         "background_color": "#eaf8fb"
       }
