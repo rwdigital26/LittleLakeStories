@@ -861,24 +861,24 @@
           "type": "item",
           "settings": {
             "icon": "gift",
-            "heading": "Makes the Perfect Gift",
-            "text": "Your loved one will love it"
+            "heading": "A Gift Unlike Any Other",
+            "text": "Made just for them, inspired by your memories."
           }
         },
         "item_2": {
           "type": "item",
           "settings": {
             "icon": "heart",
-            "heading": "Tears of Joy May Be Seen",
-            "text": "Makes the most precious gift"
+            "heading": "Their Story, Their Magic",
+            "text": "Watch their face light up as the story unfolds."
           }
         },
         "item_3": {
           "type": "item",
           "settings": {
             "icon": "smiley",
-            "heading": "Love it Guarantee",
-            "text": "Love it or your money back"
+            "heading": "A Keepsake for Years to Come",
+            "text": "Today's adventures. Tomorrow's treasured memories."
           }
         }
       },
