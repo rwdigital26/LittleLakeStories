@@ -698,7 +698,7 @@
                     "text_shipping": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Every book is printed and shipped from the USA. Standard orders arrive within 7–10 business days <span style=\"text-decoration:underline\"><em>after</em></span> your book is approved and sent to print.</p>",
+                        "text": "<p>Every book is printed and shipped from the USA. Standard orders arrive within 7–10 business days <span style=\"text-decoration:underline\"><em><strong>after</strong></em></span><strong> your book is approved and sent to print.</strong></p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -798,36 +798,10 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {}
-                    },
-                    "text_guarantee": {
-                      "type": "text",
-                      "settings": {
-                        "text": "",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "text_color": "",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
                     }
                   },
                   "block_order": [
-                    "text_mPpb8P",
-                    "text_guarantee"
+                    "text_mPpb8P"
                   ]
                 }
               },
