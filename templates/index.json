@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Their Lake Adventure.<br>Their Story.</h1><p>Personalized children's books inspired by summer vacations on Delavan Lake and Lake Geneva.</p>",
+            "text": "<h1>Their Lake Adventure.<br/>Their Story.</h1><p>Personalized children's books inspired by summer vacations on Delavan Lake and Lake Geneva.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "center",
@@ -120,7 +120,7 @@
         "format_1": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/The_Classic_Storybook.png",
+            "image": "shopify://shop_images/TheClassicStorybook1.png",
             "badge_icon": "♥",
             "badge": "Our Signature Format",
             "badge_color": "#d8ecf6",
@@ -134,7 +134,7 @@
         "format_2": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/The_Adventure_Storybook.png",
+            "image": "shopify://shop_images/The_Adventure_Storybook2.png",
             "badge_icon": "⛵",
             "badge": "Wide-Format Adventures",
             "badge_color": "#d8ecf6",
@@ -148,7 +148,7 @@
         "format_3": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/The_Wonder_Storybook.png",
+            "image": "shopify://shop_images/The_Wonder_Storybook1.png",
             "badge_icon": "★",
             "badge": "Classic Portrait",
             "badge_color": "#d8ecf6",
