@@ -178,10 +178,11 @@
         "format_gHedEG": {
           "type": "format",
           "settings": {
+            "image": "shopify://shop_images/Oliver_s_First_Halloween_Adventure.png",
             "badge_icon": "",
             "badge": "",
             "badge_color": "#d8ecf6",
-            "heading": "Halloween at the Lake",
+            "heading": "First Halloween Personalized Book",
             "dimensions": "8.5 x 8.5 in | Hardcover",
             "description": "A timeless square book made for little hands and treasured memories.",
             "button_label": "Explore This Book",
