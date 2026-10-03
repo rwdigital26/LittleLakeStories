@@ -166,65 +166,9 @@
         "format_3"
       ],
       "settings": {
-        "heading": "Custom Collection",
-        "subheading": "Unqiue storybook. One story that's entirely theirs.",
+        "heading": "Choose Your Storybook Size",
+        "subheading": "Three formats available. One story that's entirely theirs.",
         "text": "Every book is written from scratch, illustrated with your memories, and made just for you.",
-        "background_color": "#f4fbff"
-      }
-    },
-    "storybook_formats_m9hk88": {
-      "type": "storybook-formats",
-      "blocks": {
-        "format_gHedEG": {
-          "type": "format",
-          "settings": {
-            "badge_icon": "♥",
-            "badge": "Our Signature Format",
-            "badge_color": "#d8ecf6",
-            "heading": "Halloween at the Lake",
-            "dimensions": "8.5 x 8.5 in | Hardcover",
-            "description": "A timeless square book made for little hands and treasured memories.",
-            "button_label": "Explore This Book",
-            "link": ""
-          }
-        },
-        "format_tT38L7": {
-          "type": "format",
-          "settings": {
-            "badge_icon": "⛵",
-            "badge": "Wide-Format Adventures",
-            "badge_color": "#d8ecf6",
-            "heading": "Thanksgiving at the Lake",
-            "dimensions": "8.5 x 8.5 in | Hardcover",
-            "description": "A timeless square book made for little hands and treasured memories.",
-            "button_label": "Explore This Book",
-            "link": ""
-          }
-        },
-        "format_JDrjG3": {
-          "type": "format",
-          "settings": {
-            "badge_icon": "★",
-            "badge": "Classic Portrait",
-            "badge_color": "#d8ecf6",
-            "heading": "Christmas at the Lake",
-            "dimensions": "8.5 x 11 in | Hardcover",
-            "description": "A timeless square book made for little hands and treasured memories.",
-            "button_label": "Explore This Book",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "format_gHedEG",
-        "format_tT38L7",
-        "format_JDrjG3"
-      ],
-      "name": "Choose your storybook",
-      "settings": {
-        "heading": "Ready-Made Adventures",
-        "subheading": "A personalized story without starting from scratch.",
-        "text": "Choose one of our ready-made lake adventures, then make it theirs by personalizing the child's name, appearance, destination, family names and a special dedication.",
         "background_color": "#f4fbff"
       }
     },
@@ -399,7 +343,6 @@
   "order": [
     "hero_jVaWmY",
     "storybook_formats_home",
-    "storybook_formats_m9hk88",
     "how_it_works_home",
     "personalize_story_home",
     "testimonials_faq_home"
