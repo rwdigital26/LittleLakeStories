@@ -293,7 +293,7 @@
       ],
       "settings": {
         "heading": "How It Works",
-        "subheading": "From our lake to your little one's imagination — in three simple steps.",
+        "subheading": "From our lake to your little one's imagination — in six simple steps.",
         "background_color": "#ffffff",
         "image_1": "shopify://shop_images/Choose_Your_Book.png",
         "title_1": "Choose Your Book",
@@ -401,8 +401,8 @@
   },
   "order": [
     "hero_jVaWmY",
-    "storybook_formats_m9hk88",
     "storybook_formats_home",
+    "storybook_formats_m9hk88",
     "how_it_works_home",
     "personalize_story_home",
     "testimonials_faq_home"
