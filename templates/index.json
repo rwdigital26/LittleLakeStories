@@ -364,7 +364,7 @@
         "companions_label": "Companions",
         "companions_value": "Grandma & Grandpa",
         "button_label": "Let's Get Started",
-        "button_link": "",
+        "button_link": "shopify://collections/100-customizable-storybooks",
         "placeholder_book_title": "Emma's Lake Geneva Adventure",
         "placeholder_note": "Every child has a story waiting on the lake.",
         "background_color": "#eaf8fb"
