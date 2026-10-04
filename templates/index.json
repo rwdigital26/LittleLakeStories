@@ -43,7 +43,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Create Your Story →",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/100-customizable-storybooks",
             "open_in_new_tab": false,
             "style_class": "button-custom",
             "custom_button_background": "#2d86b6",
@@ -62,7 +62,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Shop Best Sellers",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/ready-made-adventures",
             "open_in_new_tab": false,
             "style_class": "button-secondary",
             "custom_button_background": "{{ settings.color_palette.foreground }}",
@@ -112,6 +112,64 @@
         "reflection_opacity": 75,
         "padding-block-start": 100,
         "padding-block-end": 72
+      }
+    },
+    "storybook_formats_home": {
+      "type": "storybook-formats",
+      "blocks": {
+        "format_1": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/Olivia_sSummerAdventuresattheLake.png",
+            "badge_icon": "♥",
+            "badge": "Our Signature Format",
+            "badge_color": "#d8ecf6",
+            "heading": "The Classic Storybook",
+            "dimensions": "8.5 x 8.5 in | Hardcover",
+            "description": "A timeless square book made for little hands and treasured memories.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/the-classic-storybook"
+          }
+        },
+        "format_2": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/AdventureSTorybook-Max.png",
+            "badge_icon": "⛵",
+            "badge": "Wide-Format Adventures",
+            "badge_color": "#d8ecf6",
+            "heading": "The Adventure Storybook",
+            "dimensions": "11 x 8.5 in | Hardcover",
+            "description": "A wide canvas for boats, beaches, and unforgettable family adventures.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/the-adventure-storybook"
+          }
+        },
+        "format_3": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/Jessie_s_Wonder_Storybook.png",
+            "badge_icon": "★",
+            "badge": "Classic Portrait",
+            "badge_color": "#d8ecf6",
+            "heading": "The Wonder Storybook",
+            "dimensions": "8.5 x 11 in | Hardcover",
+            "description": "An elegant keepsake filled with favorite faces and special moments.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/the-wonder-storybook"
+          }
+        }
+      },
+      "block_order": [
+        "format_1",
+        "format_2",
+        "format_3"
+      ],
+      "settings": {
+        "heading": "Custom Collection",
+        "subheading": "Unqiue storybook. One story that's entirely theirs.",
+        "text": "Every book is written from scratch, illustrated with your memories, and made just for you.",
+        "background_color": "#f4fbff"
       }
     },
     "storybook_formats_m9hk88": {
@@ -170,64 +228,6 @@
         "heading": "Ready-Made Adventures",
         "subheading": "A personalized story without starting from scratch.",
         "text": "Choose one of our ready-made lake adventures, then make it theirs by personalizing the child's name, appearance, destination, family names and a special dedication.",
-        "background_color": "#f4fbff"
-      }
-    },
-    "storybook_formats_home": {
-      "type": "storybook-formats",
-      "blocks": {
-        "format_1": {
-          "type": "format",
-          "settings": {
-            "image": "shopify://shop_images/Olivia_sSummerAdventuresattheLake.png",
-            "badge_icon": "♥",
-            "badge": "Our Signature Format",
-            "badge_color": "#d8ecf6",
-            "heading": "The Classic Storybook",
-            "dimensions": "8.5 x 8.5 in | Hardcover",
-            "description": "A timeless square book made for little hands and treasured memories.",
-            "button_label": "Explore This Book",
-            "link": "shopify://products/the-classic-storybook"
-          }
-        },
-        "format_2": {
-          "type": "format",
-          "settings": {
-            "image": "shopify://shop_images/AdventureSTorybook-Max.png",
-            "badge_icon": "⛵",
-            "badge": "Wide-Format Adventures",
-            "badge_color": "#d8ecf6",
-            "heading": "The Adventure Storybook",
-            "dimensions": "11 x 8.5 in | Hardcover",
-            "description": "A wide canvas for boats, beaches, and unforgettable family adventures.",
-            "button_label": "Explore This Book",
-            "link": "shopify://products/the-adventure-storybook"
-          }
-        },
-        "format_3": {
-          "type": "format",
-          "settings": {
-            "image": "shopify://shop_images/Jessie_s_Wonder_Storybook.png",
-            "badge_icon": "★",
-            "badge": "Classic Portrait",
-            "badge_color": "#d8ecf6",
-            "heading": "The Wonder Storybook",
-            "dimensions": "8.5 x 11 in | Hardcover",
-            "description": "An elegant keepsake filled with favorite faces and special moments.",
-            "button_label": "Explore This Book",
-            "link": "shopify://products/the-wonder-storybook"
-          }
-        }
-      },
-      "block_order": [
-        "format_1",
-        "format_2",
-        "format_3"
-      ],
-      "settings": {
-        "heading": "Custom Collection",
-        "subheading": "Unqiue storybook. One story that's entirely theirs.",
-        "text": "Every book is written from scratch, illustrated with your memories, and made just for you.",
         "background_color": "#f4fbff"
       }
     },
