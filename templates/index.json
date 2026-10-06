@@ -62,7 +62,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Shop Best Sellers",
-            "link": "shopify://collections/ready-made-adventures",
+            "link": "shopify://collections/personalized-storybooks",
             "open_in_new_tab": false,
             "style_class": "button-secondary",
             "custom_button_background": "{{ settings.color_palette.foreground }}",
