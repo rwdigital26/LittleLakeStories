@@ -178,24 +178,6 @@
               },
               "blocks": {}
             },
-            "button_preview_n3wv7q": {
-              "type": "button",
-              "settings": {
-                "label": "Preview Full Book",
-                "link": "",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
             "price_tVjtKg": {
               "type": "price",
               "settings": {
@@ -221,6 +203,7 @@
             "group_guarantees_x8m2df": {
               "type": "group",
               "settings": {
+                "product_tag_visibility": "custom",
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -624,6 +607,11 @@
               },
               "blocks": {}
             },
+            "character_personalizations": {
+              "type": "product-personalizations",
+              "settings": {},
+              "blocks": {}
+            },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "settings": {
@@ -708,6 +696,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Shipping Details",
+                    "product_tag_visibility": "custom",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -716,7 +705,7 @@
                     "text_shipping": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Every book is printed and shipped from the USA. Standard orders arrive within 7–10 business days <span style=\"text-decoration:underline\"><em>after</em></span> your book is approved and sent to print.</p>",
+                        "text": "<p>Every book is printed and shipped from the USA. Standard orders arrive within 7–10 business days <span style=\"text-decoration:underline\"><em><strong>after</strong></em></span><strong> your book is approved and sent to print.</strong></p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -743,10 +732,51 @@
                     "text_shipping"
                   ]
                 },
+                "accordion_row_shipping_standard": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Shipping Details",
+                    "product_tag_visibility": "non-custom",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_shipping_standard": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<ul><li>Orders ship within 7–10 business days.</li><li>Orders ship from the USA.</li><li>Flat-rate trackable shipping starts at $7.99.</li></ul>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_shipping_standard"
+                  ]
+                },
                 "accordion_row_size": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Size & Dimensions",
+                    "heading": "Our Little Likeness Promise.",
+                    "product_tag_visibility": "custom",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -755,7 +785,7 @@
                     "text_size": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Hardcover, 8 x 8 in, 24 full-color pages.</p>",
+                        "text": "<p>Your little one should look like themselves! You'll have the chance to review and approve their illustrated likeness before your book goes to print, so every detail feels just right.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -791,10 +821,11 @@
                     "width": 20
                   },
                   "blocks": {
-                    "text_guarantee": {
+                    "text_mPpb8P": {
                       "type": "text",
+                      "name": "t:names.text",
                       "settings": {
-                        "text": "<p>We are so confident you will love our Little Lake Stories books that we guarantee it!</p><ul><li>Your loved one will love it or we will replace or refund</li><li>Perfect gift for 0–7 year olds*</li><li>Surprise & Delight Guarantee or we will replace or refund</li><li>Little Lake Stories books make amazing keepsake gifts</li></ul>",
+                        "text": "<p>We are so confident you will love our Little Lake Stories books that we guarantee it!</p><ul><li>Your loved one will love it or we will replace or refund</li><li>Perfect gift for 0–7 year olds*</li><li>Little Lake Stories books make amazing keepsake gifts</li></ul>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -818,12 +849,13 @@
                     }
                   },
                   "block_order": [
-                    "text_guarantee"
+                    "text_mPpb8P"
                   ]
                 }
               },
               "block_order": [
                 "accordion_row_shipping",
+                "accordion_row_shipping_standard",
                 "accordion_row_size",
                 "accordion_row_guarantee"
               ]
@@ -832,11 +864,11 @@
           "block_order": [
             "group_icgrde",
             "text_aEtTtq",
-            "button_preview_n3wv7q",
             "price_tVjtKg",
             "group_guarantees_x8m2df",
             "divider_VJhene",
             "variant_picker_R3rGDr",
+            "character_personalizations",
             "buy_buttons_eYQEYi",
             "accordion_details_p6yz3k"
           ]
@@ -848,7 +880,7 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
-        "enable_sticky_add_to_cart": true,
+        "enable_sticky_add_to_cart": false,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0

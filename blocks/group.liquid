@@ -1,16 +1,31 @@
 
 
-{%- capture children %}
-  {% content_for 'blocks' %}
-{% endcapture %}
+{% liquid
+  assign show_group = true
 
-{% render 'group',
-  children: children,
-  settings: block.settings,
-  shopify_attributes: block.shopify_attributes,
-  background_color: block.settings.background_color,
-  block_id: block.id
+  if block.settings.product_tag_visibility == 'custom'
+    assign show_group = false
+    if closest.product.tags contains 'Custom'
+      assign show_group = true
+    endif
+  elsif block.settings.product_tag_visibility == 'non-custom' and closest.product.tags contains 'Custom'
+    assign show_group = false
+  endif
 %}
+
+{% if show_group %}
+  {%- capture children %}
+    {% content_for 'blocks' %}
+  {% endcapture %}
+
+  {% render 'group',
+    children: children,
+    settings: block.settings,
+    shopify_attributes: block.shopify_attributes,
+    background_color: block.settings.background_color,
+    block_id: block.id
+  %}
+{% endif %}
 
 {% schema %}
 {
@@ -28,6 +43,26 @@
     }
   ],
   "settings": [
+    {
+      "type": "select",
+      "id": "product_tag_visibility",
+      "label": "Product tag visibility",
+      "options": [
+        {
+          "value": "all",
+          "label": "All products"
+        },
+        {
+          "value": "custom",
+          "label": "Products tagged Custom"
+        },
+        {
+          "value": "non-custom",
+          "label": "Products without the Custom tag"
+        }
+      ],
+      "default": "all"
+    },
     {
       "type": "header",
       "content": "t:content.layout"

@@ -43,7 +43,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Create Your Story →",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/100-customizable-storybooks",
             "open_in_new_tab": false,
             "style_class": "button-custom",
             "custom_button_background": "#2d86b6",
@@ -62,7 +62,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Shop Best Sellers",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/ready-made-adventures",
             "open_in_new_tab": false,
             "style_class": "button-secondary",
             "custom_button_background": "{{ settings.color_palette.foreground }}",
@@ -120,7 +120,7 @@
         "format_1": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/The_Classic_Storybook2.png",
+            "image": "shopify://shop_images/Olivia_sSummerAdventuresattheLake.png",
             "badge_icon": "♥",
             "badge": "Our Signature Format",
             "badge_color": "#d8ecf6",
@@ -134,7 +134,7 @@
         "format_2": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/The_Adventure_Storybook2.png",
+            "image": "shopify://shop_images/AdventureSTorybook-Max.png",
             "badge_icon": "⛵",
             "badge": "Wide-Format Adventures",
             "badge_color": "#d8ecf6",
@@ -148,7 +148,7 @@
         "format_3": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/The_Wonder_Storybook1_50a5d3f4-dcc5-459f-83d4-a1b7f4d56990.png",
+            "image": "shopify://shop_images/Jessie_s_Wonder_Storybook.png",
             "badge_icon": "★",
             "badge": "Classic Portrait",
             "badge_color": "#d8ecf6",
@@ -166,9 +166,68 @@
         "format_3"
       ],
       "settings": {
-        "heading": "Choose Your Storybook",
-        "subheading": "Three beautiful formats. One story that's entirely theirs.",
+        "heading": "Custom Collection",
+        "subheading": "Unqiue storybook. One story that's entirely theirs.",
         "text": "Every book is written from scratch, illustrated with your memories, and made just for you.",
+        "background_color": "#f4fbff"
+      }
+    },
+    "storybook_formats_m9hk88": {
+      "type": "storybook-formats",
+      "blocks": {
+        "format_gHedEG": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/Oliver_s_Halloween_Adventure.png",
+            "badge_icon": "",
+            "badge": "",
+            "badge_color": "#d8ecf6",
+            "heading": "Halloween Personalized Book",
+            "dimensions": "8.5 x 8.5 in | Hardcover",
+            "description": "A timeless square book made for little hands and treasured memories.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/halloween-personalized-storybook"
+          }
+        },
+        "format_tT38L7": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/Little_Lake_Stories_Thanksgiving_Standardized_1536.png",
+            "badge_icon": "",
+            "badge": "",
+            "badge_color": "#d8ecf6",
+            "heading": "Thankful for You Personalized Book",
+            "dimensions": "8.5 x 8.5 in | Hardcover",
+            "description": "A timeless square book made for little hands and treasured memories.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/halloween-personalized-storybook-copy"
+          }
+        },
+        "format_JDrjG3": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/Jacob_the_Elf__Winter_Sleigh_Adventure.png",
+            "badge_icon": "",
+            "badge": "",
+            "badge_color": "#d8ecf6",
+            "heading": "Elf Adventures Personalized Book",
+            "dimensions": "8.5 x 8.5 in | Hardcover",
+            "description": "A timeless square book made for little hands and treasured memories.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/elf-adventures-personalized-book"
+          }
+        }
+      },
+      "block_order": [
+        "format_gHedEG",
+        "format_tT38L7",
+        "format_JDrjG3"
+      ],
+      "name": "Choose your storybook",
+      "settings": {
+        "heading": "Ready-Made Adventures",
+        "subheading": "A personalized story without starting from scratch.",
+        "text": "Choose one of our ready-made lake adventures, then make it theirs by personalizing the child's name, appearance, destination, family names and a special dedication.",
         "background_color": "#f4fbff"
       }
     },
@@ -180,7 +239,7 @@
           "settings": {
             "image": "shopify://shop_images/Choose_Your_Book.png",
             "heading": "Choose Your Book",
-            "description": "Browse our lake collections and select the book that’s right for your family. Pick your lake, format, and quantity, then place your order through our secure checkout."
+            "description": "Select the perfect format for your family's story. Choose from our Classic Square, Adventure Landscape, or Wonder Portrait hardcover books."
           }
         },
         "step_2": {
@@ -202,7 +261,7 @@
         "step_4": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/We_Create_Their_Book.png",
+            "image": "shopify://shop_images/Watercolor_Lake_Storybook_Workspace.png",
             "heading": "We Create Their Book",
             "description": "Our team writes an original story from scratch and creates custom illustrations inspired by your memories, photos, and the details you share."
           }
@@ -234,7 +293,7 @@
       ],
       "settings": {
         "heading": "How It Works",
-        "subheading": "From our lake to your little one's imagination — in three simple steps.",
+        "subheading": "From our lake to your little one's imagination — in six simple steps.",
         "background_color": "#ffffff",
         "image_1": "shopify://shop_images/Choose_Your_Book.png",
         "title_1": "Choose Your Book",
@@ -305,7 +364,7 @@
         "companions_label": "Companions",
         "companions_value": "Grandma & Grandpa",
         "button_label": "Let's Get Started",
-        "button_link": "",
+        "button_link": "shopify://collections/100-customizable-storybooks",
         "placeholder_book_title": "Emma's Lake Geneva Adventure",
         "placeholder_note": "Every child has a story waiting on the lake.",
         "background_color": "#eaf8fb"
@@ -343,6 +402,7 @@
   "order": [
     "hero_jVaWmY",
     "storybook_formats_home",
+    "storybook_formats_m9hk88",
     "how_it_works_home",
     "personalize_story_home",
     "testimonials_faq_home"

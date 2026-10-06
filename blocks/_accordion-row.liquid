@@ -1,6 +1,19 @@
 
-{% assign block_settings = block.settings %}
+{% liquid
+  assign block_settings = block.settings
+  assign show_accordion_row = true
 
+  if block_settings.product_tag_visibility == 'custom'
+    assign show_accordion_row = false
+    if closest.product.tags contains 'Custom'
+      assign show_accordion_row = true
+    endif
+  elsif block_settings.product_tag_visibility == 'non-custom' and closest.product.tags contains 'Custom'
+    assign show_accordion_row = false
+  endif
+%}
+
+{% if show_accordion_row %}
 {% capture accordion_row_children %}
   <details
     class="details"
@@ -36,6 +49,7 @@
   open_by_default_on_desktop: block_settings.open_by_default,
   open_by_default_on_mobile: block_settings.open_by_default
 %}
+{% endif %}
 
 {% schema %}
 {
@@ -61,6 +75,26 @@
       "id": "open_by_default",
       "label": "t:settings.open_row_by_default",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "product_tag_visibility",
+      "label": "Product tag visibility",
+      "options": [
+        {
+          "value": "all",
+          "label": "All products"
+        },
+        {
+          "value": "custom",
+          "label": "Products tagged Custom"
+        },
+        {
+          "value": "non-custom",
+          "label": "Products without the Custom tag"
+        }
+      ],
+      "default": "all"
     },
     {
       "type": "header",

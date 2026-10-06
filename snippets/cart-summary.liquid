@@ -41,6 +41,84 @@
     {%- endif -%}
   </div>
 
+  {% if request.page_type == 'cart' %}
+    {% liquid
+      assign skip_queue_product = all_products['skip-the-queue']
+      assign shipping_protection_product = all_products['shipping-protection']
+      assign skip_queue_variant = skip_queue_product.selected_or_first_available_variant
+      assign shipping_protection_variant = shipping_protection_product.selected_or_first_available_variant
+      assign skip_queue_line = blank
+      assign shipping_protection_line = blank
+
+      for item in cart.items
+        if item.product.handle == 'skip-the-queue'
+          assign skip_queue_line = item
+        elsif item.product.handle == 'shipping-protection'
+          assign shipping_protection_line = item
+        endif
+      endfor
+    %}
+
+    {% if skip_queue_variant != blank or shipping_protection_variant != blank %}
+      <script src="{{ 'cart-upsells.js' | asset_url }}" type="module" fetchpriority="low"></script>
+      <cart-upsells class="cart-upsells">
+        <h2 class="cart-upsells__heading">Add a little extra peace of mind</h2>
+        <div class="cart-upsells__options">
+          {% if skip_queue_variant != blank and skip_queue_product.available %}
+            <label class="cart-upsells__option">
+              <input
+                type="checkbox"
+                data-cart-upsell
+                data-variant-id="{{ skip_queue_variant.id }}"
+                {% if skip_queue_line != blank %}
+                  checked
+                  data-line-key="{{ skip_queue_line.key | escape }}"
+                {% endif %}
+              >
+              <img
+                src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/Skip_the_Line.png?v=1791317796&width=128"
+                alt=""
+                width="56"
+                height="56"
+                loading="lazy"
+              >
+              <span class="cart-upsells__details">
+                <span class="cart-upsells__name">Skip the Queue</span>
+                <span class="cart-upsells__price">{{ skip_queue_variant.price | money }} per order</span>
+              </span>
+            </label>
+          {% endif %}
+
+          {% if shipping_protection_variant != blank and shipping_protection_product.available %}
+            <label class="cart-upsells__option">
+              <input
+                type="checkbox"
+                data-cart-upsell
+                data-variant-id="{{ shipping_protection_variant.id }}"
+                {% if shipping_protection_line != blank %}
+                  checked
+                  data-line-key="{{ shipping_protection_line.key | escape }}"
+                {% endif %}
+              >
+              <img
+                src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/Shipping_Protection.png?v=1791317796&width=128"
+                alt=""
+                width="56"
+                height="56"
+                loading="lazy"
+              >
+              <span class="cart-upsells__details">
+                <span class="cart-upsells__name">Shipping Protection</span>
+                <span class="cart-upsells__price">{{ shipping_protection_variant.price | money }} per order</span>
+              </span>
+            </label>
+          {% endif %}
+        </div>
+        <p class="cart-upsells__error" role="alert" data-cart-upsell-error hidden></p>
+      </cart-upsells>
+    {% endif %}
+  {% endif %}
+
   {% if settings.show_cart_note or settings.show_add_discount_code %}
     <div class="cart-actions">
       {% if settings.show_cart_note %}
@@ -286,6 +364,89 @@
 </div>
 
 {% stylesheet %}
+  .cart-upsells {
+    display: grid;
+    gap: var(--padding-sm);
+    margin-block: var(--padding-lg);
+    padding-block: var(--padding-lg);
+    border-block: 1px solid rgb(var(--color-foreground-rgb) / 14%);
+  }
+
+  .cart-upsells__heading {
+    margin: 0;
+    font-size: var(--font-size--lg);
+  }
+
+  .cart-upsells__options {
+    display: grid;
+    gap: var(--padding-xs);
+  }
+
+  .cart-upsells__option {
+    display: grid;
+    grid-template-columns: auto 56px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--padding-sm);
+    padding: var(--padding-sm);
+    border: 1px solid rgb(var(--color-foreground-rgb) / 18%);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .cart-upsells__option input {
+    width: 18px;
+    height: 18px;
+    accent-color: #0b5e97;
+  }
+
+  .cart-upsells__option img {
+    display: block;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+  }
+
+  .cart-upsells__details {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .cart-upsells__name {
+    font-weight: 600;
+  }
+
+  .cart-upsells__price {
+    color: rgb(var(--color-foreground-rgb) / 70%);
+    font-size: var(--font-size--sm);
+  }
+
+  .cart-upsells__error {
+    margin: 0;
+    color: #b4233a;
+    font-size: var(--font-size--sm);
+  }
+
+  .cart-upsells__error[hidden] {
+    display: none;
+  }
+
+  @media screen and (max-width: 420px) {
+    .cart-upsells__option {
+      grid-template-columns: auto 44px minmax(0, 1fr);
+      gap: var(--padding-xs);
+    }
+
+    .cart-upsells__option img {
+      width: 44px;
+      height: 44px;
+    }
+
+    .cart-upsells__price {
+      grid-column: 3;
+    }
+  }
+
   .cart-actions {
     display: flex;
     flex-direction: column;
