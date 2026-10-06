@@ -46,11 +46,22 @@
     <div
       class="collection-wrapper grid gap-style{% if section.settings.product_grid_width == 'full-width' %} collection-wrapper--grid-full-width{% endif %}"
     >
+      {% assign displayed_products_count = collection.products_count %}
+      {% if collection.handle == 'all' %}
+        {% assign hidden_upsell_count = 0 %}
+        {% for product in collection.products %}
+          {% if product.tags contains 'Cart Upsell' or product.tags contains 'Hard Cover Upgrade' %}
+            {% assign hidden_upsell_count = hidden_upsell_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        {% assign displayed_products_count = displayed_products_count | minus: hidden_upsell_count %}
+      {% endif %}
+
       {% content_for 'block',
         type: 'filters',
         id: 'filters',
         results: collection,
-        results_size: collection.products_count
+        results_size: displayed_products_count
       %}
 
       {% assign products_per_page = 24 %}
@@ -62,20 +73,30 @@
       {% paginate collection.products by products_per_page %}
         {% capture children %}
           {% for product in collection.products %}
-            <li
-              id="{{ section.id }}-{{ product.id }}"
-              class="product-grid__item product-grid__item--{{ forloop.index0 }}"
-              data-page="{{ paginate.current_page }}"
-              data-product-id="{{ product.id }}"
-              ref="cards[]"
-            >
-              {% content_for 'block',
-                type: '_product-card',
-                id: 'product-card',
-                closest.product: product,
-                product_view_context: 'collection'
-              %}
-            </li>
+            {% liquid
+              assign show_collection_product = true
+              if collection.handle == 'all'
+                if product.tags contains 'Cart Upsell' or product.tags contains 'Hard Cover Upgrade'
+                  assign show_collection_product = false
+                endif
+              endif
+            %}
+            {% if show_collection_product %}
+              <li
+                id="{{ section.id }}-{{ product.id }}"
+                class="product-grid__item product-grid__item--{{ forloop.index0 }}"
+                data-page="{{ paginate.current_page }}"
+                data-product-id="{{ product.id }}"
+                ref="cards[]"
+              >
+                {% content_for 'block',
+                  type: '_product-card',
+                  id: 'product-card',
+                  closest.product: product,
+                  product_view_context: 'collection'
+                %}
+              </li>
+            {% endif %}
           {% endfor %}
         {% endcapture %}
 
