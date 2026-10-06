@@ -7,6 +7,22 @@ import { resolveVariantId } from '@theme/variant-resolution';
 
 // Error message display duration - gives users time to read the message
 const ERROR_MESSAGE_DISPLAY_DURATION = 10000;
+    const personalization = [...document.querySelectorAll('[data-product-personalization]')].find(
+      (element) => element.dataset.productId === this.dataset.productId
+    );
+    const hardCoverUpgradeVariantId =
+      formData.get('properties[Cover Type]') === 'Hard Cover' ? personalization?.dataset.hardcoverAddonVariantId : null;
+    const cartLines = [
+      {
+        merchandiseId: /** @type {string} */ (formData.get('id')),
+        quantity: itemCount,
+      },
+    ];
+
+    if (hardCoverUpgradeVariantId) {
+      cartLines.push({ merchandiseId: hardCoverUpgradeVariantId, quantity: itemCount });
+    }
+
 
 // Button re-enable delay after error - prevents rapid repeat attempts
 const ERROR_BUTTON_REENABLE_DELAY = 1000;
@@ -442,25 +458,50 @@ class ProductFormComponent extends Component {
       new CartLinesUpdateEvent({
         action: 'add',
         context: 'product',
-        lines: [
-          {
-            merchandiseId: /** @type {string} */ (formData.get('id')),
-            quantity: itemCount,
-          },
-        ],
+        lines: cartLines,
         promise: deferredEventPromise.promise,
       })
     );
 
     const fetchCfg = fetchConfig('javascript', { body: formData });
-
-    fetch(Theme.routes.cart_add_url, {
+    const addToCartRequest = {
       ...fetchCfg,
       headers: {
         ...fetchCfg.headers,
         Accept: 'text/html',
       },
-    })
+    };
+
+    if (hardCoverUpgradeVariantId) {
+      const properties = {};
+      for (const [key, value] of formData.entries()) {
+        if (key.startsWith('properties[')) {
+          properties[key.slice('properties['.length, -1)] = value;
+        }
+      }
+
+      addToCartRequest.headers = {
+        ...fetchCfg.headers,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      };
+      addToCartRequest.body = JSON.stringify({
+        items: [
+          {
+            id: Number(formData.get('id')),
+            quantity: itemCount,
+            properties,
+          },
+          {
+            id: Number(hardCoverUpgradeVariantId),
+            quantity: itemCount,
+          },
+        ],
+        sections: cartItemComponentsSectionIds.join(','),
+      });
+    }
+
+    fetch(Theme.routes.cart_add_url, addToCartRequest)
       .then((response) => response.json())
       .then(async (response) => {
         if (response.status) {

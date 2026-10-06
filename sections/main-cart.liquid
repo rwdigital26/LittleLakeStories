@@ -47,6 +47,35 @@
         {%- content_for 'block', id: 'cart-page-title', type: '_cart-title' %}
       </div>
 
+      {% liquid
+        assign cart_item_count = cart.item_count
+        assign free_shipping_progress = cart_item_count | times: 50
+        if free_shipping_progress > 100
+          assign free_shipping_progress = 100
+        endif
+      %}
+      <div class="cart-shipping-progress" role="group" aria-label="Free shipping progress">
+        <p class="cart-shipping-progress__message">
+          {% if cart_item_count >= 2 %}
+            Free shipping unlocked!
+          {% elsif cart_item_count == 1 %}
+            Add one more item to unlock free shipping.
+          {% else %}
+            Add two items to unlock free shipping.
+          {% endif %}
+        </p>
+        <div
+          class="cart-shipping-progress__track"
+          role="progressbar"
+          aria-label="Items toward free shipping"
+          aria-valuemin="0"
+          aria-valuemax="2"
+          aria-valuenow="{{ cart_item_count | at_most: 2 }}"
+        >
+          <span style="width: {{ free_shipping_progress }}%;"></span>
+        </div>
+      </div>
+
       <div class="cart-page__items">
         {%- content_for 'block', id: 'cart-page-items', type: '_cart-products' %}
       </div>
@@ -100,6 +129,32 @@
 
   .cart-page__title + .cart-page__items {
     margin-block-start: var(--margin-lg);
+  }
+
+  .cart-shipping-progress {
+    display: grid;
+    gap: var(--padding-xs);
+    margin-block: var(--padding-md) var(--padding-lg);
+  }
+
+  .cart-shipping-progress__message {
+    margin: 0;
+    font-size: var(--font-size--sm);
+  }
+
+  .cart-shipping-progress__track {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgb(var(--color-foreground-rgb) / 12%);
+  }
+
+  .cart-shipping-progress__track span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: #0b5e97;
+    transition: width 250ms ease;
   }
 
   @media screen and (min-width: 750px) {
