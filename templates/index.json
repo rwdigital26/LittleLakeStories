@@ -62,7 +62,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Shop Best Sellers",
-            "link": "shopify://collections/ready-made-adventures",
+            "link": "shopify://collections/personalized-storybooks",
             "open_in_new_tab": false,
             "style_class": "button-secondary",
             "custom_button_background": "{{ settings.color_palette.foreground }}",
@@ -166,7 +166,7 @@
         "format_3"
       ],
       "settings": {
-        "heading": "Custom Collection",
+        "heading": "Fully Customizable Storybooks",
         "subheading": "Unqiue storybook. One story that's entirely theirs.",
         "text": "Every book is written from scratch, illustrated with your memories, and made just for you.",
         "background_color": "#f4fbff"
@@ -225,7 +225,7 @@
       ],
       "name": "Choose your storybook",
       "settings": {
-        "heading": "Ready-Made Adventures",
+        "heading": "Personalized Storybooks",
         "subheading": "A personalized story without starting from scratch.",
         "text": "Choose one of our ready-made lake adventures, then make it theirs by personalizing the child's name, appearance, destination, family names and a special dedication.",
         "background_color": "#f4fbff"

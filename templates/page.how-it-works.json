@@ -79,7 +79,7 @@
         "step_6"
       ],
       "settings": {
-        "heading": "Six Simple Steps to Their Story",
+        "heading": "6 Simple Steps to Their Fully Customizable Story",
         "subheading": "A meaningful, stress-free experience from start to finish.",
         "background_color": "#ffffff",
         "title_1": "Choose Your Lake",
@@ -135,7 +135,7 @@
       "settings": {
         "eyebrow": "A Few Things to Know",
         "heading": "Your Peace of Mind Matters",
-        "background_color": "#F4F1F1"
+        "background_color": "#f4f1f1"
       }
     },
     "how_it_works_cta": {
@@ -143,7 +143,8 @@
       "settings": {
         "heading": "Ready to Create Their Story?",
         "text": "Turn your family's lake memories into a beautiful personalized keepsake.",
-        "button_label": "Shop Our Books"
+        "button_label": "Shop Our Books",
+        "button_link": "shopify://collections/100-customizable-storybooks"
       }
     }
   },
