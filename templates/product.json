@@ -892,6 +892,9 @@
         "item_1": {
           "type": "item",
           "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/book.png",
+            "subscription_heading": "One Personalized Story Every Month",
+            "subscription_text": "A new adventure with your child’s name and custom details.",
             "icon": "gift",
             "heading": "A Gift Unlike Any Other",
             "text": "Made just for them, inspired by your memories."
@@ -900,6 +903,9 @@
         "item_2": {
           "type": "item",
           "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/heart.png",
+            "subscription_heading": "Stories Curated Just for Them",
+            "subscription_text": "Unique themes based on their age, interests, and special moments.",
             "icon": "heart",
             "heading": "Their Story, Their Magic",
             "text": "Watch their face light up as the story unfolds."
@@ -908,19 +914,51 @@
         "item_3": {
           "type": "item",
           "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/book.png",
+            "subscription_heading": "Create Their Profile Once",
+            "subscription_text": "Tell us about your child’s appearance, interests and favorite things.",
             "icon": "smiley",
             "heading": "A Keepsake for Years to Come",
             "text": "Today's adventures. Tomorrow's treasured memories."
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/cake.png",
+            "heading": "A Special Birthday Story",
+            "text": "During their birthday month, they’ll receive a one-of-a-kind celebration story."
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/shipping.png",
+            "heading": "Shipping Included",
+            "text": "Delivered to your door every month with no extra fees."
+          }
+        },
+        "item_6": {
+          "type": "item",
+          "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/gift.png",
+            "heading": "Hardcover Upgrade Available",
+            "text": "Choose a durable hardcover for stories that last a lifetime."
           }
         }
       },
       "block_order": [
         "item_1",
         "item_2",
-        "item_3"
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6"
       ],
       "settings": {
-        "background_color": "#eaf3fb"
+        "background_color": "#eaf3fb",
+        "heading": "What’s Included",
+        "subheading": "Everything you need for a year of meaningful adventures."
       }
     },
     "product_recommendations_qggXJq": {

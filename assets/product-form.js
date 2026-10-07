@@ -7,28 +7,13 @@ import { resolveVariantId } from '@theme/variant-resolution';
 
 // Error message display duration - gives users time to read the message
 const ERROR_MESSAGE_DISPLAY_DURATION = 10000;
-    const personalization = [...document.querySelectorAll('[data-product-personalization]')].find(
-      (element) => element.dataset.productId === this.dataset.productId
-    );
-    const hardCoverUpgradeVariantId =
-      formData.get('properties[Cover Type]') === 'Hard Cover' ? personalization?.dataset.hardcoverAddonVariantId : null;
-    const cartLines = [
-      {
-        merchandiseId: /** @type {string} */ (formData.get('id')),
-        quantity: itemCount,
-      },
-    ];
-
-    if (hardCoverUpgradeVariantId) {
-      cartLines.push({ merchandiseId: hardCoverUpgradeVariantId, quantity: itemCount });
-    }
-
 
 // Button re-enable delay after error - prevents rapid repeat attempts
 const ERROR_BUTTON_REENABLE_DELAY = 1000;
 
 // Success message display duration for screen readers
 const SUCCESS_MESSAGE_DISPLAY_DURATION = 5000;
+
 
 /**
  * @typedef {HTMLElement & {
@@ -452,6 +437,21 @@ class ProductFormComponent extends Component {
     });
 
     const itemCount = Number(formData.get('quantity')) || Number(this.dataset.quantityDefault);
+    const personalization = [...document.querySelectorAll('[data-product-personalization]')].find(
+      (element) => element.dataset.productId === this.dataset.productId
+    );
+    const hardCoverUpgradeVariantId =
+      formData.get('properties[Cover Type]') === 'Hard Cover' ? personalization?.dataset.hardcoverAddonVariantId : null;
+    const cartLines = [
+      {
+        merchandiseId: /** @type {string} */ (formData.get('id')),
+        quantity: itemCount,
+      },
+    ];
+
+    if (hardCoverUpgradeVariantId) {
+      cartLines.push({ merchandiseId: hardCoverUpgradeVariantId, quantity: itemCount });
+    }
     const deferredEventPromise = CartLinesUpdateEvent.createPromise();
 
     this.dispatchEvent(

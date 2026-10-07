@@ -22,7 +22,40 @@
     assign has_custom_variant_buttons = true
   endif
   assign fieldset_index = 0
+  assign membership_option = product_resource.options_by_name['Membership Length']
+  assign has_membership_options = false
+  if membership_option != blank and membership_option.values.size > 1
+    assign has_membership_options = true
+  endif
 %}
+
+{% if product_resource.tags contains 'Subscription' and has_membership_options == false %}
+  <div class="subscription-plan-setup-message" role="status">
+    <p>Membership options are being set up.</p>
+    <div class="subscription-plan-preview" role="list" aria-label="Membership plan prices">
+      <div class="subscription-plan-preview__card" role="listitem" aria-disabled="true">
+        <strong>3 Months</strong>
+        <span>3 personalized books</span>
+        <strong class="subscription-plan-preview__price">$59.85</strong>
+        <span>($19.95 each)</span>
+      </div>
+      <div class="subscription-plan-preview__card subscription-plan-preview__card--selected" role="listitem" aria-disabled="true">
+        <span class="subscription-plan-preview__badge">Most Popular</span>
+        <strong>6 Months</strong>
+        <span>6 personalized books</span>
+        <strong class="subscription-plan-preview__price">$113.70</strong>
+        <span>($18.95 each)</span>
+      </div>
+      <div class="subscription-plan-preview__card" role="listitem" aria-disabled="true">
+        <span class="subscription-plan-preview__badge subscription-plan-preview__badge--value">Best Value</span>
+        <strong>12 Months</strong>
+        <span>12 personalized books</span>
+        <strong class="subscription-plan-preview__price">$227.40</strong>
+        <span>($18.95 each)</span>
+      </div>
+    </div>
+  </div>
+{% endif %}
 
 {% unless product_resource.has_only_default_variant %}
   {% if has_custom_variant_buttons %}
@@ -88,23 +121,27 @@
           </div>
         {%- elsif variant_style == 'swatch' or block_settings.variant_style == 'buttons' -%}
           <fieldset
-            class="variant-option variant-option--buttons{% if variant_style == 'swatch' %} variant-option--swatches{% else %} variant-option--{{ settings.variant_button_width }}{% endif %}"
+            class="variant-option variant-option--buttons{% if variant_style == 'swatch' %} variant-option--swatches{% else %} variant-option--{{ settings.variant_button_width }}{% endif %}{% if product_resource.tags contains 'Subscription' and product_option.name == 'Membership Length' %} subscription-membership-option{% endif %}"
             data-fieldset-index="{{ fieldset_index }}"
             ref="fieldsets[]"
             {{ option_id_attribute }}
           >
-            <legend>
-              {{ product_option.name | escape -}}
-              {%- if variant_style == 'swatch' -%}
-                <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
-              {%- endif %}
-            </legend>
+            {% if product_resource.tags contains 'Subscription' and product_option.name == 'Membership Length' %}
+              <legend>Choose your membership length to get started.</legend>
+            {% else %}
+              <legend>
+                {{ product_option.name | escape -}}
+                {%- if variant_style == 'swatch' -%}
+                  <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
+                {%- endif %}
+              </legend>
+            {% endif %}
             {%- for product_option_value in product_option.values -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
               {% endif %}
               <label
-                class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}"
+                class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}{% if product_resource.tags contains 'Subscription' and product_option.name == 'Membership Length' %} subscription-membership-option__choice{% endif %}"
               >
                 <input
                   type="radio"
@@ -155,12 +192,32 @@
                       data-key="variant-option-pill"
                     ></span>
                   {% endif %}
-                  <span
-                    class="variant-option__button-label__text"
-                    data-key="variant-option-text"
-                  >
-                    {{- product_option_value | escape -}}
-                  </span>
+                  {% if product_resource.tags contains 'Subscription' and product_option.name == 'Membership Length' %}
+                    {% liquid
+                      assign membership_months = product_option_value | split: ' ' | first | plus: 0
+                      assign membership_variant = product_option_value.variant
+                    %}
+                    <span class="subscription-plan-card" data-key="variant-option-text">
+                      <strong class="subscription-plan-card__term">{{ product_option_value | escape }}</strong>
+                      {% if membership_months > 0 %}
+                        <span class="subscription-plan-card__count">{{ membership_months }} personalized books</span>
+                      {% endif %}
+                      {% if membership_variant != blank %}
+                        <strong class="subscription-plan-card__price">{{ membership_variant.price | money }}</strong>
+                        {% if membership_months > 0 %}
+                          {% assign membership_unit_price = membership_variant.price | divided_by: membership_months %}
+                          <span class="subscription-plan-card__unit">({{ membership_unit_price | money }} each)</span>
+                        {% endif %}
+                      {% endif %}
+                    </span>
+                  {% else %}
+                    <span
+                      class="variant-option__button-label__text"
+                      data-key="variant-option-text"
+                    >
+                      {{- product_option_value | escape -}}
+                    </span>
+                  {% endif %}
                 {% endif %}
                 {% render 'strikethrough-variant', product_option: product_option_value %}
               </label>

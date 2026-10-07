@@ -86,7 +86,7 @@
   class="section-background{% if settings.background_color != blank %} color-custom-{{ section_id }}{% endif %}"
 ></div>
 <div
-  class="product-information section section--{{ content_width }} spacing-style{% if settings.background_color != blank %} color-custom-{{ section_id }}{% endif %} relative"
+  class="product-information section section--{{ content_width }} spacing-style{% if settings.background_color != blank %} color-custom-{{ section_id }}{% endif %}{% if product.tags contains 'Subscription' %} product-information--subscription{% endif %} relative"
   style="{% render 'spacing-style', settings: settings %} --gap: {{ settings.gap }}px;"
   data-testid="product-information"
 >
@@ -221,7 +221,6 @@
             var(--full-page-grid-central-column-width) / 2
           )
           var(--full-page-grid-margin);
-
         &.product-information--media-left {
           .product-information__media {
             grid-column: 2 / 3;
@@ -322,5 +321,196 @@
   /* If the header is sticky, make product details content stick underneath the header */
   body:has(#header-group #header-component[data-sticky-state='active']) .product-details.sticky-content--desktop {
     --sticky-header-offset: var(--header-height);
+  }
+
+  .product-information--subscription product-price {
+    display: none;
+  }
+
+  .product-information--subscription .accordion {
+    display: none;
+  }
+
+  .product-information--subscription .subscription-product-badge {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #fff2e5;
+    color: #935a37;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .product-information--subscription .subscription-plan-setup-message {
+    margin: 8px 0 14px;
+    padding: 0;
+    border: 0;
+    color: #486b83;
+  }
+
+  .product-information--subscription .subscription-plan-setup-message > p {
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .product-information--subscription .subscription-plan-preview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .product-information--subscription .subscription-plan-preview__card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 112px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 14px 6px 8px;
+    border: 1px solid #e2e9ed;
+    border-radius: 8px;
+    background: #fff;
+    color: #486b83;
+    font-size: 10px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .product-information--subscription .subscription-plan-preview__card--selected {
+    border: 2px solid #e66f63;
+    background: #fff7f5;
+  }
+
+  .product-information--subscription .subscription-plan-preview__card > strong:first-of-type {
+    color: #143d63;
+    font-family: var(--font-heading--family);
+    font-size: 17px;
+  }
+
+  .product-information--subscription .subscription-plan-preview__card .subscription-plan-preview__price {
+    color: #143d63;
+    font-family: var(--font-heading--family);
+    font-size: 18px;
+  }
+
+  .product-information--subscription .subscription-plan-preview__badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    padding: 3px 7px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #ee786d;
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .product-information--subscription .subscription-plan-preview__badge--value {
+    background: #669a51;
+  }
+
+  .product-information--subscription .subscription-plan-setup-message[role='status'] {
+    font-size: 13px;
+  }
+
+  .product-information--subscription .subscription-plan-setup-message:has(.subscription-plan-preview) {
+    color: #486b83;
+  }
+
+  .product-information--subscription .subscription-plan-setup-message:has(.subscription-plan-preview) > p {
+    margin-bottom: 12px;
+    padding: 9px 12px;
+    border: 1px solid #e2e9ed;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .product-information--subscription .subscription-membership-option {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    border: 0;
+  }
+
+  .product-information--subscription .subscription-membership-option legend {
+    grid-column: 1 / -1;
+    margin-block-end: 4px;
+    color: #143d63;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .product-information--subscription .subscription-membership-option__choice {
+    display: flex;
+    min-width: 0;
+    min-height: 116px;
+    flex: initial;
+    justify-content: center;
+    padding: 12px 8px;
+    border: 1px solid #dfe6ea;
+    border-radius: 8px;
+    background: #fff;
+    color: #143d63;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .product-information--subscription .subscription-membership-option__choice::before,
+  .product-information--subscription .subscription-membership-option__choice::after,
+  .product-information--subscription .subscription-membership-option__choice .variant-option__button-label__pill {
+    display: none;
+  }
+
+  .product-information--subscription .subscription-membership-option__choice:has(:checked) {
+    border: 2px solid #e66f63;
+    background: #fff7f5;
+    color: #143d63;
+  }
+
+  .product-information--subscription .subscription-plan-card {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    gap: 4px;
+    line-height: 1.2;
+    pointer-events: none;
+  }
+
+  .product-information--subscription .subscription-plan-card__term {
+    font-family: var(--font-heading--family);
+    font-size: 18px;
+  }
+
+  .product-information--subscription .subscription-plan-card__count,
+  .product-information--subscription .subscription-plan-card__unit {
+    font-size: 11px;
+  }
+
+  .product-information--subscription .subscription-plan-card__price {
+    margin-top: 3px;
+    font-family: var(--font-heading--family);
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .product-information--subscription .product-information__grid:not(.product-information--media-none).product-information--media-left {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
   }
 {% endstylesheet %}
