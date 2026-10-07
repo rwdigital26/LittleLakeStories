@@ -1,0 +1,171 @@
+<section class="story-club-faq" aria-labelledby="StoryClubFaqHeading-{{ section.id }}">
+  <header class="story-club-faq__header">
+    <h2 id="StoryClubFaqHeading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+  </header>
+
+  <div class="story-club-faq__grid">
+    {% for block in section.blocks %}
+      <details class="story-club-faq__item" {{ block.shopify_attributes }}>
+        <summary>
+          <span>{{ block.settings.question | escape }}</span>
+          <span class="story-club-faq__toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="story-club-faq__answer">
+          <p>{{ block.settings.answer | escape }}</p>
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .story-club-faq {
+    padding: 64px 24px 72px;
+    background: #fff;
+    color: #143d63;
+  }
+
+  .story-club-faq__header {
+    width: min(100%, 1300px);
+    margin: 0 auto 28px;
+    text-align: center;
+  }
+
+  .story-club-faq__header h2 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 42px;
+    line-height: 1.08;
+  }
+
+  .story-club-faq__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(5, auto);
+    grid-auto-flow: column;
+    gap: 8px 28px;
+    width: min(100%, 1480px);
+    margin-inline: auto;
+  }
+
+  .story-club-faq__item {
+    min-width: 0;
+    align-self: start;
+    border: 1px solid #dfe6ea;
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  .story-club-faq__item summary {
+    display: flex;
+    min-height: 56px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-family: var(--font-heading--family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    list-style: none;
+  }
+
+  .story-club-faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .story-club-faq__toggle {
+    flex: 0 0 20px;
+    font-family: sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    transition: transform 160ms ease;
+  }
+
+  .story-club-faq__item[open] .story-club-faq__toggle {
+    transform: rotate(45deg);
+  }
+
+  .story-club-faq__answer {
+    padding: 0 20px 16px;
+    color: #475c6b;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .story-club-faq__answer p {
+    max-width: 70ch;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .story-club-faq {
+      padding: 48px 18px 56px;
+    }
+
+    .story-club-faq__header {
+      margin-bottom: 22px;
+    }
+
+    .story-club-faq__header h2 {
+      font-size: 32px;
+    }
+
+    .story-club-faq__grid {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: none;
+      grid-auto-flow: row;
+      gap: 8px;
+    }
+
+    .story-club-faq__item summary {
+      min-height: 54px;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+
+    .story-club-faq__answer {
+      padding-inline: 16px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Story Club FAQ",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" }
+  ],
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How does the Story Club work?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Complete your child’s profile once and we’ll curate a new personalized story for them each month." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story Club FAQ",
+      "blocks": [
+        { "type": "question", "settings": { "question": "How does the Story Club work?", "answer": "Complete your child’s profile once and we’ll curate a new personalized story for them each month, including a special story for their birthday month." } },
+        { "type": "question", "settings": { "question": "What is included in each book?", "answer": "Each book features your child’s name, appearance, and favorite details, brought to life in a seasonal adventure." } },
+        { "type": "question", "settings": { "question": "How does the introductory pricing work?", "answer": "The 3-month plan is $59.85 total, or $19.95 per book. Longer gift plans offer lower per-book pricing." } },
+        { "type": "question", "settings": { "question": "Can I give a gift membership?", "answer": "Yes. Choose a 3-, 6-, or 12-month gift plan above. Gift memberships are paid once and do not automatically renew." } },
+        { "type": "question", "settings": { "question": "Can I cancel anytime?", "answer": "Gift memberships are one-time purchases and do not automatically renew. For recurring membership cancellation details, please contact us." } },
+        { "type": "question", "settings": { "question": "What ages are the books best for?", "answer": "Story Club books are made for children and are a lovely fit for family storytime. Stories are curated around your child’s age and interests." } },
+        { "type": "question", "settings": { "question": "Can I have more than one child?", "answer": "Each membership is set up around a child’s profile. Contact us and we’ll help you choose the right option for siblings." } },
+        { "type": "question", "settings": { "question": "How is the birthday story handled?", "answer": "Add your child’s birthday to their profile and we’ll include a special personalized story during their birthday month." } },
+        { "type": "question", "settings": { "question": "When will my first book ship?", "answer": "Your first book enters curation after checkout and profile completion. We’ll email you when it ships." } },
+        { "type": "question", "settings": { "question": "Do you ship outside the US?", "answer": "Shipping is included on these Story Club plans. Contact us before ordering to check international availability." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
