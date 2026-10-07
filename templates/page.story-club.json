@@ -80,18 +80,20 @@
       "settings": {
         "heading": "Choose Their Storybook Style",
         "subheading": "Same personalized stories. Two beautiful options.",
+        "soft_cover_image": "shopify://shop_images/Emmas_lake_adventure.png",
         "soft_cover_title": "Softcover",
         "soft_cover_description": "Lightweight, durable and perfect for everyday storytime.",
         "soft_cover_price": "$19.95",
         "soft_cover_note": "Shipping included.",
         "soft_cover_button": "Choose Softcover",
-        "soft_cover_link": "",
+        "soft_cover_link": "shopify://products/little-lake-story-club",
+        "hard_cover_image": "shopify://shop_images/Lucas_and_the_secret_lake_trail.png",
         "hard_cover_title": "Keepsake Hardcover",
         "hard_cover_description": "A sturdy hardcover made for the stories they’ll want to keep.",
         "hard_cover_price": "$29.94",
         "hard_cover_note": "Includes $9.99 hardcover upgrade.",
         "hard_cover_button": "Choose Hardcover",
-        "hard_cover_link": "",
+        "hard_cover_link": "shopify://products/little-lake-story-club",
         "billing_period": "/ month"
       }
     },
@@ -172,7 +174,7 @@
             "per_book": "($19.95 each)",
             "badge": "",
             "button_label": "Give as a Gift",
-            "link": "shopify://collections/personalized-storybooks"
+            "link": "shopify://products/little-lake-story-club"
           }
         },
         "gift_6_months": {
@@ -184,7 +186,7 @@
             "per_book": "($18.95 each)",
             "badge": "Most Popular",
             "button_label": "Give as a Gift",
-            "link": "shopify://collections/personalized-storybooks"
+            "link": "shopify://products/little-lake-story-club"
           }
         },
         "gift_12_months": {
@@ -196,7 +198,7 @@
             "per_book": "($18.95 each)",
             "badge": "Best Value",
             "button_label": "Give as a Gift",
-            "link": "shopify://collections/personalized-storybooks"
+            "link": "shopify://products/little-lake-story-club"
           }
         }
       },
@@ -362,9 +364,9 @@
         "heading": "A Childhood Happens One Story at a Time.",
         "subheading": "Join the Little Lake Story Club and turn their everyday moments into a collection of adventures they’ll cherish forever.",
         "join_label": "Join the Story Club",
-        "join_link": "shopify://collections/personalized-storybooks",
+        "join_link": "shopify://products/little-lake-story-club",
         "gift_label": "Give a Gift Membership",
-        "gift_link": "#story-club-gifts"
+        "gift_link": "shopify://products/little-lake-story-club"
       }
     }
   },
