@@ -225,7 +225,6 @@
                           value="{{ age_group_option }}"
                           form="{{ product_form_id }}"
                           data-age-group
-                          required
                         >
                         <span>{{ age_group_option }}</span>
                       </label>
@@ -246,7 +245,6 @@
                           form="{{ product_form_id }}"
                           data-gender-option
                           disabled
-                          {% if forloop.first %}required{% endif %}
                         >
                         <span>{{ gender_option }}</span>
                       </label>
@@ -284,7 +282,7 @@
                   form="{{ product_form_id }}"
                   autocomplete="given-name"
                   maxlength="40"
-                  required
+                  {% unless is_subscription_book %}required{% endunless %}
                 >
               </div>
 

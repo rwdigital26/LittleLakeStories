@@ -31,7 +31,7 @@ function updateBabyGenderGroup(customizer, ageGroup) {
 	group.hidden = !showGender;
 	for (const option of group.querySelectorAll('[data-gender-option]')) {
 		option.disabled = !showGender;
-		option.required = showGender;
+		option.required = false;
 		if (!showGender) option.checked = false;
 	}
 }
@@ -172,6 +172,7 @@ function setStep(customizer, step) {
 }
 
 function initializeCustomizer(customizer) {
+	bindWizardNavigation(customizer);
 	if (customizer.dataset.personalizationInitialized === 'true') return;
 	customizer.dataset.personalizationInitialized = 'true';
 
@@ -199,21 +200,11 @@ function initializeCustomizer(customizer) {
 
 function validateCurrentStep(customizer, step) {
 	if (customizer.dataset.customFlow === 'true') {
-		if (step === 1) {
-			return customizer.querySelector('[data-custom-consent]')?.reportValidity() ?? false;
-		}
 		return true;
 	}
 
 	if (customizer.dataset.subscriptionFlow === 'true') {
-		if (step === 1) {
-			const ageGroup = customizer.querySelector('[data-age-group]:checked');
-			if (!ageGroup) return customizer.querySelector('[data-age-group]')?.reportValidity() ?? false;
-			if (ageGroup.value === 'Baby 0-1' && !customizer.querySelector('[data-gender-option]:checked')) {
-				return customizer.querySelector('[data-baby-gender-group] [data-gender-option]')?.reportValidity() ?? false;
-			}
-			return customizer.querySelector('[name="properties[Child\'s First Name]"]')?.reportValidity() ?? true;
-		}
+		if (step === 1) return true;
 
 		if (step === 2) {
 			return Boolean(customizer.querySelector('[name="properties[Hair Style]"]')?.value);
@@ -227,12 +218,7 @@ function validateCurrentStep(customizer, step) {
 		return true;
 	}
 
-	if (step === 1) {
-		const gender = customizer.querySelector('[data-gender-option]:checked');
-		const firstName = customizer.querySelector('[name="properties[Child\'s First Name]"]');
-		if (!gender) return customizer.querySelector('[data-gender-option]')?.reportValidity() ?? false;
-		return firstName?.reportValidity() ?? true;
-	}
+	if (step === 1) return true;
 
 	if (step === 2) {
 		return Boolean(customizer.querySelector('[name="properties[Hair Style]"]')?.value);
@@ -247,14 +233,6 @@ function getStepValidationMessage(customizer, step) {
 	}
 
 	if (customizer.dataset.subscriptionFlow === 'true') {
-		if (step === 1) {
-			const ageGroup = customizer.querySelector('[data-age-group]:checked');
-			if (!ageGroup) return 'Choose an age group to continue.';
-			if (ageGroup.value === 'Baby 0-1' && !customizer.querySelector('[data-gender-option]:checked')) {
-				return 'Choose Girl or Boy for the baby profile.';
-			}
-			return 'Enter your child’s first name to continue.';
-		}
 		if (step === 2) return 'Choose a hairstyle to continue.';
 		if (step === 3) return 'Complete the birthday details to continue.';
 	}
@@ -265,6 +243,12 @@ function getStepValidationMessage(customizer, step) {
 	}
 	if (step === 2) return 'Choose a hairstyle to continue.';
 	return 'Complete the required information to continue.';
+}
+
+function getInvalidRequiredField(customizer) {
+	return [...customizer.querySelectorAll('input[required], select[required], textarea[required]')].find(
+		field => !field.disabled && !field.checkValidity()
+	);
 }
 
 function showCartError(customizer, message) {
@@ -293,6 +277,20 @@ function submitPersonalization(customizer) {
 		showCartError(customizer);
 		return;
 	}
+
+	const invalidField = getInvalidRequiredField(customizer);
+	if (invalidField) {
+		const invalidStep = Number(invalidField.closest('[data-wizard-step]')?.dataset.wizardStep || 1);
+		setStep(customizer, invalidStep);
+		const stepError = customizer.querySelector('[data-step-error]');
+		if (stepError) {
+			stepError.textContent = getStepValidationMessage(customizer, invalidStep);
+			stepError.hidden = false;
+		}
+		invalidField.reportValidity();
+		return;
+	}
+
 	if (!productForm.reportValidity()) return;
 
 	if (error) {
@@ -333,6 +331,7 @@ function submitPersonalization(customizer) {
 
 function moveToNextStep(customizer) {
 	const currentStep = Number(customizer.dataset.currentStep || 1);
+	const stepCount = getStepCount(customizer);
 	if (!validateCurrentStep(customizer, currentStep)) {
 		const error = customizer.querySelector('[data-step-error]');
 		if (error) {
@@ -349,6 +348,26 @@ function moveToNextStep(customizer) {
 	}
 
 	setStep(customizer, currentStep + 1);
+}
+
+function bindWizardNavigation(customizer) {
+	if (customizer.dataset.wizardNavigationBound === 'true') return;
+	customizer.dataset.wizardNavigationBound = 'true';
+
+	const backButton = customizer.querySelector('[data-wizard-back]');
+	const nextButton = customizer.querySelector('[data-wizard-next]');
+
+	backButton?.addEventListener('click', (event) => {
+		event.preventDefault();
+		event.stopPropagation();
+		setStep(customizer, Number(customizer.dataset.currentStep || 1) - 1);
+	});
+
+	nextButton?.addEventListener('click', (event) => {
+		event.preventDefault();
+		event.stopPropagation();
+		moveToNextStep(customizer);
+	});
 }
 
 document.addEventListener('click', (event) => {
@@ -402,17 +421,6 @@ document.addEventListener('click', (event) => {
 	const hairChoice = target.closest('[data-hair-choice]');
 	if (hairChoice instanceof HTMLButtonElement) {
 		selectHairChoice(customizer, hairChoice);
-		return;
-	}
-
-	const backButton = target.closest('[data-wizard-back]');
-	if (backButton) {
-		setStep(customizer, Number(customizer.dataset.currentStep || 1) - 1);
-		return;
-	}
-
-	if (target.closest('[data-wizard-next]')) {
-		moveToNextStep(customizer);
 		return;
 	}
 
