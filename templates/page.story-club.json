@@ -11,12 +11,29 @@
   "sections": {
     "story_club_hero": {
       "type": "story-club-hero",
-      "settings": {}
+      "settings": {
+        "eyebrow": "A new chapter every month",
+        "heading": "Little Lake Story Club",
+        "subheading": "A new personalized story starring your child, delivered every month.",
+        "benefit_1": "Create their profile once",
+        "benefit_2": "Stories curated just for them",
+        "benefit_3": "A new adventure every month",
+        "benefit_4": "Special birthday story",
+        "benefit_5": "Shipping included"
+      }
     },
     "story_club_offer": {
       "type": "story-club-offer",
       "settings": {
+        "offer_label": "Introductory Story Club Offer",
+        "original_price": "$44.95",
+        "intro_price": "$19.95",
+        "billing_period": "/ month",
+        "membership_note": "Start with a 3-month membership.",
+        "shipping_note": "Shipping included.",
+        "join_label": "Join the Story Club",
         "join_link": "shopify://collections/personalized-storybooks",
+        "gift_label": "Give a Gift Membership",
         "gift_link": "shopify://collections/personalized-storybooks"
       }
     },
@@ -53,13 +70,31 @@
         "curate",
         "arrives"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "One simple enrollment. A year of adventure.",
+        "heading": "How the Little Lake Story Club Works"
+      }
     },
     "story_club_formats": {
       "type": "story-club-formats",
       "settings": {
-        "soft_cover_link": "",
-        "hard_cover_link": ""
+        "heading": "Choose Their Storybook Style",
+        "subheading": "Same personalized stories. Two beautiful options.",
+        "soft_cover_image": "shopify://shop_images/Emmas_lake_adventure.png",
+        "soft_cover_title": "Softcover",
+        "soft_cover_description": "Lightweight, durable and perfect for everyday storytime.",
+        "soft_cover_price": "$19.95",
+        "soft_cover_note": "Shipping included.",
+        "soft_cover_button": "Choose Softcover",
+        "soft_cover_link": "#",
+        "hard_cover_image": "shopify://shop_images/Lucas_and_the_secret_lake_trail.png",
+        "hard_cover_title": "Keepsake Hardcover",
+        "hard_cover_description": "A sturdy hardcover made for the stories they’ll want to keep.",
+        "hard_cover_price": "$29.94",
+        "hard_cover_note": "Includes $9.99 hardcover upgrade.",
+        "hard_cover_button": "Choose Hardcover",
+        "hard_cover_link": "#",
+        "billing_period": "/ month"
       }
     }
   },
