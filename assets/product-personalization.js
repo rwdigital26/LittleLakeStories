@@ -2,6 +2,14 @@ function getStepCount(customizer) {
 	return Number(customizer.dataset.wizardSteps) || 4;
 }
 
+function clearStepValidationError(customizer) {
+	const error = customizer.querySelector('[data-step-error]');
+	if (!error) return;
+
+	error.hidden = true;
+	error.textContent = '';
+}
+
 function getSelectedGender(customizer) {
 	if (customizer.dataset.subscriptionFlow === 'true') {
 		const ageGroup = customizer.querySelector('[data-age-group]:checked')?.value;
@@ -128,6 +136,7 @@ function setStep(customizer, step) {
 	const stepCount = getStepCount(customizer);
 	const currentStep = Math.min(Math.max(step, 1), stepCount);
 	customizer.dataset.currentStep = String(currentStep);
+	clearStepValidationError(customizer);
 
 	for (const stepElement of customizer.querySelectorAll('[data-wizard-step]')) {
 		stepElement.hidden = Number(stepElement.dataset.wizardStep) !== currentStep;
@@ -232,6 +241,32 @@ function validateCurrentStep(customizer, step) {
 	return true;
 }
 
+function getStepValidationMessage(customizer, step) {
+	if (customizer.dataset.customFlow === 'true' && step === 1) {
+		return 'Check the acknowledgement before continuing.';
+	}
+
+	if (customizer.dataset.subscriptionFlow === 'true') {
+		if (step === 1) {
+			const ageGroup = customizer.querySelector('[data-age-group]:checked');
+			if (!ageGroup) return 'Choose an age group to continue.';
+			if (ageGroup.value === 'Baby 0-1' && !customizer.querySelector('[data-gender-option]:checked')) {
+				return 'Choose Girl or Boy for the baby profile.';
+			}
+			return 'Enter your child’s first name to continue.';
+		}
+		if (step === 2) return 'Choose a hairstyle to continue.';
+		if (step === 3) return 'Complete the birthday details to continue.';
+	}
+
+	if (step === 1) {
+		if (!customizer.querySelector('[data-gender-option]:checked')) return 'Choose Girl or Boy to continue.';
+		return 'Enter the child’s first name to continue.';
+	}
+	if (step === 2) return 'Choose a hairstyle to continue.';
+	return 'Complete the required information to continue.';
+}
+
 function showCartError(customizer, message) {
 	const error = customizer.querySelector('[data-cover-error]');
 	if (!error) return;
@@ -298,7 +333,15 @@ function submitPersonalization(customizer) {
 
 function moveToNextStep(customizer) {
 	const currentStep = Number(customizer.dataset.currentStep || 1);
-	if (!validateCurrentStep(customizer, currentStep)) return;
+	if (!validateCurrentStep(customizer, currentStep)) {
+		const error = customizer.querySelector('[data-step-error]');
+		if (error) {
+			error.textContent = getStepValidationMessage(customizer, currentStep);
+			error.hidden = false;
+		}
+		return;
+	}
+	clearStepValidationError(customizer);
 
 	if (currentStep === stepCount) {
 		submitPersonalization(customizer);
@@ -401,6 +444,7 @@ document.addEventListener('change', (event) => {
 
 	const customizer = target.closest('[data-product-personalization]');
 	if (!customizer) return;
+	clearStepValidationError(customizer);
 
 	if (target.matches('[data-gender-option]')) {
 		setGenderPreview(customizer, target.value);
@@ -429,6 +473,7 @@ document.addEventListener('input', (event) => {
 
 	const customizer = target.closest('[data-product-personalization]');
 	if (!customizer) return;
+	clearStepValidationError(customizer);
 
 	if (target.matches('[data-personalization-range]')) {
 		if (target.matches('.product-personalization__range--style')) {

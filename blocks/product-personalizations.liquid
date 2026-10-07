@@ -513,6 +513,7 @@
             </section>
             {% endif %}
 
+            <p class="product-personalization__step-error" data-step-error role="alert" hidden></p>
             <div class="product-personalization__navigation">
               <button class="button-secondary" type="button" data-wizard-back hidden>Back</button>
               <button class="button" type="button" data-wizard-next>Next</button>
@@ -697,6 +698,17 @@
     margin-block: 0 var(--padding-md);
     color: rgb(var(--color-foreground-rgb) / 65%);
     font-size: var(--font-size--sm);
+  }
+
+  .product-personalization__step-error {
+    margin-block: var(--padding-sm) 0;
+    color: #b4233a;
+    font-size: var(--font-size--sm);
+    line-height: 1.4;
+  }
+
+  .product-personalization__step-error[hidden] {
+    display: none;
   }
 
   .product-personalization__step h3 {
