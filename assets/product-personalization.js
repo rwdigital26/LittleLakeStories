@@ -73,6 +73,10 @@ function updateHairChoices(customizer, gender) {
 	}
 
 	const availableChoices = getAvailableHairChoices(customizer);
+	availableChoices.forEach((choice, index) => {
+		const thumbnail = choice.querySelector('img');
+		if (thumbnail) thumbnail.loading = index < 4 ? 'eager' : 'lazy';
+	});
 	const selectedChoice = availableChoices.find((choice) => choice.getAttribute('aria-pressed') === 'true');
 
 	if (availableChoices.length > 0) {

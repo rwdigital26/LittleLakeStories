@@ -177,10 +177,10 @@
                       {% if hairstyle_source contains 'https://' %}
                         {% assign hairstyle_image = hairstyle_source %}
                       {% else %}
-                        {% assign hairstyle_image = hairstyle_source | append: '.png' | file_url %}
+                        {% assign hairstyle_image = 'https://cdn.shopify.com/s/files/1/0831/8376/3710/files/' | append: hairstyle_source | append: '.png' %}
                       {% endif %}
-                      {% assign hairstyle_thumbnail = hairstyle_image | append: '&width=256' %}
-                      {% assign hairstyle_preview = hairstyle_image | append: '&width=800' %}
+                      {% assign hairstyle_thumbnail = hairstyle_image %}
+                      {% assign hairstyle_preview = hairstyle_image %}
                       <button
                         class="product-personalization__style-option"
                         type="button"
@@ -1043,14 +1043,66 @@
 
     .product-personalization__cover-benefits {
       grid-template-columns: 1fr;
+      gap: var(--padding-sm);
+    }
+
+    .product-personalization__cover-benefits li {
+      align-items: flex-start;
+      line-height: 1.25;
     }
 
     .product-personalization__cover-actions {
       grid-template-columns: 1fr;
     }
 
+    .product-personalization__cover-button {
+      width: 100%;
+      white-space: normal;
+    }
+
+    .product-personalization__style-options {
+      display: flex;
+      grid-template-columns: none;
+      flex-wrap: nowrap;
+      gap: var(--padding-xs);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+
     .product-personalization__style-option {
-      flex-basis: calc((100% - var(--padding-xs) * 2) / 3);
+      flex: 0 0 72px;
+      width: 72px;
+      scroll-snap-align: center;
+    }
+
+    .product-personalization__style-option img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+    }
+
+    .product-personalization__style-option span {
+      min-height: 2.4em;
+      overflow-wrap: anywhere;
+      font-size: 0.68rem;
+    }
+
+    .product-personalization__navigation {
+      position: sticky;
+      bottom: 0;
+      z-index: 3;
+      margin-inline: calc(-1 * var(--padding-md));
+      margin-block-start: var(--padding-sm);
+      padding: var(--padding-sm) var(--padding-md) calc(var(--padding-sm) + env(safe-area-inset-bottom));
+      border-top: 1px solid rgb(var(--color-foreground-rgb) / 12%);
+      background: var(--color-background);
+    }
+
+    .product-personalization__navigation button {
+      flex: 1 1 0;
+      width: 100%;
+      min-width: 0;
     }
   }
 {% endstylesheet %}
