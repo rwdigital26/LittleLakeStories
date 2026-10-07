@@ -11,13 +11,30 @@
   "sections": {
     "story_club_hero": {
       "type": "story-club-hero",
-      "settings": {}
+      "settings": {
+        "eyebrow": "A new chapter every month",
+        "heading": "Little Lake Story Club",
+        "subheading": "A new personalized story starring your child, delivered every month.",
+        "benefit_1": "Create their profile once",
+        "benefit_2": "Stories curated just for them",
+        "benefit_3": "A new adventure every month",
+        "benefit_4": "Special birthday story",
+        "benefit_5": "Shipping included"
+      }
     },
     "story_club_offer": {
       "type": "story-club-offer",
       "settings": {
-        "join_link": "shopify://collections/personalized-storybooks",
-        "gift_link": "shopify://collections/personalized-storybooks"
+        "offer_label": "Introductory Story Club Offer",
+        "original_price": "$44.95",
+        "intro_price": "$19.95",
+        "billing_period": "/ month",
+        "membership_note": "Start with a 3-month membership.",
+        "shipping_note": "Shipping included.",
+        "join_label": "Join the Story Club",
+        "join_link": "shopify://products/little-lake-story-club",
+        "gift_label": "Give a Gift Membership",
+        "gift_link": "shopify://products/little-lake-story-club"
       }
     },
     "story_club_steps": {
@@ -53,13 +70,31 @@
         "curate",
         "arrives"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "One simple enrollment. A year of adventure.",
+        "heading": "How the Little Lake Story Club Works"
+      }
     },
     "story_club_formats": {
       "type": "story-club-formats",
       "settings": {
-        "soft_cover_link": "",
-        "hard_cover_link": ""
+        "heading": "Choose Their Storybook Style",
+        "subheading": "Same personalized stories. Two beautiful options.",
+        "soft_cover_image": "shopify://shop_images/Emmas_lake_adventure.png",
+        "soft_cover_title": "Softcover",
+        "soft_cover_description": "Lightweight, durable and perfect for everyday storytime.",
+        "soft_cover_price": "$19.95",
+        "soft_cover_note": "Shipping included.",
+        "soft_cover_button": "Choose Softcover",
+        "soft_cover_link": "shopify://products/little-lake-story-club",
+        "hard_cover_image": "shopify://shop_images/Lucas_and_the_secret_lake_trail.png",
+        "hard_cover_title": "Keepsake Hardcover",
+        "hard_cover_description": "A sturdy hardcover made for the stories they’ll want to keep.",
+        "hard_cover_price": "$29.94",
+        "hard_cover_note": "Includes $9.99 hardcover upgrade.",
+        "hard_cover_button": "Choose Hardcover",
+        "hard_cover_link": "shopify://products/little-lake-story-club",
+        "billing_period": "/ month"
       }
     },
     "story_club_monthly": {
@@ -122,7 +157,10 @@
         "month_5",
         "month_6"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "A New Adventure Every Month",
+        "subheading": "Each story is personalized with your child’s name, appearance and special details."
+      }
     },
     "story_club_gifts": {
       "type": "story-club-gifts",
@@ -134,8 +172,9 @@
             "book_count": "3 personalized books",
             "price": "$59.85",
             "per_book": "($19.95 each)",
+            "badge": "",
             "button_label": "Give as a Gift",
-            "link": "shopify://collections/personalized-storybooks"
+            "link": "shopify://products/little-lake-story-club"
           }
         },
         "gift_6_months": {
@@ -147,7 +186,7 @@
             "per_book": "($18.95 each)",
             "badge": "Most Popular",
             "button_label": "Give as a Gift",
-            "link": "shopify://collections/personalized-storybooks"
+            "link": "shopify://products/little-lake-story-club"
           }
         },
         "gift_12_months": {
@@ -159,7 +198,7 @@
             "per_book": "($18.95 each)",
             "badge": "Best Value",
             "button_label": "Give as a Gift",
-            "link": "shopify://collections/personalized-storybooks"
+            "link": "shopify://products/little-lake-story-club"
           }
         }
       },
@@ -168,7 +207,11 @@
         "gift_6_months",
         "gift_12_months"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "The Perfect Gift for Grandparents (and Parents Too!)",
+        "subheading": "Give a Story Club membership and share a new personalized adventure every month. A meaningful gift that keeps showing up all year long.",
+        "fine_print": "One-time payment. No automatic renewal. Shipping included."
+      }
     },
     "story_club_benefits": {
       "type": "story-club-benefits",
@@ -208,6 +251,7 @@
         "memorable": {
           "type": "benefit",
           "settings": {
+            "icon_url": "",
             "heading": "Meaningful & memorable",
             "description": "Stories that celebrate their childhood and the magic of lake life."
           }
@@ -220,7 +264,9 @@
         "shipping",
         "memorable"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "Why Families Love the Little Lake Story Club"
+      }
     },
     "story_club_faq": {
       "type": "story-club-faq",
@@ -308,13 +354,19 @@
         "first_shipment",
         "international_shipping"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      }
     },
     "story_club_closing_cta": {
       "type": "story-club-closing-cta",
       "settings": {
-        "join_link": "shopify://collections/personalized-storybooks",
-        "gift_link": "#story-club-gifts"
+        "heading": "A Childhood Happens One Story at a Time.",
+        "subheading": "Join the Little Lake Story Club and turn their everyday moments into a collection of adventures they’ll cherish forever.",
+        "join_label": "Join the Story Club",
+        "join_link": "shopify://products/little-lake-story-club",
+        "gift_label": "Give a Gift Membership",
+        "gift_link": "shopify://products/little-lake-story-club"
       }
     }
   },
