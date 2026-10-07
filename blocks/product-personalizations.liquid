@@ -2,9 +2,11 @@
   assign current_product = closest.product
   assign show_customizations = false
   assign is_custom_book = false
+  assign is_subscription_book = false
   assign has_subscription_variants = true
   if current_product != blank
     if current_product.tags contains 'Subscription'
+      assign is_subscription_book = true
       assign membership_option = current_product.options_by_name['Membership Length']
       if membership_option == blank
         assign has_subscription_variants = false
@@ -27,7 +29,38 @@
   assign boy_preview_image = 'Boy_Shoulder_Length.png' | file_url
 %}
 
-{% if show_customizations %}
+{% if show_customizations and is_subscription_book and has_subscription_variants == false %}
+  <div
+    class="product-personalization product-personalization--pending"
+    data-product-personalization
+    data-product-id="{{ current_product.id }}"
+  >
+    <button class="product-personalization__trigger button" type="button" disabled>
+      {% if current_product.tags contains 'Subscription' %}
+        Personalize Your Subscription
+      {% else %}
+        Create Their Custom Story
+      {% endif %}
+    </button>
+    <p class="product-personalization__pending-notice" role="status">A dedicated personalization experience for this product is coming soon.</p>
+    {% if current_product.tags contains 'Subscription' %}
+      <div class="subscription-product-benefits" aria-label="Membership benefits">
+        <span>
+          <img src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/shipping.png" alt="" width="24" height="24" loading="eager">
+          Free shipping included
+        </span>
+        <span>
+          <img src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/book.png" alt="" width="24" height="24" loading="eager">
+          One-of-a-kind stories
+        </span>
+        <span>
+          <img src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/gift.png" alt="" width="24" height="24" loading="eager">
+          A meaningful gift
+        </span>
+      </div>
+    {% endif %}
+  </div>
+{% elsif show_customizations %}
   <product-personalization-component
     class="product-personalization"
     id="{{ component_id }}"
@@ -35,6 +68,9 @@
     data-product-id="{{ current_product.id }}"
     data-product-form-id="{{ product_form_id }}"
     data-hardcover-addon-variant-id="67672769036542"
+    data-wizard-steps="{% if is_custom_book %}2{% else %}4{% endif %}"
+    data-custom-flow="{{ is_custom_book }}"
+    data-subscription-flow="{{ is_subscription_book }}"
     data-girl-preview-image="{{ girl_preview_image | escape }}"
     data-boy-preview-image="{{ boy_preview_image | escape }}"
     {{ block.shopify_attributes }}
@@ -78,7 +114,7 @@
     >
       <div class="product-personalization__modal">
         <header class="product-personalization__modal-header">
-          <h2 id="{{ component_id }}-title">Customize This Book</h2>
+          <h2 id="{{ component_id }}-title">{% if is_custom_book %}Customize Your Storybook{% elsif is_subscription_book %}Personalize Your Subscription{% else %}Personalize This Book{% endif %}</h2>
           <button class="product-personalization__close" type="button" data-close-customizer aria-label="Close customization">
             <span class="svg-wrapper">{{- 'icon-close.svg' | inline_asset_content -}}</span>
           </button>
@@ -102,29 +138,142 @@
           </aside>
 
           <div class="product-personalization__wizard">
+            {% if is_custom_book %}
+              <p class="product-personalization__step-indicator" aria-live="polite" data-step-indicator>Step 1 of 2</p>
+
+              <section class="product-personalization__step" data-wizard-step="1" aria-labelledby="{{ component_id }}-step-1-title">
+                <h3 id="{{ component_id }}-step-1-title">Your Story Starts After Checkout 💙</h3>
+                <div class="product-personalization__custom-copy">
+                  <p>After you place your order, you’ll receive a <strong>personalization questionnaire</strong> where you can tell us all about your child, family, favorite places, special memories, and the story you’d love us to create.</p>
+                  <p>You’ll also have a <strong>secure space to upload photos</strong> of your child, family members, pets, special locations, and anything else you’d like us to use as inspiration for the illustrations.</p>
+                  <p><strong>No need to have everything ready right now.</strong></p>
+                  <p>Once we receive your questionnaire and photos, we’ll begin creating your one-of-a-kind Little Lake Story.</p>
+                  <ul>
+                    <li>Personalized story written from your answers</li>
+                    <li>Custom illustrations inspired by your photos</li>
+                    <li>Secure photo uploads after purchase</li>
+                    <li>Two rounds of revisions included</li>
+                  </ul>
+                </div>
+                <label class="product-personalization__consent">
+                  <input
+                    type="checkbox"
+                    name="properties[Personalization Consent]"
+                    value="I’m ready to create my Little Lake Story and understand the questionnaire and photo upload process."
+                    form="{{ product_form_id }}"
+                    data-custom-consent
+                    required
+                  >
+                  <span><strong>I’m ready to create my Little Lake Story!</strong> I understand that after checkout, I’ll receive a personalization questionnaire and a secure link to upload photos for my custom book.</span>
+                </label>
+              </section>
+
+              <section class="product-personalization__step" data-wizard-step="2" aria-labelledby="{{ component_id }}-step-2-title" hidden>
+                <h3 id="{{ component_id }}-step-2-title">Upgrade to Hard Cover?</h3>
+                <div class="product-personalization__cover-upgrade">
+                  <span class="product-personalization__cover-price">Just <strong>$9.99</strong> more</span>
+                  <ul class="product-personalization__cover-benefits">
+                    <li><span class="svg-wrapper">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>Premium Hard Cover</li>
+                    <li><span class="svg-wrapper">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>Extra Longevity</li>
+                    <li><span class="svg-wrapper">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>Perfect Gift Upgrade</li>
+                    <li><span class="svg-wrapper">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>Perfect Keepsake</li>
+                  </ul>
+                  <input
+                    type="hidden"
+                    name="properties[Cover Type]"
+                    value="Soft Cover"
+                    form="{{ product_form_id }}"
+                    data-cover-property
+                  >
+                  <div class="product-personalization__cover-actions">
+                    <button
+                      class="product-personalization__cover-button product-personalization__cover-button--soft button"
+                      type="button"
+                      data-cover-choice="Soft Cover"
+                      aria-pressed="false"
+                    >
+                      Keep Soft Cover
+                    </button>
+                    <button
+                      class="product-personalization__cover-button product-personalization__cover-button--hard button"
+                      type="button"
+                      data-cover-choice="Hard Cover"
+                      aria-pressed="false"
+                    >
+                      <span>YES - Upgrade</span>
+                      <span class="product-personalization__cover-button-price">for $9.99 more</span>
+                    </button>
+                  </div>
+                  <p class="product-personalization__cover-error" role="alert" data-cover-error hidden></p>
+                </div>
+              </section>
+            {% else %}
             <p class="product-personalization__step-indicator" aria-live="polite" data-step-indicator>Step 1 of 4</p>
 
             <section class="product-personalization__step" data-wizard-step="1" aria-labelledby="{{ component_id }}-step-1-title">
-              <h3 id="{{ component_id }}-step-1-title">Meet the star</h3>
-              <fieldset class="product-personalization__group">
-                <legend>Gender</legend>
-                <div class="product-personalization__gender-options">
-                  {% assign gender_options = 'Girl|Boy' | split: '|' %}
-                  {% for gender_option in gender_options %}
-                    <label class="product-personalization__gender-option">
-                      <input
-                        type="radio"
-                        name="properties[Gender]"
-                        value="{{ gender_option }}"
-                        form="{{ product_form_id }}"
-                        data-gender-option
-                        {% if forloop.first %}required checked{% endif %}
-                      >
-                      <span>{{ gender_option }}</span>
-                    </label>
-                  {% endfor %}
-                </div>
-              </fieldset>
+              <h3 id="{{ component_id }}-step-1-title">{% if is_subscription_book %}Tell us about your child{% else %}Meet the star{% endif %}</h3>
+              {% if is_subscription_book %}
+                <fieldset class="product-personalization__group product-personalization__age-group">
+                  <legend>Age Group</legend>
+                  <div class="product-personalization__gender-options">
+                    {% assign age_group_options = 'Baby 0-1|Girl 1-8|Boy 1-8' | split: '|' %}
+                    {% for age_group_option in age_group_options %}
+                      <label class="product-personalization__gender-option">
+                        <input
+                          type="radio"
+                          name="properties[Age Group]"
+                          value="{{ age_group_option }}"
+                          form="{{ product_form_id }}"
+                          data-age-group
+                          required
+                        >
+                        <span>{{ age_group_option }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </fieldset>
+
+                <fieldset class="product-personalization__group product-personalization__baby-gender" data-baby-gender-group hidden>
+                  <legend>Gender</legend>
+                  <div class="product-personalization__gender-options">
+                    {% assign gender_options = 'Girl|Boy' | split: '|' %}
+                    {% for gender_option in gender_options %}
+                      <label class="product-personalization__gender-option">
+                        <input
+                          type="radio"
+                          name="properties[Gender]"
+                          value="{{ gender_option }}"
+                          form="{{ product_form_id }}"
+                          data-gender-option
+                          disabled
+                          {% if forloop.first %}required{% endif %}
+                        >
+                        <span>{{ gender_option }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </fieldset>
+              {% else %}
+                <fieldset class="product-personalization__group">
+                  <legend>Gender</legend>
+                  <div class="product-personalization__gender-options">
+                    {% assign gender_options = 'Girl|Boy' | split: '|' %}
+                    {% for gender_option in gender_options %}
+                      <label class="product-personalization__gender-option">
+                        <input
+                          type="radio"
+                          name="properties[Gender]"
+                          value="{{ gender_option }}"
+                          form="{{ product_form_id }}"
+                          data-gender-option
+                          {% if forloop.first %}required checked{% endif %}
+                        >
+                        <span>{{ gender_option }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </fieldset>
+              {% endif %}
 
               <div class="product-personalization__field">
                 <label for="{{ component_id }}-first-name">First Name</label>
@@ -258,6 +407,43 @@
 
             <section class="product-personalization__step" data-wizard-step="3" aria-labelledby="{{ component_id }}-step-3-title" hidden>
               <h3 id="{{ component_id }}-step-3-title">Add a personal touch</h3>
+              {% if is_subscription_book %}
+                {% liquid
+                  assign current_birthday_year = 'now' | date: '%Y' | plus: 0
+                  assign earliest_birthday_year = current_birthday_year | minus: 8
+                  assign birthday_months = 'January|February|March|April|May|June|July|August|September|October|November|December' | split: '|'
+                %}
+                <fieldset class="product-personalization__birthday-details">
+                  <legend>Birthday Details</legend>
+                  <label for="{{ component_id }}-birthday-day">
+                    Day
+                    <select id="{{ component_id }}-birthday-day" name="properties[Birthday Day]" form="{{ product_form_id }}" required>
+                      <option value="" selected disabled>Day</option>
+                      {% for day in (1..31) %}
+                        <option value="{{ day }}">{{ day }}</option>
+                      {% endfor %}
+                    </select>
+                  </label>
+                  <label for="{{ component_id }}-birthday-month">
+                    Month
+                    <select id="{{ component_id }}-birthday-month" name="properties[Birthday Month]" form="{{ product_form_id }}" required>
+                      <option value="" selected disabled>Month</option>
+                      {% for month in birthday_months %}
+                        <option value="{{ month }}">{{ month }}</option>
+                      {% endfor %}
+                    </select>
+                  </label>
+                  <label for="{{ component_id }}-birthday-year">
+                    Year
+                    <select id="{{ component_id }}-birthday-year" name="properties[Birthday Year]" form="{{ product_form_id }}" required>
+                      <option value="" selected disabled>Year</option>
+                      {% for year in (earliest_birthday_year..current_birthday_year) reversed %}
+                        <option value="{{ year }}">{{ year }}</option>
+                      {% endfor %}
+                    </select>
+                  </label>
+                </fieldset>
+              {% endif %}
               <div class="product-personalization__field">
                 <label for="{{ component_id }}-giver">Who is giving this book?</label>
                 <input
@@ -325,6 +511,7 @@
                 <p class="product-personalization__cover-error" role="alert" data-cover-error hidden></p>
               </div>
             </section>
+            {% endif %}
 
             <div class="product-personalization__navigation">
               <button class="button-secondary" type="button" data-wizard-back hidden>Back</button>
@@ -390,6 +577,19 @@
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
+  }
+
+  .product-personalization--pending .product-personalization__trigger:disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+  }
+
+  .product-personalization__pending-notice {
+    margin: -8px 0 var(--padding-sm);
+    color: #627784;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
   }
 
   .product-personalization__dialog {
@@ -504,12 +704,77 @@
     font-size: var(--font-size--lg);
   }
 
+  .product-personalization__custom-copy p {
+    margin-block: 0 var(--padding-sm);
+    line-height: 1.45;
+  }
+
+  .product-personalization__custom-copy ul {
+    display: grid;
+    gap: var(--padding-2xs);
+    margin: 0 0 var(--padding-lg);
+    padding-inline-start: 1.25em;
+  }
+
+  .product-personalization__consent {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--padding-sm);
+    padding: var(--padding-md);
+    border: 1px solid rgb(var(--color-foreground-rgb) / 18%);
+    border-radius: 6px;
+    background: #f2f8fa;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+
+  .product-personalization__consent input {
+    width: 20px;
+    height: 20px;
+    margin: 2px 0 0;
+    accent-color: #0b5e97;
+  }
+
   .product-personalization__step[hidden] {
     display: none;
   }
 
   .product-personalization__wizard .product-personalization__field {
     margin-block-end: var(--padding-lg);
+  }
+
+  .product-personalization__birthday-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--padding-sm);
+    margin: 0 0 var(--padding-lg);
+    padding: 0;
+    border: 0;
+  }
+
+  .product-personalization__birthday-details legend {
+    grid-column: 1 / -1;
+    margin-block-end: var(--padding-2xs);
+    font-weight: 600;
+  }
+
+  .product-personalization__birthday-details label {
+    display: grid;
+    min-width: 0;
+    gap: var(--padding-2xs);
+    font-size: var(--font-size--sm);
+  }
+
+  .product-personalization__birthday-details select {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 30%);
+    border-radius: var(--style-border-radius-inputs);
+    background: var(--color-background);
+    color: var(--color-foreground);
   }
 
   .product-personalization__wizard .product-personalization__field > input:not([type='range']),
@@ -648,6 +913,10 @@
     --button-background-color: #0b5e97;
     --button-border-color: #0b5e97;
     --button-color: #fff;
+  }
+
+  .product-personalization__cover-button[aria-pressed='true'] {
+    border: 1px solid #202020;
   }
 
   .product-personalization__style-carousel {
@@ -1061,35 +1330,41 @@
     }
 
     .product-personalization__style-options {
-      display: flex;
-      grid-template-columns: none;
-      flex-wrap: nowrap;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--padding-xs);
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      overflow: visible;
+    }
+
+    .product-personalization__carousel-button {
+      display: none;
     }
 
     .product-personalization__style-option {
-      flex: 0 0 72px;
-      width: 72px;
-      scroll-snap-align: center;
+      flex: initial;
+      width: 100%;
+      min-height: 92px;
     }
 
     .product-personalization__style-option img {
       display: block;
-      width: 100%;
-      aspect-ratio: 1;
+      width: 72px;
+      height: 72px;
       object-fit: contain;
     }
 
     .product-personalization__style-option span {
-      min-height: 2.4em;
+      min-height: 0;
       overflow-wrap: anywhere;
-      font-size: 0.68rem;
+      font-size: 0.75rem;
     }
 
     .product-personalization__navigation {
       position: sticky;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--padding-xs);
       bottom: 0;
       z-index: 3;
       margin-inline: calc(-1 * var(--padding-md));
@@ -1100,7 +1375,7 @@
     }
 
     .product-personalization__navigation button {
-      flex: 1 1 0;
+      flex: 0 0 auto;
       width: 100%;
       min-width: 0;
     }

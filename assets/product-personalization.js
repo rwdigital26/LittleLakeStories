@@ -1,7 +1,31 @@
-const stepCount = 4;
+function getStepCount(customizer) {
+	return Number(customizer.dataset.wizardSteps) || 4;
+}
 
 function getSelectedGender(customizer) {
+	if (customizer.dataset.subscriptionFlow === 'true') {
+		const ageGroup = customizer.querySelector('[data-age-group]:checked')?.value;
+		if (ageGroup === 'Boy 1-8') return 'Boy';
+		if (ageGroup === 'Girl 1-8') return 'Girl';
+		return customizer.querySelector('[data-gender-option]:checked')?.value || 'Girl';
+	}
+
 	return customizer.querySelector('[data-gender-option]:checked')?.value || 'Girl';
+}
+
+function updateBabyGenderGroup(customizer, ageGroup) {
+	if (customizer.dataset.subscriptionFlow !== 'true') return;
+
+	const group = customizer.querySelector('[data-baby-gender-group]');
+	if (!group) return;
+
+	const showGender = ageGroup === 'Baby 0-1';
+	group.hidden = !showGender;
+	for (const option of group.querySelectorAll('[data-gender-option]')) {
+		option.disabled = !showGender;
+		option.required = showGender;
+		if (!showGender) option.checked = false;
+	}
 }
 
 function setPreviewImage(customizer, source, alt) {
@@ -21,6 +45,16 @@ function setPreviewImage(customizer, source, alt) {
 function setGenderPreview(customizer, gender) {
 	const source = gender === 'Boy' ? customizer.dataset.boyPreviewImage : customizer.dataset.girlPreviewImage;
 	setPreviewImage(customizer, source, `${gender} character preview`);
+}
+
+function setBookCoverPreview(customizer) {
+	const preview = customizer.querySelector('[data-hair-preview]');
+	const placeholder = customizer.querySelector('[data-hair-preview-placeholder]');
+	const bookCover = customizer.querySelector('[data-book-cover-preview]');
+
+	if (preview) preview.hidden = true;
+	if (placeholder) placeholder.hidden = true;
+	if (bookCover) bookCover.hidden = false;
 }
 
 function updateRangeProperty(range) {
@@ -91,6 +125,7 @@ function updateHairChoices(customizer, gender) {
 }
 
 function setStep(customizer, step) {
+	const stepCount = getStepCount(customizer);
 	const currentStep = Math.min(Math.max(step, 1), stepCount);
 	customizer.dataset.currentStep = String(currentStep);
 
@@ -105,19 +140,23 @@ function setStep(customizer, step) {
 	if (backButton) backButton.hidden = currentStep === 1;
 	if (nextButton) nextButton.textContent = currentStep === stepCount ? 'Add to Cart' : 'Next';
 
-	if (currentStep === 1) {
+	if (customizer.dataset.customFlow === 'true') {
+		setBookCoverPreview(customizer);
+	} else if (customizer.dataset.subscriptionFlow === 'true') {
+		updateBabyGenderGroup(customizer, customizer.querySelector('[data-age-group]:checked')?.value);
+		if (currentStep === 2) {
+			updateHairChoices(customizer, getSelectedGender(customizer));
+		} else if (currentStep === 4) {
+			setBookCoverPreview(customizer);
+		} else {
+			setGenderPreview(customizer, getSelectedGender(customizer));
+		}
+	} else if (currentStep === 1) {
 		setGenderPreview(customizer, getSelectedGender(customizer));
 	} else if (currentStep === 2) {
 		updateHairChoices(customizer, getSelectedGender(customizer));
-	} else if (currentStep === 4) {
-		const preview = customizer.querySelector('[data-hair-preview]');
-		const placeholder = customizer.querySelector('[data-hair-preview-placeholder]');
-		const bookCover = customizer.querySelector('[data-book-cover-preview]');
-		if (bookCover) {
-			if (preview) preview.hidden = true;
-			if (placeholder) placeholder.hidden = true;
-			bookCover.hidden = false;
-		}
+	} else if (currentStep === Number(customizer.dataset.coverStep || 4)) {
+		setBookCoverPreview(customizer);
 	}
 
 	customizer.querySelector(`[data-wizard-step="${currentStep}"] h3`)?.focus({ preventScroll: true });
@@ -138,11 +177,47 @@ function initializeCustomizer(customizer) {
 	const softCoverChoice = customizer.querySelector('[data-cover-choice="Soft Cover"]');
 	if (softCoverChoice) softCoverChoice.setAttribute('aria-pressed', 'true');
 
-	updateHairChoices(customizer, getSelectedGender(customizer));
+	if (customizer.dataset.customFlow === 'true') {
+		setBookCoverPreview(customizer);
+	} else if (customizer.dataset.subscriptionFlow === 'true') {
+		updateBabyGenderGroup(customizer, customizer.querySelector('[data-age-group]:checked')?.value);
+		setGenderPreview(customizer, getSelectedGender(customizer));
+	} else {
+		updateHairChoices(customizer, getSelectedGender(customizer));
+	}
 	setStep(customizer, 1);
 }
 
 function validateCurrentStep(customizer, step) {
+	if (customizer.dataset.customFlow === 'true') {
+		if (step === 1) {
+			return customizer.querySelector('[data-custom-consent]')?.reportValidity() ?? false;
+		}
+		return true;
+	}
+
+	if (customizer.dataset.subscriptionFlow === 'true') {
+		if (step === 1) {
+			const ageGroup = customizer.querySelector('[data-age-group]:checked');
+			if (!ageGroup) return customizer.querySelector('[data-age-group]')?.reportValidity() ?? false;
+			if (ageGroup.value === 'Baby 0-1' && !customizer.querySelector('[data-gender-option]:checked')) {
+				return customizer.querySelector('[data-baby-gender-group] [data-gender-option]')?.reportValidity() ?? false;
+			}
+			return customizer.querySelector('[name="properties[Child\'s First Name]"]')?.reportValidity() ?? true;
+		}
+
+		if (step === 2) {
+			return Boolean(customizer.querySelector('[name="properties[Hair Style]"]')?.value);
+		}
+
+		if (step === 3) {
+			for (const field of customizer.querySelectorAll('[data-wizard-step="3"] select[required]')) {
+				if (!field.reportValidity()) return false;
+			}
+		}
+		return true;
+	}
+
 	if (step === 1) {
 		const gender = customizer.querySelector('[data-gender-option]:checked');
 		const firstName = customizer.querySelector('[name="properties[Child\'s First Name]"]');
@@ -157,13 +232,76 @@ function validateCurrentStep(customizer, step) {
 	return true;
 }
 
+function showCartError(customizer, message) {
+	const error = customizer.querySelector('[data-cover-error]');
+	if (!error) return;
+
+	error.textContent = message || 'We could not add this to your cart. Please try again.';
+	error.hidden = false;
+}
+
+function resetAddToCartButton(button) {
+	if (!button) return;
+
+	button.disabled = false;
+	button.removeAttribute('aria-busy');
+	button.textContent = 'Add to Cart';
+}
+
+function submitPersonalization(customizer) {
+	const productForm = document.getElementById(customizer.dataset.productFormId);
+	const productFormComponent = productForm?.closest('product-form-component');
+	const addButton = customizer.querySelector('[data-wizard-next]');
+	const error = customizer.querySelector('[data-cover-error]');
+
+	if (!productForm || !productFormComponent) {
+		showCartError(customizer);
+		return;
+	}
+	if (!productForm.reportValidity()) return;
+
+	if (error) {
+		error.hidden = true;
+		error.textContent = '';
+	}
+	if (addButton) {
+		addButton.disabled = true;
+		addButton.setAttribute('aria-busy', 'true');
+		addButton.textContent = 'Adding...';
+	}
+
+	productFormComponent.addEventListener('shopify:cart:lines-update', (event) => {
+		if (!event.promise) {
+			showCartError(customizer);
+			resetAddToCartButton(addButton);
+			return;
+		}
+
+		event.promise
+			.then(({ detail }) => {
+				if (detail?.didError) {
+					const formError = productFormComponent.querySelector('.product-form-text__error')?.textContent?.trim();
+					showCartError(customizer, formError);
+					return;
+				}
+
+			window.location.assign(Theme.routes.cart_url);
+			})
+			.catch((requestError) => {
+				showCartError(customizer, requestError?.message);
+			})
+			.finally(() => resetAddToCartButton(addButton));
+	}, { once: true });
+
+	productForm.requestSubmit();
+}
+
 function moveToNextStep(customizer) {
 	const currentStep = Number(customizer.dataset.currentStep || 1);
 	if (!validateCurrentStep(customizer, currentStep)) return;
 
 	if (currentStep === stepCount) {
-		const productForm = document.getElementById(customizer.dataset.productFormId);
-		productForm?.requestSubmit();
+		submitPersonalization(customizer);
 		return;
 	}
 
@@ -204,6 +342,17 @@ document.addEventListener('click', (event) => {
 	if (genderOption instanceof HTMLInputElement) {
 		setGenderPreview(customizer, genderOption.value);
 		updateHairChoices(customizer, genderOption.value);
+		return;
+	}
+
+	const ageGroup = target.closest('[data-age-group]');
+	if (ageGroup instanceof HTMLInputElement) {
+		updateBabyGenderGroup(customizer, ageGroup.value);
+		if (Number(customizer.dataset.currentStep) === 2) {
+			updateHairChoices(customizer, getSelectedGender(customizer));
+		} else {
+			setGenderPreview(customizer, getSelectedGender(customizer));
+		}
 		return;
 	}
 
@@ -256,6 +405,13 @@ document.addEventListener('change', (event) => {
 	if (target.matches('[data-gender-option]')) {
 		setGenderPreview(customizer, target.value);
 		updateHairChoices(customizer, target.value);
+	} else if (target.matches('[data-age-group]')) {
+		updateBabyGenderGroup(customizer, target.value);
+		if (Number(customizer.dataset.currentStep) === 2) {
+			updateHairChoices(customizer, getSelectedGender(customizer));
+		} else {
+			setGenderPreview(customizer, getSelectedGender(customizer));
+		}
 	} else if (target.matches('[data-personalization-range]')) {
 		if (target.matches('.product-personalization__range--style')) {
 			const availableChoices = getAvailableHairChoices(customizer);
