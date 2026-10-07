@@ -41,7 +41,13 @@
       data-open-customizer
       {% unless current_product.available and has_subscription_variants %}disabled{% endunless %}
     >
-      {% if is_custom_book %}Create Their Custom Story{% else %}Personalize This Book{% endif %}
+      {% if current_product.tags contains 'Subscription' %}
+        Personalize Your Subscription
+      {% elsif is_custom_book %}
+        Create Their Custom Story
+      {% else %}
+        Personalize This Book
+      {% endif %}
     </button>
 
     {% if current_product.tags contains 'Subscription' %}
