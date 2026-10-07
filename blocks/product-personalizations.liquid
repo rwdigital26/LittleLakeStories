@@ -23,6 +23,8 @@
   assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id
   assign component_id = 'ProductPersonalizations-' | append: current_product.id | append: '-' | append: block.id
   assign book_cover = current_product.featured_media.preview_image | default: current_product.featured_image
+  assign girl_preview_image = 'Long.png' | file_url
+  assign boy_preview_image = 'Boy_Shoulder_Length.png' | file_url
 %}
 
 {% if show_customizations %}
@@ -33,6 +35,8 @@
     data-product-id="{{ current_product.id }}"
     data-product-form-id="{{ product_form_id }}"
     data-hardcover-addon-variant-id="67672769036542"
+    data-girl-preview-image="{{ girl_preview_image | escape }}"
+    data-boy-preview-image="{{ boy_preview_image | escape }}"
     {{ block.shopify_attributes }}
   >
     <button
@@ -304,6 +308,7 @@
                     class="product-personalization__cover-button product-personalization__cover-button--soft button"
                     type="button"
                     data-cover-choice="Soft Cover"
+                    aria-pressed="false"
                   >
                     Keep Soft Cover
                   </button>
@@ -311,6 +316,7 @@
                     class="product-personalization__cover-button product-personalization__cover-button--hard button"
                     type="button"
                     data-cover-choice="Hard Cover"
+                    aria-pressed="false"
                   >
                     <span>YES - Upgrade</span>
                     <span class="product-personalization__cover-button-price">for $9.99 more</span>
@@ -1026,16 +1032,21 @@
       grid-template-columns: 1fr;
     }
 
+    .product-personalization__preview {
+      position: relative;
+      top: auto;
+      display: grid;
+      min-height: 180px;
+      height: min(40vw, 220px);
+      margin-block-end: var(--padding-sm);
+    }
+
     .product-personalization__cover-benefits {
       grid-template-columns: 1fr;
     }
 
     .product-personalization__cover-actions {
       grid-template-columns: 1fr;
-    }
-
-    .product-personalization__preview {
-      display: none;
     }
 
     .product-personalization__style-option {
