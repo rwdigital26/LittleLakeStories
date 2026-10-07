@@ -1,0 +1,421 @@
+{% assign sample_story_image = 'Child_and_Dog_at_Sunset_Lake.png' | file_url | append: '&width=800' %}
+{% assign profile_image = 'Boy_Long_Hair.png' | file_url | append: '&width=320' %}
+
+<section class="story-club-steps" aria-labelledby="StoryClubStepsHeading-{{ section.id }}">
+  <header class="story-club-steps__header">
+    <p class="story-club-steps__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    <h2 id="StoryClubStepsHeading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+    <p>{{ section.settings.subheading | escape }}</p>
+  </header>
+
+  <ol class="story-club-steps__grid">
+    {% for block in section.blocks %}
+      <li class="story-club-steps__item" {{ block.shopify_attributes }}>
+        <div class="story-club-steps__art" data-step="{{ forloop.index }}">
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 900px) 28vw, 90vw', alt: block.settings.heading, loading: 'lazy' }}
+          {% elsif block.settings.image_url != blank %}
+            <img src="{{ block.settings.image_url | append: '&width=900' | escape }}" alt="{{ block.settings.heading | escape }}" width="900" height="675" loading="lazy">
+          {% elsif forloop.index == 1 %}
+            <div class="story-club-steps__profile-scene" aria-hidden="true">
+              <div class="story-club-steps__profile-window">
+                <div class="story-club-steps__window-bar"><i></i><i></i><i></i></div>
+                <div class="story-club-steps__profile-content">
+                  <img src="{{ profile_image }}" alt="" width="160" height="160" loading="lazy">
+                  <div class="story-club-steps__profile-options">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="story-club-steps__laptop-base"></div>
+            </div>
+          {% elsif forloop.index == 2 %}
+            <div class="story-club-steps__book-scene" aria-hidden="true">
+              <div class="story-club-steps__book-back"></div>
+              <div class="story-club-steps__book-cover">
+                <img src="{{ sample_story_image }}" alt="" width="420" height="260" loading="lazy">
+              </div>
+            </div>
+          {% else %}
+            <div class="story-club-steps__mailbox-scene" aria-hidden="true">
+              <div class="story-club-steps__mailbox-post"></div>
+              <div class="story-club-steps__mailbox-flag"></div>
+              <div class="story-club-steps__mailbox">
+                <div class="story-club-steps__mailbox-roof"></div>
+                <div class="story-club-steps__mailbox-door">
+                  <img src="{{ sample_story_image }}" alt="" width="320" height="200" loading="lazy">
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="story-club-steps__copy">
+          <span class="story-club-steps__number">{{ forloop.index }}</span>
+          <div>
+            <h3>{{ block.settings.heading | escape }}</h3>
+            <p>{{ block.settings.description | escape }}</p>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{% stylesheet %}
+  .story-club-steps {
+    padding: 58px 24px 88px;
+    background: #f7fbfc;
+    color: #143d63;
+  }
+
+  .story-club-steps__header {
+    max-width: 900px;
+    margin: 0 auto 42px;
+    text-align: center;
+  }
+
+  .story-club-steps__eyebrow {
+    margin: 0 0 8px;
+    color: #2d86b6;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .story-club-steps__header h2 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 40px;
+    line-height: 1.05;
+  }
+
+  .story-club-steps__header > p:last-child {
+    margin: 12px 0 0;
+    color: #426478;
+    font-size: 18px;
+  }
+
+  .story-club-steps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    width: min(100%, 1320px);
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .story-club-steps__item {
+    position: relative;
+    min-width: 0;
+  }
+
+  .story-club-steps__item:not(:last-child)::after {
+    position: absolute;
+    top: 112px;
+    inset-inline-end: -31px;
+    color: #2d86b6;
+    content: '→';
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .story-club-steps__art {
+    position: relative;
+    display: grid;
+    aspect-ratio: 1.34;
+    min-height: 220px;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #e7f5fa;
+  }
+
+  .story-club-steps__art > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story-club-steps__profile-scene {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    justify-items: center;
+    padding: 22px;
+    background: radial-gradient(ellipse at center, #fff 0%, #e2f4fb 76%);
+  }
+
+  .story-club-steps__profile-window {
+    width: min(88%, 400px);
+    overflow: hidden;
+    border: 7px solid #143d63;
+    border-radius: 12px 12px 5px 5px;
+    background: #fff;
+    box-shadow: 0 12px 22px rgb(20 61 99 / 18%);
+  }
+
+  .story-club-steps__window-bar {
+    display: flex;
+    gap: 5px;
+    padding: 7px 10px;
+    background: #d7edf6;
+  }
+
+  .story-club-steps__window-bar i {
+    width: 7px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #6dc8ec;
+  }
+
+  .story-club-steps__profile-content {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .story-club-steps__profile-content img {
+    width: 100%;
+    aspect-ratio: 1.1;
+    object-fit: contain;
+    border-radius: 5px;
+    background: #eef8fb;
+  }
+
+  .story-club-steps__profile-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+    align-content: center;
+  }
+
+  .story-club-steps__profile-options span {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #edc6aa;
+    box-shadow: inset 0 0 0 3px #fff, 0 0 0 1px rgb(20 61 99 / 18%);
+  }
+
+  .story-club-steps__profile-options span:nth-child(2n) { background: #986044; }
+  .story-club-steps__profile-options span:nth-child(3n) { background: #d8a27f; }
+
+  .story-club-steps__laptop-base {
+    width: min(94%, 440px);
+    height: 12px;
+    border-radius: 0 0 50% 50%;
+    background: #143d63;
+  }
+
+  .story-club-steps__book-scene {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    background: radial-gradient(ellipse at center, #fff 0%, #e5f3f8 75%);
+  }
+
+  .story-club-steps__book-back {
+    position: absolute;
+    width: 43%;
+    height: 72%;
+    transform: translate(10px, 2px) rotate(5deg);
+    border: 5px solid #143d63;
+    border-radius: 4px;
+    background: #f58e77;
+    box-shadow: 8px 8px 0 #d9eaf0;
+  }
+
+  .story-club-steps__book-cover {
+    z-index: 1;
+    width: 47%;
+    aspect-ratio: 0.78;
+    overflow: hidden;
+    transform: rotate(-4deg);
+    border: 6px solid #143d63;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 14px 20px rgb(20 61 99 / 20%);
+  }
+
+  .story-club-steps__book-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story-club-steps__mailbox-scene {
+    position: relative;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    overflow: hidden;
+    background: linear-gradient(#dff3fa 0 58%, #b5dce8 58% 100%);
+  }
+
+  .story-club-steps__mailbox-post {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 58%;
+    background: #9a6947;
+    box-shadow: inset 4px 0 rgb(255 255 255 / 25%);
+  }
+
+  .story-club-steps__mailbox {
+    position: relative;
+    z-index: 1;
+    width: 64%;
+    height: 52%;
+    margin-top: -28px;
+    overflow: hidden;
+    border: 7px solid #143d63;
+    border-radius: 42% 42% 8px 8px;
+    background: #fff;
+    box-shadow: 0 12px 18px rgb(20 61 99 / 15%);
+  }
+
+  .story-club-steps__mailbox-roof {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 18px;
+    background: #6dc8ec;
+  }
+
+  .story-club-steps__mailbox-door {
+    position: absolute;
+    inset: 30px 12px 12px;
+    overflow: hidden;
+    border: 4px solid #143d63;
+    border-radius: 4px;
+    background: #dff3fa;
+  }
+
+  .story-club-steps__mailbox-door img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story-club-steps__mailbox-flag {
+    position: absolute;
+    z-index: 2;
+    top: 20%;
+    right: 17%;
+    width: 9px;
+    height: 44px;
+    border-radius: 5px;
+    background: #b4233a;
+    transform: rotate(14deg);
+    transform-origin: bottom;
+  }
+
+  .story-club-steps__copy {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    margin-block-start: 22px;
+  }
+
+  .story-club-steps__number {
+    display: grid;
+    width: 40px;
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 50%;
+    background: #6dc8ec;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .story-club-steps__copy h3 {
+    margin: 3px 0 7px;
+    font-family: var(--font-heading--family);
+    font-size: 21px;
+    line-height: 1.15;
+  }
+
+  .story-club-steps__copy p {
+    margin: 0;
+    color: #426478;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  @media screen and (min-width: 750px) {
+    .story-club-steps__item:not(:last-child)::after {
+      position: absolute;
+      top: 112px;
+      inset-inline-end: -31px;
+      color: #2d86b6;
+      content: '→';
+      font-size: 30px;
+      line-height: 1;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .story-club-steps {
+      padding: 42px 18px 64px;
+    }
+
+    .story-club-steps__header {
+      margin-block-end: 32px;
+    }
+
+    .story-club-steps__header h2 {
+      font-size: 32px;
+    }
+
+    .story-club-steps__grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .story-club-steps__art {
+      aspect-ratio: 1.38;
+      min-height: 210px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Story Club steps",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "One simple enrollment. A year of adventure." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How the Little Lake Story Club Works" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Step illustration" },
+        { "type": "text", "id": "image_url", "label": "Step image URL" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Create Their Story Profile" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Tell us about your child’s name, appearance, birthday and favorite things. You’ll only do this once." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story Club steps",
+      "blocks": [
+        { "type": "step", "settings": { "heading": "Create Their Story Profile", "description": "Tell us about your child’s name, appearance, birthday and favorite things. You’ll only do this once." } },
+        { "type": "step", "settings": { "heading": "We Curate Their Adventures", "description": "Each month, we choose a new personalized story based on their age, interests, season and special moments." } },
+        { "type": "step", "settings": { "heading": "Their Story Arrives", "description": "A new personalized storybook is delivered to their door every month with their name and character inside." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

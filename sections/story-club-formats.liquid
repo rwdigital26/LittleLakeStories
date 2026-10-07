@@ -1,0 +1,308 @@
+{% liquid
+  assign soft_cover_image = section.settings.soft_cover_image
+  assign hard_cover_image = section.settings.hard_cover_image
+
+  if soft_cover_image == blank
+    assign soft_cover_image = all_products['the-wonder-storybook'].featured_image
+  endif
+  if hard_cover_image == blank
+    assign hard_cover_image = all_products['the-adventure-storybook'].featured_image
+  endif
+%}
+
+<section class="story-club-formats" aria-labelledby="StoryClubFormatsHeading-{{ section.id }}">
+  <header class="story-club-formats__header">
+    <h2 id="StoryClubFormatsHeading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+    <p>{{ section.settings.subheading | escape }}</p>
+  </header>
+
+  <div class="story-club-formats__grid">
+    <article class="story-club-format story-club-format--soft">
+      <div class="story-club-format__image-wrap">
+        {% if soft_cover_image != blank %}
+          {{ soft_cover_image | image_url: width: 1000 | image_tag: widths: '480, 720, 900, 1000', sizes: '(min-width: 750px) 42vw, 90vw', alt: section.settings.soft_cover_title, loading: 'lazy' }}
+        {% endif %}
+        <span class="story-club-format__badge story-club-format__badge--included">Included<br>in membership</span>
+      </div>
+      <div class="story-club-format__copy">
+        <h3>{{ section.settings.soft_cover_title | escape }}</h3>
+        <p>{{ section.settings.soft_cover_description | escape }}</p>
+        <p class="story-club-format__price">
+          <strong>{{ section.settings.soft_cover_price | escape }}</strong>
+          <span>{{ section.settings.billing_period | escape }}</span>
+        </p>
+        <p class="story-club-format__note">{{ section.settings.soft_cover_note | escape }}</p>
+        {% if section.settings.soft_cover_link != blank %}
+          <a class="story-club-format__button story-club-format__button--soft" href="{{ section.settings.soft_cover_link }}">
+            {{ section.settings.soft_cover_button | escape }}
+          </a>
+        {% else %}
+          <button class="story-club-format__button story-club-format__button--soft" type="button" disabled>
+            {{ section.settings.soft_cover_button | escape }}
+          </button>
+        {% endif %}
+      </div>
+    </article>
+
+    <article class="story-club-format story-club-format--hard">
+      <div class="story-club-format__image-wrap">
+        {% if hard_cover_image != blank %}
+          {{ hard_cover_image | image_url: width: 1000 | image_tag: widths: '480, 720, 900, 1000', sizes: '(min-width: 750px) 42vw, 90vw', alt: section.settings.hard_cover_title, loading: 'lazy' }}
+        {% endif %}
+        <span class="story-club-format__badge story-club-format__badge--popular">Most<br>Popular</span>
+      </div>
+      <div class="story-club-format__copy">
+        <h3>{{ section.settings.hard_cover_title | escape }}</h3>
+        <p>{{ section.settings.hard_cover_description | escape }}</p>
+        <p class="story-club-format__price">
+          <strong>{{ section.settings.hard_cover_price | escape }}</strong>
+          <span>{{ section.settings.billing_period | escape }}</span>
+        </p>
+        <p class="story-club-format__note">{{ section.settings.hard_cover_note | escape }}</p>
+        {% if section.settings.hard_cover_link != blank %}
+          <a class="story-club-format__button story-club-format__button--hard" href="{{ section.settings.hard_cover_link }}">
+            {{ section.settings.hard_cover_button | escape }}
+          </a>
+        {% else %}
+          <button class="story-club-format__button story-club-format__button--hard" type="button" disabled>
+            {{ section.settings.hard_cover_button | escape }}
+          </button>
+        {% endif %}
+      </div>
+    </article>
+  </div>
+</section>
+
+{% stylesheet %}
+  .story-club-formats {
+    padding: 72px 24px 88px;
+    background: #fff;
+    color: #143d63;
+  }
+
+  .story-club-formats__header {
+    width: min(100%, 900px);
+    margin: 0 auto 38px;
+    text-align: center;
+  }
+
+  .story-club-formats__header h2 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 42px;
+    line-height: 1.05;
+  }
+
+  .story-club-formats__header p {
+    margin: 10px 0 0;
+    color: #2d86b6;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .story-club-formats__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    width: min(100%, 1260px);
+    margin: 0 auto;
+  }
+
+  .story-club-format {
+    min-width: 0;
+    padding: 24px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .story-club-format--soft {
+    background: #eaf8fb;
+  }
+
+  .story-club-format--hard {
+    background: #fff2ec;
+  }
+
+  .story-club-format__image-wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 300px;
+    margin: 0 0 22px;
+  }
+
+  .story-club-format__image-wrap img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .story-club-format__badge {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 18%;
+    display: grid;
+    width: 116px;
+    aspect-ratio: 1;
+    place-content: center;
+    padding: 12px;
+    border-radius: 50%;
+    color: #fff;
+    font-family: var(--font-heading--family);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.05;
+    text-align: center;
+  }
+
+  .story-club-format__badge--included {
+    background: #6dc8ec;
+  }
+
+  .story-club-format__badge--popular {
+    background: #f58e77;
+    transform: rotate(7deg);
+  }
+
+  .story-club-format__copy h3 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .story-club-format__copy > p:not(.story-club-format__price, .story-club-format__note) {
+    max-width: 34ch;
+    min-height: 2.8em;
+    margin: 8px auto 16px;
+    color: #426478;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .story-club-format__price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .story-club-format__price strong {
+    color: #b4233a;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .story-club-format__price span {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .story-club-format__note {
+    min-height: 1.5em;
+    margin: 8px 0 18px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .story-club-format__button {
+    display: inline-flex;
+    width: min(100%, 310px);
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .story-club-format__button--soft {
+    background: #6dc8ec;
+    color: #143d63;
+  }
+
+  .story-club-format__button--hard {
+    background: #0b5e97;
+    color: #fff;
+  }
+
+  .story-club-format__button:disabled {
+    cursor: not-allowed;
+    opacity: 0.62;
+  }
+
+  @media screen and (max-width: 749px) {
+    .story-club-formats {
+      padding: 48px 18px 64px;
+    }
+
+    .story-club-formats__header h2 {
+      font-size: 32px;
+    }
+
+    .story-club-formats__grid {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .story-club-format {
+      padding: 18px;
+    }
+
+    .story-club-format__image-wrap,
+    .story-club-format__image-wrap img {
+      min-height: 0;
+      height: auto;
+      aspect-ratio: 1.35;
+    }
+
+    .story-club-format__badge {
+      width: 94px;
+      font-size: 14px;
+    }
+
+    .story-club-format__copy h3 {
+      font-size: 23px;
+    }
+
+    .story-club-format__price strong {
+      font-size: 42px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Story Club formats",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose Their Storybook Style" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Same personalized stories. Two beautiful options." },
+    { "type": "image_picker", "id": "soft_cover_image", "label": "Softcover image" },
+    { "type": "text", "id": "soft_cover_title", "label": "Softcover title", "default": "Softcover" },
+    { "type": "textarea", "id": "soft_cover_description", "label": "Softcover description", "default": "Lightweight, durable and perfect for everyday storytime." },
+    { "type": "text", "id": "soft_cover_price", "label": "Softcover price", "default": "$19.95" },
+    { "type": "text", "id": "soft_cover_note", "label": "Softcover note", "default": "Shipping included." },
+    { "type": "text", "id": "soft_cover_button", "label": "Softcover button", "default": "Choose Softcover" },
+    { "type": "url", "id": "soft_cover_link", "label": "Softcover destination" },
+    { "type": "image_picker", "id": "hard_cover_image", "label": "Hardcover image" },
+    { "type": "text", "id": "hard_cover_title", "label": "Hardcover title", "default": "Keepsake Hardcover" },
+    { "type": "textarea", "id": "hard_cover_description", "label": "Hardcover description", "default": "A sturdy hardcover made for the stories they’ll want to keep." },
+    { "type": "text", "id": "hard_cover_price", "label": "Hardcover price", "default": "$29.94" },
+    { "type": "text", "id": "hard_cover_note", "label": "Hardcover note", "default": "Includes $9.99 hardcover upgrade." },
+    { "type": "text", "id": "hard_cover_button", "label": "Hardcover button", "default": "Choose Hardcover" },
+    { "type": "url", "id": "hard_cover_link", "label": "Hardcover destination" },
+    { "type": "text", "id": "billing_period", "label": "Billing period", "default": "/ month" }
+  ],
+  "presets": [
+    { "name": "Story Club formats" }
+  ]
+}
+{% endschema %}
