@@ -52,12 +52,272 @@
         "soft_cover_link": "",
         "hard_cover_link": ""
       }
+    },
+    "story_club_monthly": {
+      "type": "story-club-monthly",
+      "blocks": {
+        "month_1": {
+          "type": "story",
+          "settings": {
+            "cover": "shopify://shop_images/Olivia_sSummerAdventuresattheLake.png",
+            "period": "Month 1",
+            "title": "A Lake Adventure"
+          }
+        },
+        "month_2": {
+          "type": "story",
+          "settings": {
+            "cover": "shopify://shop_images/Oliver_s_Halloween_Adventure.png",
+            "period": "Month 2",
+            "title": "Seasonal Fun"
+          }
+        },
+        "month_3": {
+          "type": "story",
+          "settings": {
+            "cover": "shopify://shop_images/AdventureSTorybook-Max.png",
+            "period": "Month 3",
+            "title": "Something They Love"
+          }
+        },
+        "birthday": {
+          "type": "story",
+          "settings": {
+            "cover": "shopify://shop_images/Jessie_s_Wonder_Storybook.png",
+            "period": "Birthday Month",
+            "title": "A Special Birthday Story"
+          }
+        },
+        "month_5": {
+          "type": "story",
+          "settings": {
+            "cover": "shopify://shop_images/Jacob_the_Elf__Winter_Sleigh_Adventure.png",
+            "period": "Month 5",
+            "title": "Holidays"
+          }
+        },
+        "month_6": {
+          "type": "story",
+          "settings": {
+            "cover": "shopify://shop_images/Little_Lake_Stories_Thanksgiving_Standardized_1536.png",
+            "period": "Month 6+",
+            "title": "And the Stories Keep Coming!"
+          }
+        }
+      },
+      "block_order": [
+        "month_1",
+        "month_2",
+        "month_3",
+        "birthday",
+        "month_5",
+        "month_6"
+      ],
+      "settings": {}
+    },
+    "story_club_gifts": {
+      "type": "story-club-gifts",
+      "blocks": {
+        "gift_3_months": {
+          "type": "gift_plan",
+          "settings": {
+            "term": "3 Months",
+            "book_count": "3 personalized books",
+            "price": "$59.85",
+            "per_book": "($19.95 each)",
+            "button_label": "Give as a Gift",
+            "link": "shopify://collections/personalized-storybooks"
+          }
+        },
+        "gift_6_months": {
+          "type": "gift_plan",
+          "settings": {
+            "term": "6 Months",
+            "book_count": "6 personalized books",
+            "price": "$113.70",
+            "per_book": "($18.95 each)",
+            "badge": "Most Popular",
+            "button_label": "Give as a Gift",
+            "link": "shopify://collections/personalized-storybooks"
+          }
+        },
+        "gift_12_months": {
+          "type": "gift_plan",
+          "settings": {
+            "term": "12 Months",
+            "book_count": "12 personalized books",
+            "price": "$227.40",
+            "per_book": "($18.95 each)",
+            "badge": "Best Value",
+            "button_label": "Give as a Gift",
+            "link": "shopify://collections/personalized-storybooks"
+          }
+        }
+      },
+      "block_order": [
+        "gift_3_months",
+        "gift_6_months",
+        "gift_12_months"
+      ],
+      "settings": {}
+    },
+    "story_club_benefits": {
+      "type": "story-club-benefits",
+      "blocks": {
+        "collection": {
+          "type": "benefit",
+          "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/book.png",
+            "heading": "Build a lifelong collection",
+            "description": "A new story for every season and special moment."
+          }
+        },
+        "curation": {
+          "type": "benefit",
+          "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/heart.png",
+            "heading": "Create once, we do the rest",
+            "description": "Complete their profile one time and we’ll handle the curation."
+          }
+        },
+        "birthday": {
+          "type": "benefit",
+          "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/cake.png",
+            "heading": "A birthday story",
+            "description": "During their birthday month, they’ll receive a special birthday adventure."
+          }
+        },
+        "shipping": {
+          "type": "benefit",
+          "settings": {
+            "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/gift.png",
+            "heading": "Shipping included",
+            "description": "No extra fees. Just stories and smiles delivered."
+          }
+        },
+        "memorable": {
+          "type": "benefit",
+          "settings": {
+            "heading": "Meaningful & memorable",
+            "description": "Stories that celebrate their childhood and the magic of lake life."
+          }
+        }
+      },
+      "block_order": [
+        "collection",
+        "curation",
+        "birthday",
+        "shipping",
+        "memorable"
+      ],
+      "settings": {}
+    },
+    "story_club_faq": {
+      "type": "story-club-faq",
+      "blocks": {
+        "how_it_works": {
+          "type": "question",
+          "settings": {
+            "question": "How does the Story Club work?",
+            "answer": "Complete your child’s profile once and we’ll curate a new personalized story for them each month, including a special story for their birthday month."
+          }
+        },
+        "what_is_included": {
+          "type": "question",
+          "settings": {
+            "question": "What is included in each book?",
+            "answer": "Each book features your child’s name, appearance, and favorite details, brought to life in a seasonal adventure."
+          }
+        },
+        "introductory_pricing": {
+          "type": "question",
+          "settings": {
+            "question": "How does the introductory pricing work?",
+            "answer": "The 3-month plan is $59.85 total, or $19.95 per book. Longer gift plans offer lower per-book pricing."
+          }
+        },
+        "gift_membership": {
+          "type": "question",
+          "settings": {
+            "question": "Can I give a gift membership?",
+            "answer": "Yes. Choose a 3-, 6-, or 12-month gift plan above. Gift memberships are paid once and do not automatically renew."
+          }
+        },
+        "cancellation": {
+          "type": "question",
+          "settings": {
+            "question": "Can I cancel anytime?",
+            "answer": "Gift memberships are one-time purchases and do not automatically renew. For recurring membership cancellation details, please contact us."
+          }
+        },
+        "ages": {
+          "type": "question",
+          "settings": {
+            "question": "What ages are the books best for?",
+            "answer": "Story Club books are made for children and are a lovely fit for family storytime. Stories are curated around your child’s age and interests."
+          }
+        },
+        "multiple_children": {
+          "type": "question",
+          "settings": {
+            "question": "Can I have more than one child?",
+            "answer": "Each membership is set up around a child’s profile. Contact us and we’ll help you choose the right option for siblings."
+          }
+        },
+        "birthday_story": {
+          "type": "question",
+          "settings": {
+            "question": "How is the birthday story handled?",
+            "answer": "Add your child’s birthday to their profile and we’ll include a special personalized story during their birthday month."
+          }
+        },
+        "first_shipment": {
+          "type": "question",
+          "settings": {
+            "question": "When will my first book ship?",
+            "answer": "Your first book enters curation after checkout and profile completion. We’ll email you when it ships."
+          }
+        },
+        "international_shipping": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship outside the US?",
+            "answer": "Shipping is included on these Story Club plans. Contact us before ordering to check international availability."
+          }
+        }
+      },
+      "block_order": [
+        "how_it_works",
+        "what_is_included",
+        "introductory_pricing",
+        "gift_membership",
+        "cancellation",
+        "ages",
+        "multiple_children",
+        "birthday_story",
+        "first_shipment",
+        "international_shipping"
+      ],
+      "settings": {}
+    },
+    "story_club_closing_cta": {
+      "type": "story-club-closing-cta",
+      "settings": {
+        "join_link": "shopify://collections/personalized-storybooks",
+        "gift_link": "#story-club-gifts"
+      }
     }
   },
   "order": [
     "story_club_hero",
     "story_club_offer",
     "story_club_steps",
-    "story_club_formats"
+    "story_club_formats",
+    "story_club_monthly",
+    "story_club_gifts",
+    "story_club_benefits",
+    "story_club_faq",
+    "story_club_closing_cta"
   ]
 }

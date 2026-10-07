@@ -1,0 +1,369 @@
+{% assign background_image = section.settings.background_image %}
+
+<section id="story-club-gifts" class="story-club-gifts" aria-labelledby="StoryClubGiftsHeading-{{ section.id }}">
+  <div class="story-club-gifts__media" aria-hidden="true">
+    {% if background_image != blank %}
+      {{ background_image | image_url: width: 2400 | image_tag: widths: '1200, 1600, 2000, 2400', sizes: '100vw', alt: '', loading: 'lazy' }}
+    {% else %}
+      <img
+        src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/Cozy_Family_Reading_in_Watercolor.png?v=1791344467"
+        alt=""
+        width="2172"
+        height="724"
+        loading="eager"
+      >
+    {% endif %}
+  </div>
+  <div class="story-club-gifts__inner">
+    <div class="story-club-gifts__content">
+      <header class="story-club-gifts__header">
+        <h2 id="StoryClubGiftsHeading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+        <p>{{ section.settings.subheading | escape }}</p>
+      </header>
+
+      <div class="story-club-gifts__plans">
+        {% for block in section.blocks %}
+          <article class="story-club-gifts__plan" {{ block.shopify_attributes }}>
+            {% if block.settings.badge != blank %}
+              <span class="story-club-gifts__badge{% if block.settings.badge == 'Most Popular' %} story-club-gifts__badge--popular{% elsif block.settings.badge == 'Best Value' %} story-club-gifts__badge--value{% endif %}">
+                {{ block.settings.badge | escape }}
+              </span>
+            {% endif %}
+
+            <div class="story-club-gifts__plan-copy">
+              <h3>{{ block.settings.term | escape }}</h3>
+              <p class="story-club-gifts__book-count">{{ block.settings.book_count | escape }}</p>
+            </div>
+
+            <div class="story-club-gifts__price">
+              <strong>{{ block.settings.price | escape }}</strong>
+              <span>{{ block.settings.per_book | escape }}</span>
+            </div>
+
+            {% if block.settings.link != blank %}
+              <a class="story-club-gifts__button" href="{{ block.settings.link }}">
+                {{ block.settings.button_label | escape }}
+              </a>
+            {% else %}
+              <button class="story-club-gifts__button" type="button" disabled>
+                {{ block.settings.button_label | escape }}
+              </button>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+
+      <p class="story-club-gifts__note">{{ section.settings.fine_print | escape }}</p>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .story-club-gifts {
+    position: relative;
+    isolation: isolate;
+    min-height: 600px;
+    overflow: hidden;
+    background: #eaf7fc;
+    color: #143d63;
+  }
+
+  .story-club-gifts__media {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+  }
+
+  .story-club-gifts__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .story-club-gifts__inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(38%, 0.85fr) minmax(0, 1.15fr);
+    align-items: center;
+    width: min(100%, 1680px);
+    min-height: inherit;
+    margin-inline: auto;
+    padding: 56px clamp(24px, 4vw, 64px);
+  }
+
+  .story-club-gifts__content {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .story-club-gifts__header {
+    width: min(100%, 760px);
+    margin: 0 auto 26px;
+    text-align: center;
+  }
+
+  .story-club-gifts__header h2 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 34px;
+    line-height: 1.06;
+  }
+
+  .story-club-gifts__header p {
+    max-width: 58ch;
+    margin: 10px auto 0;
+    font-family: var(--font-heading--family);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .story-club-gifts__plans {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .story-club-gifts__plan {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 238px;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 12px 14px;
+    border: 1px solid rgb(20 61 99 / 12%);
+    border-radius: 8px;
+    background: rgb(255 255 255 / 90%);
+    box-shadow: 0 8px 22px rgb(20 61 99 / 9%);
+    text-align: center;
+  }
+
+  .story-club-gifts__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    max-width: calc(100% - 12px);
+    padding: 5px 12px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #f58e77;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .story-club-gifts__badge--value {
+    background: #669a51;
+  }
+
+  .story-club-gifts__plan-copy h3 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 21px;
+    line-height: 1.1;
+  }
+
+  .story-club-gifts__book-count {
+    margin: 5px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .story-club-gifts__price {
+    display: grid;
+    gap: 3px;
+    margin: 12px 0 14px;
+  }
+
+  .story-club-gifts__price strong {
+    font-family: var(--font-heading--family);
+    font-size: 25px;
+    line-height: 1;
+  }
+
+  .story-club-gifts__price span {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .story-club-gifts__button {
+    display: inline-flex;
+    width: 100%;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: #143d63;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .story-club-gifts__button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .story-club-gifts__note {
+    margin: 12px 0 0;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 1099px) and (min-width: 750px) {
+    .story-club-gifts__inner {
+      grid-template-columns: minmax(30%, 0.65fr) minmax(0, 1.35fr);
+      padding-inline: 28px;
+    }
+
+    .story-club-gifts__header h2 {
+      font-size: 30px;
+    }
+
+    .story-club-gifts__plans {
+      gap: 9px;
+    }
+
+    .story-club-gifts__plan {
+      padding-inline: 8px;
+    }
+
+    .story-club-gifts__plan-copy h3 {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .story-club-gifts {
+      min-height: 0;
+      background: #eaf7fc;
+    }
+
+    .story-club-gifts__media {
+      position: relative;
+      z-index: auto;
+      height: 250px;
+    }
+
+    .story-club-gifts__media img {
+      object-position: left center;
+    }
+
+    .story-club-gifts__inner {
+      display: block;
+      min-height: 0;
+      margin-top: -8px;
+      padding: 22px 18px 40px;
+    }
+
+    .story-club-gifts__header {
+      margin-bottom: 24px;
+    }
+
+    .story-club-gifts__header h2 {
+      font-size: 30px;
+    }
+
+    .story-club-gifts__plans {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .story-club-gifts__plan {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4px 12px;
+      padding: 18px 16px 14px;
+      text-align: left;
+    }
+
+    .story-club-gifts__plan-copy {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .story-club-gifts__plan-copy h3 {
+      font-size: 20px;
+    }
+
+    .story-club-gifts__book-count {
+      margin-top: 4px;
+    }
+
+    .story-club-gifts__price {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+      margin: 0;
+      text-align: right;
+    }
+
+    .story-club-gifts__price strong {
+      font-size: 22px;
+    }
+
+    .story-club-gifts__button {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+    }
+
+    .story-club-gifts__note {
+      margin-top: 16px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Story Club gifts",
+  "settings": [
+    { "type": "image_picker", "id": "background_image", "label": "Background image" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Perfect Gift for Grandparents (and Parents Too!)" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Give a Story Club membership and share a new personalized adventure every month. A meaningful gift that keeps showing up all year long." },
+    { "type": "text", "id": "fine_print", "label": "Fine print", "default": "One-time payment. No automatic renewal. Shipping included." }
+  ],
+  "blocks": [
+    {
+      "type": "gift_plan",
+      "name": "Gift plan",
+      "settings": [
+        { "type": "text", "id": "term", "label": "Term", "default": "3 Months" },
+        { "type": "text", "id": "book_count", "label": "Book count", "default": "3 personalized books" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$59.85" },
+        { "type": "text", "id": "per_book", "label": "Per-book price", "default": "($19.95 each)" },
+        { "type": "text", "id": "badge", "label": "Badge" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Give as a Gift" },
+        { "type": "url", "id": "link", "label": "Gift plan link" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Story Club gifts",
+      "blocks": [
+        { "type": "gift_plan", "settings": { "term": "3 Months", "book_count": "3 personalized books", "price": "$59.85", "per_book": "($19.95 each)", "button_label": "Give as a Gift" } },
+        { "type": "gift_plan", "settings": { "term": "6 Months", "book_count": "6 personalized books", "price": "$113.70", "per_book": "($18.95 each)", "badge": "Most Popular", "button_label": "Give as a Gift" } },
+        { "type": "gift_plan", "settings": { "term": "12 Months", "book_count": "12 personalized books", "price": "$227.40", "per_book": "($18.95 each)", "badge": "Best Value", "button_label": "Give as a Gift" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

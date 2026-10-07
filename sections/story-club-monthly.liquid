@@ -1,0 +1,170 @@
+<section class="story-club-monthly" aria-labelledby="StoryClubMonthlyHeading-{{ section.id }}">
+  <header class="story-club-monthly__header">
+    <h2 id="StoryClubMonthlyHeading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+    <p>{{ section.settings.subheading | escape }}</p>
+  </header>
+
+  <div class="story-club-monthly__grid">
+    {% for block in section.blocks %}
+      <article class="story-club-monthly__story" {{ block.shopify_attributes }}>
+        {% if block.settings.cover != blank %}
+          <div class="story-club-monthly__cover">
+            {{ block.settings.cover | image_url: width: 720 | image_tag: widths: '240, 360, 480, 720', sizes: '(min-width: 1200px) 16vw, (min-width: 750px) 30vw, 45vw', alt: block.settings.title, loading: 'lazy' }}
+          </div>
+        {% endif %}
+        <p class="story-club-monthly__period">{{ block.settings.period | escape }}</p>
+        <h3>{{ block.settings.title | escape }}</h3>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .story-club-monthly {
+    padding: 64px 24px 72px;
+    background: #fff;
+    color: #143d63;
+  }
+
+  .story-club-monthly__header {
+    width: min(100%, 1100px);
+    margin: 0 auto 38px;
+    text-align: center;
+  }
+
+  .story-club-monthly__header h2 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 42px;
+    line-height: 1.08;
+  }
+
+  .story-club-monthly__header p {
+    margin: 10px 0 0;
+    color: #5b9fc2;
+    font-family: var(--font-heading--family);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .story-club-monthly__grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 22px;
+    width: min(100%, 1480px);
+    margin: 0 auto;
+  }
+
+  .story-club-monthly__story {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .story-club-monthly__cover {
+    display: grid;
+    aspect-ratio: 1;
+    place-items: center;
+    margin-bottom: 14px;
+  }
+
+  .story-club-monthly__cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(3px 5px 3px rgb(20 61 99 / 18%));
+  }
+
+  .story-club-monthly__period {
+    margin: 0 0 3px;
+    font-family: var(--font-heading--family);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .story-club-monthly__story h3 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 17px;
+    line-height: 1.25;
+  }
+
+  @media screen and (max-width: 1099px) {
+    .story-club-monthly__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      row-gap: 30px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .story-club-monthly {
+      padding: 48px 18px 56px;
+    }
+
+    .story-club-monthly__header {
+      margin-bottom: 28px;
+    }
+
+    .story-club-monthly__header h2 {
+      font-size: 32px;
+    }
+
+    .story-club-monthly__header p {
+      font-size: 16px;
+    }
+
+    .story-club-monthly__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 16px;
+    }
+
+    .story-club-monthly__cover {
+      margin-bottom: 10px;
+    }
+
+    .story-club-monthly__period {
+      font-size: 15px;
+    }
+
+    .story-club-monthly__story h3 {
+      font-size: 16px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Story Club stories",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A New Adventure Every Month" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Each story is personalized with your child’s name, appearance and special details." }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Monthly story",
+      "settings": [
+        { "type": "image_picker", "id": "cover", "label": "Book cover" },
+        { "type": "text", "id": "period", "label": "Month label", "default": "Month 1" },
+        { "type": "text", "id": "title", "label": "Story title", "default": "A Lake Adventure" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story Club stories",
+      "blocks": [
+        { "type": "story", "settings": { "cover": "shopify://shop_images/Olivia_sSummerAdventuresattheLake.png", "period": "Month 1", "title": "A Lake Adventure" } },
+        { "type": "story", "settings": { "cover": "shopify://shop_images/Oliver_s_Halloween_Adventure.png", "period": "Month 2", "title": "Seasonal Fun" } },
+        { "type": "story", "settings": { "cover": "shopify://shop_images/AdventureSTorybook-Max.png", "period": "Month 3", "title": "Something They Love" } },
+        { "type": "story", "settings": { "cover": "shopify://shop_images/Jessie_s_Wonder_Storybook.png", "period": "Birthday Month", "title": "A Special Birthday Story" } },
+        { "type": "story", "settings": { "cover": "shopify://shop_images/Jacob_the_Elf__Winter_Sleigh_Adventure.png", "period": "Month 5", "title": "Holidays" } },
+        { "type": "story", "settings": { "cover": "shopify://shop_images/Little_Lake_Stories_Thanksgiving_Standardized_1536.png", "period": "Month 6+", "title": "And the Stories Keep Coming!" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
