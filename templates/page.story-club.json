@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "story_club_hero": {
+      "type": "story-club-hero",
+      "settings": {}
+    },
+    "story_club_offer": {
+      "type": "story-club-offer",
+      "settings": {
+        "join_link": "shopify://collections/personalized-storybooks",
+        "gift_link": "shopify://collections/personalized-storybooks"
+      }
+    },
+    "story_club_steps": {
+      "type": "story-club-steps",
+      "blocks": {
+        "profile": {
+          "type": "step",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/1._create_story.png?v=1791340875",
+            "heading": "Create Their Story Profile",
+            "description": "Tell us about your child’s name, appearance, birthday and favorite things. You’ll only do this once."
+          }
+        },
+        "curate": {
+          "type": "step",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/2._We_curate.png?v=1791340876",
+            "heading": "We Curate Their Adventures",
+            "description": "Each month, we choose a new personalized story based on their age, interests, season and special moments."
+          }
+        },
+        "arrives": {
+          "type": "step",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/3._Their_story.png?v=1791340876",
+            "heading": "Their Story Arrives",
+            "description": "A new personalized storybook is delivered to their door every month with their name and character inside."
+          }
+        }
+      },
+      "block_order": [
+        "profile",
+        "curate",
+        "arrives"
+      ],
+      "settings": {}
+    },
+    "story_club_formats": {
+      "type": "story-club-formats",
+      "settings": {
+        "soft_cover_link": "",
+        "hard_cover_link": ""
+      }
+    }
+  },
+  "order": [
+    "story_club_hero",
+    "story_club_offer",
+    "story_club_steps",
+    "story_club_formats"
+  ]
+}

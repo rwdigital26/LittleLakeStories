@@ -2,13 +2,11 @@
   assign current_product = closest.product
   assign show_customizations = false
   assign is_custom_book = false
-  assign wizard_step_count = 4
   if current_product != blank
     unless current_product.tags contains 'Hard Cover Upgrade' or current_product.tags contains 'Cart Upsell'
       assign show_customizations = true
       if current_product.tags contains 'Custom'
         assign is_custom_book = true
-        assign wizard_step_count = 2
       endif
     endunless
   endif
@@ -25,8 +23,6 @@
     data-product-personalization
     data-product-id="{{ current_product.id }}"
     data-product-form-id="{{ product_form_id }}"
-    data-custom-book="{{ is_custom_book }}"
-    data-step-count="{{ wizard_step_count }}"
     data-hardcover-addon-variant-id="67672769036542"
     {{ block.shopify_attributes }}
   >
@@ -70,34 +66,9 @@
           </aside>
 
           <div class="product-personalization__wizard">
-            <p class="product-personalization__step-indicator" aria-live="polite" data-step-indicator>Step 1 of {{ wizard_step_count }}</p>
+            <p class="product-personalization__step-indicator" aria-live="polite" data-step-indicator>Step 1 of 4</p>
 
             <section class="product-personalization__step" data-wizard-step="1" aria-labelledby="{{ component_id }}-step-1-title">
-              {% if is_custom_book %}
-                <div class="product-personalization__after-checkout">
-                  <h3 id="{{ component_id }}-step-1-title">Your Story Starts After Checkout 💙</h3>
-                  <p>After you place your order, you’ll receive a <strong>personalization questionnaire</strong> where you can tell us all about your child, family, favorite places, special memories, and the story you’d love us to create.</p>
-                  <p>You’ll also have a <strong>secure space to upload photos</strong> of your child, family members, pets, special locations, and anything else you’d like us to use as inspiration for the illustrations.</p>
-                  <p><strong>No need to have everything ready right now.</strong></p>
-                  <p>Once we receive your questionnaire and photos, we’ll begin creating your one-of-a-kind Little Lake Story.</p>
-                  <ul class="product-personalization__after-checkout-benefits">
-                    <li><span class="svg-wrapper">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>Personalized story written from your answers</li>
-                    <li><span class="svg-wrapper">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>Custom illustrations inspired by your photos</li>
-                    <li><span class="svg-wrapper">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>Secure photo uploads after purchase</li>
-                    <li><span class="svg-wrapper">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>Two rounds of revisions included</li>
-                  </ul>
-                  <label class="product-personalization__acknowledgment">
-                    <input
-                      type="checkbox"
-                      name="properties[Personalization After Checkout Acknowledgment]"
-                      value="Yes"
-                      form="{{ product_form_id }}"
-                      required
-                    >
-                    <span><strong>I understand that personalization takes place after checkout.</strong> I will receive a questionnaire where I can provide story details and securely upload photos needed to create my custom book.</span>
-                  </label>
-                </div>
-              {% else %}
               <h3 id="{{ component_id }}-step-1-title">Meet the star</h3>
               <fieldset class="product-personalization__group">
                 <legend>Gender</legend>
@@ -150,10 +121,8 @@
                 <input type="hidden" name="properties[Skin Tone]" value="Medium" form="{{ product_form_id }}" data-range-property>
                 <output id="{{ component_id }}-skin-value" class="product-personalization__value" data-range-output>Medium</output>
               </div>
-              {% endif %}
             </section>
 
-            {% unless is_custom_book %}
             <section class="product-personalization__step" data-wizard-step="2" aria-labelledby="{{ component_id }}-step-2-title" hidden>
               <h3 id="{{ component_id }}-step-2-title">Choose their features</h3>
               <div class="product-personalization__field">
@@ -280,9 +249,8 @@
                 </p>
               </div>
             </section>
-            {% endunless %}
 
-            <section class="product-personalization__step" data-wizard-step="{{ wizard_step_count }}" aria-labelledby="{{ component_id }}-step-4-title" hidden>
+            <section class="product-personalization__step" data-wizard-step="4" aria-labelledby="{{ component_id }}-step-4-title" hidden>
               <h3 id="{{ component_id }}-step-4-title">Upgrade to Hard Cover?</h3>
               <div class="product-personalization__cover-upgrade">
                 <span class="product-personalization__cover-price">Just <strong>$9.99</strong> more</span>
@@ -322,7 +290,7 @@
 
             <div class="product-personalization__navigation">
               <button class="button-secondary" type="button" data-wizard-back hidden>Back</button>
-              <button class="button" type="button" data-wizard-next>{% if is_custom_book %}Next Step{% else %}Next{% endif %}</button>
+              <button class="button" type="button" data-wizard-next>Next</button>
             </div>
           </div>
         </div>
@@ -444,11 +412,6 @@
     object-fit: contain;
   }
 
-  .product-personalization__preview img[hidden],
-  .product-personalization__preview p[hidden] {
-    display: none;
-  }
-
   .product-personalization__preview p {
     max-width: 18ch;
     padding: var(--padding-lg);
@@ -473,67 +436,6 @@
   .product-personalization__step h3 {
     margin-block: 0 var(--padding-md);
     font-size: var(--font-size--lg);
-  }
-
-  .product-personalization__after-checkout {
-    display: grid;
-    gap: var(--padding-sm);
-  }
-
-  .product-personalization__after-checkout h3,
-  .product-personalization__after-checkout p {
-    margin: 0;
-  }
-
-  .product-personalization__after-checkout-benefits {
-    display: grid;
-    gap: var(--padding-xs);
-    margin: var(--padding-xs) 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .product-personalization__after-checkout-benefits li {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--padding-xs);
-  }
-
-  .product-personalization__after-checkout-benefits .svg-wrapper {
-    flex: 0 0 18px;
-    width: 18px;
-    height: 18px;
-    color: #0b5e97;
-  }
-
-  .product-personalization__acknowledgment {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--padding-xs);
-    padding-block-start: var(--padding-sm);
-    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / 14%);
-    cursor: pointer;
-  }
-
-  .product-personalization__acknowledgment input {
-    flex: 0 0 18px;
-    width: 18px;
-    height: 18px;
-    margin-block-start: 2px;
-    accent-color: #0b5e97;
-  }
-
-  .product-personalization__acknowledgment span {
-    font-size: var(--font-size--sm);
-    line-height: 1.4;
-  }
-
-  product-personalization-component[data-custom-book='true'][data-current-step='1'] .product-personalization__modal-body {
-    grid-template-columns: 1fr;
-  }
-
-  product-personalization-component[data-custom-book='true'][data-current-step='1'] .product-personalization__preview {
-    display: none;
   }
 
   .product-personalization__step[hidden] {

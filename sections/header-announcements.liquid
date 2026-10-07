@@ -17,8 +17,10 @@
 >
   {% liquid
     assign autoplay = false
+    assign show_arrows = false
     if section.blocks.size > 1
       assign autoplay = true
+      assign show_arrows = true
     endif
   %}
 
@@ -28,6 +30,10 @@
       autoplay="{{ section.settings.speed }}" aria-live="polite"
     {% endif %}
   >
+    {% if show_arrows %}
+      {% render 'slideshow-arrows', icon_style: 'chevron' %}
+    {% endif %}
+
     <div class="announcement-bar__slides">
       {% content_for 'blocks' %}
     </div>

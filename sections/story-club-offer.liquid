@@ -1,0 +1,243 @@
+{% liquid
+  assign join_link = section.settings.join_link | default: routes.all_products_collection_url
+  assign gift_link = section.settings.gift_link | default: routes.all_products_collection_url
+%}
+
+<section class="story-club-offer" aria-labelledby="StoryClubOfferHeading-{{ section.id }}">
+  <div class="story-club-offer__cloud" aria-hidden="true">
+    <svg viewBox="0 0 1440 420" preserveAspectRatio="none" focusable="false">
+      <path d="M0 96C92 66 164 82 238 52C322 18 408 24 476 52C558 12 654 18 720 52C803 12 906 18 980 54C1062 20 1152 29 1218 58C1304 32 1380 46 1440 82V338C1362 368 1284 352 1208 376C1120 408 1038 390 968 364C878 406 786 394 712 366C620 402 522 392 458 362C374 404 282 384 216 356C132 382 62 366 0 340Z" fill="#dff3fa" />
+    </svg>
+  </div>
+  <div class="story-club-offer__inner">
+    <p class="story-club-offer__label">{{ section.settings.offer_label | escape }}</p>
+
+    <div class="story-club-offer__price-block">
+      {% if section.settings.original_price != blank %}
+        <s class="story-club-offer__original-price">{{ section.settings.original_price | escape }}</s>
+      {% endif %}
+      <h2 id="StoryClubOfferHeading-{{ section.id }}" class="story-club-offer__price">
+        <strong>{{ section.settings.intro_price | escape }}</strong>
+        <span>{{ section.settings.billing_period | escape }}</span>
+      </h2>
+      <p class="story-club-offer__membership-note">{{ section.settings.membership_note | escape }}</p>
+      <p class="story-club-offer__shipping-note">{{ section.settings.shipping_note | escape }}</p>
+    </div>
+
+    <div class="story-club-offer__actions">
+      <a class="story-club-offer__join button" href="{{ join_link }}">
+        <span>{{ section.settings.join_label | escape }}</span>
+        <span class="svg-wrapper" aria-hidden="true">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+      </a>
+      <a class="story-club-offer__gift" href="{{ gift_link }}">
+        {{ section.settings.gift_label | escape }}
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .story-club-offer {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    min-height: 420px;
+    align-items: center;
+    overflow: hidden;
+    padding: 52px 24px 60px;
+    background: #fff;
+    color: #143d63;
+  }
+
+  .story-club-offer__cloud {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .story-club-offer__cloud svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .story-club-offer__inner {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.9fr) minmax(360px, 1.15fr) minmax(260px, 0.95fr);
+    align-items: center;
+    gap: 24px 32px;
+    width: min(100%, 1240px);
+    margin-inline: auto;
+  }
+
+  .story-club-offer__label {
+    margin: 0;
+    color: #0b5e97;
+    font-family: var(--font-heading--family);
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .story-club-offer__price-block {
+    text-align: center;
+  }
+
+  .story-club-offer__original-price {
+    color: #b4233a;
+    font-size: 18px;
+    text-decoration-thickness: 2px;
+  }
+
+  .story-club-offer__price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .story-club-offer__price strong {
+    color: #b4233a;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .story-club-offer__price span {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .story-club-offer__membership-note,
+  .story-club-offer__shipping-note {
+    margin: 8px 0 0;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .story-club-offer__actions {
+    display: grid;
+    width: min(100%, 340px);
+    justify-self: end;
+    justify-items: stretch;
+    gap: 14px;
+  }
+
+  .story-club-offer__join.button {
+    --button-background-color: #0b5e97;
+    --button-border-color: #0b5e97;
+    --button-color: #fff;
+
+    display: inline-flex;
+    width: 100%;
+    min-width: 0;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-inline: 24px;
+    border-radius: 999px;
+    background-color: #0b5e97;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .story-club-offer__join .svg-wrapper {
+    width: 18px;
+    height: 18px;
+  }
+
+  .story-club-offer__gift {
+    justify-self: center;
+    color: #143d63;
+    font-size: 15px;
+    font-weight: 700;
+    text-underline-offset: 4px;
+  }
+
+  .story-club-offer__gift span {
+    margin-inline-start: 5px;
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 1100px) {
+    .story-club-offer {
+      min-height: 500px;
+    }
+
+    .story-club-offer__inner {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .story-club-offer__actions {
+      width: min(100%, 360px);
+      justify-self: center;
+    }
+
+    .story-club-offer__join.button {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .story-club-offer {
+      min-height: 620px;
+      padding: 56px 24px;
+    }
+
+    .story-club-offer__inner {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .story-club-offer__label {
+      font-size: 24px;
+    }
+
+    .story-club-offer__price strong {
+      font-size: 48px;
+    }
+
+    .story-club-offer__actions {
+      width: min(100%, 360px);
+    }
+
+    .story-club-offer__join.button {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Story Club offer",
+  "settings": [
+    { "type": "text", "id": "offer_label", "label": "Offer label", "default": "Introductory Story Club Offer" },
+    { "type": "text", "id": "original_price", "label": "Original price", "default": "$44.95" },
+    { "type": "text", "id": "intro_price", "label": "Introductory price", "default": "$19.95" },
+    { "type": "text", "id": "billing_period", "label": "Billing period", "default": "/ month" },
+    { "type": "text", "id": "membership_note", "label": "Membership note", "default": "Start with a 3-month membership." },
+    { "type": "text", "id": "shipping_note", "label": "Shipping note", "default": "Shipping included." },
+    { "type": "text", "id": "join_label", "label": "Join button label", "default": "Join the Story Club" },
+    { "type": "url", "id": "join_link", "label": "Join button link" },
+    { "type": "text", "id": "gift_label", "label": "Gift link label", "default": "Give a Gift Membership" },
+    { "type": "url", "id": "gift_link", "label": "Gift membership link" }
+  ],
+  "presets": [
+    { "name": "Story Club offer" }
+  ]
+}
+{% endschema %}
