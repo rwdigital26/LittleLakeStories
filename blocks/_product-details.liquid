@@ -26,6 +26,9 @@
         {{- closest.product.title }}
       </a>
     </div>
+    {% if closest.product.tags contains 'Subscription' %}
+      <p class="subscription-product-badge"><span aria-hidden="true">♡</span> Subscription</p>
+    {% endif %}
     {% content_for 'blocks' %}
   {% endcapture %}
 

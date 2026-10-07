@@ -2,7 +2,16 @@
   assign current_product = closest.product
   assign show_customizations = false
   assign is_custom_book = false
+  assign has_subscription_variants = true
   if current_product != blank
+    if current_product.tags contains 'Subscription'
+      assign membership_option = current_product.options_by_name['Membership Length']
+      if membership_option == blank
+        assign has_subscription_variants = false
+      elsif membership_option.values.size < 2
+        assign has_subscription_variants = false
+      endif
+    endif
     unless current_product.tags contains 'Hard Cover Upgrade' or current_product.tags contains 'Cart Upsell'
       assign show_customizations = true
       if current_product.tags contains 'Custom'
@@ -30,10 +39,27 @@
       class="product-personalization__trigger button"
       type="button"
       data-open-customizer
-      {% unless current_product.available %}disabled{% endunless %}
+      {% unless current_product.available and has_subscription_variants %}disabled{% endunless %}
     >
       {% if is_custom_book %}Create Their Custom Story{% else %}Personalize This Book{% endif %}
     </button>
+
+    {% if current_product.tags contains 'Subscription' %}
+      <div class="subscription-product-benefits" aria-label="Membership benefits">
+        <span>
+          <img src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/shipping.png" alt="" width="24" height="24" loading="eager">
+          Free shipping included
+        </span>
+        <span>
+          <img src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/book.png" alt="" width="24" height="24" loading="eager">
+          One-of-a-kind stories
+        </span>
+        <span>
+          <img src="https://cdn.shopify.com/s/files/1/0831/8376/3710/files/gift.png" alt="" width="24" height="24" loading="eager">
+          A meaningful gift
+        </span>
+      </div>
+    {% endif %}
 
     <dialog
       class="product-personalization__dialog"
@@ -308,6 +334,34 @@
 
   .product-personalization {
     display: block;
+  }
+
+  .subscription-product-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-block: 0 18px;
+  }
+
+  .subscription-product-benefits span {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #486b83;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .subscription-product-benefits img {
+    display: block;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
   }
 
   .product-personalization__trigger.button {
