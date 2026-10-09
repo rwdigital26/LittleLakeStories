@@ -37,21 +37,21 @@
         <strong>3 Months</strong>
         <span>3 personalized books</span>
         <strong class="subscription-plan-preview__price">$59.85</strong>
-        <span>($19.95 each)</span>
+        <span>{{ block_settings.subscription_unit_price_text | default: '([price] each)' | replace: '[price]', '$19.95' }}</span>
       </div>
       <div class="subscription-plan-preview__card subscription-plan-preview__card--selected" role="listitem" aria-disabled="true">
         <span class="subscription-plan-preview__badge">Most Popular</span>
         <strong>6 Months</strong>
         <span>6 personalized books</span>
         <strong class="subscription-plan-preview__price">$113.70</strong>
-        <span>($18.95 each)</span>
+        <span>{{ block_settings.subscription_unit_price_text | default: '([price] each)' | replace: '[price]', '$18.95' }}</span>
       </div>
       <div class="subscription-plan-preview__card" role="listitem" aria-disabled="true">
         <span class="subscription-plan-preview__badge subscription-plan-preview__badge--value">Best Value</span>
         <strong>12 Months</strong>
         <span>12 personalized books</span>
         <strong class="subscription-plan-preview__price">$227.40</strong>
-        <span>($18.95 each)</span>
+        <span>{{ block_settings.subscription_unit_price_text | default: '([price] each)' | replace: '[price]', '$18.95' }}</span>
       </div>
     </div>
   </div>
@@ -206,7 +206,8 @@
                         <strong class="subscription-plan-card__price">{{ membership_variant.price | money }}</strong>
                         {% if membership_months > 0 %}
                           {% assign membership_unit_price = membership_variant.price | divided_by: membership_months %}
-                          <span class="subscription-plan-card__unit">({{ membership_unit_price | money }} each)</span>
+                          {% assign membership_unit_price_text = membership_unit_price | money %}
+                          <span class="subscription-plan-card__unit">{{ block_settings.subscription_unit_price_text | default: '([price] each)' | replace: '[price]', membership_unit_price_text }}</span>
                         {% endif %}
                       {% endif %}
                     </span>
