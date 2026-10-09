@@ -178,29 +178,29 @@
         "format_gHedEG": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/Oliver_s_Halloween_Adventure.png",
+            "image": "shopify://shop_images/Peekaboo_LittleOne_LakesideDreams_1.png",
             "badge_icon": "",
             "badge": "",
             "badge_color": "#d8ecf6",
-            "heading": "Halloween Personalized Book",
+            "heading": "Peek-a-Boo I See You Personalized Book",
             "dimensions": "8.5 x 8.5 in | Hardcover",
             "description": "A timeless square book made for little hands and treasured memories.",
             "button_label": "Explore This Book",
-            "link": "shopify://products/halloween-personalized-storybook"
+            "link": "shopify://products/peekaboo-little-one-i-see-you-storybook"
           }
         },
         "format_tT38L7": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/Little_Lake_Stories_Thanksgiving_Standardized_1536.png",
+            "image": "shopify://shop_images/GoodNight_Max_LakesideLullaby.png",
             "badge_icon": "",
             "badge": "",
             "badge_color": "#d8ecf6",
-            "heading": "Thankful for You Personalized Book",
+            "heading": "Good Night Personalized Book",
             "dimensions": "8.5 x 8.5 in | Hardcover",
             "description": "A timeless square book made for little hands and treasured memories.",
             "button_label": "Explore This Book",
-            "link": "shopify://products/halloween-personalized-storybook-copy"
+            "link": "shopify://products/good-night-little-one-storybook"
           }
         },
         "format_JDrjG3": {
