@@ -103,47 +103,47 @@
         "month_1": {
           "type": "story",
           "settings": {
-            "cover": "shopify://shop_images/Olivia_sSummerAdventuresattheLake.png",
+            "cover": "shopify://shop_images/Sarah_sMagicalLakesideAdventure.png",
             "period": "Month 1",
-            "title": "A Lake Adventure"
+            "title": "A Magical Adventure"
           }
         },
         "month_2": {
           "type": "story",
           "settings": {
-            "cover": "shopify://shop_images/Oliver_s_Halloween_Adventure.png",
+            "cover": "shopify://shop_images/DreamBig_LittleMaddie.png",
             "period": "Month 2",
-            "title": "Seasonal Fun"
+            "title": "Bedtime Stories"
           }
         },
         "month_3": {
           "type": "story",
           "settings": {
-            "cover": "shopify://shop_images/AdventureSTorybook-Max.png",
+            "cover": "shopify://shop_images/Steven_sRaceTrackAdventure.png",
             "period": "Month 3",
-            "title": "Something They Love"
+            "title": "Outside Adventures"
           }
         },
         "birthday": {
           "type": "story",
           "settings": {
-            "cover": "shopify://shop_images/Jessie_s_Wonder_Storybook.png",
+            "cover": "shopify://shop_images/Leslie_sFirstBirthdaybytheLake.png",
             "period": "Birthday Month",
-            "title": "A Special Birthday Story"
+            "title": "Celebrate"
           }
         },
         "month_5": {
           "type": "story",
           "settings": {
             "cover": "shopify://shop_images/Jacob_the_Elf__Winter_Sleigh_Adventure.png",
-            "period": "Month 5",
-            "title": "Holidays"
+            "period": "Holidays",
+            "title": "Special Themed Books"
           }
         },
         "month_6": {
           "type": "story",
           "settings": {
-            "cover": "shopify://shop_images/Little_Lake_Stories_Thanksgiving_Standardized_1536.png",
+            "cover": "shopify://shop_images/MichaeltheDigDigDigger.png",
             "period": "Month 6+",
             "title": "And the Stories Keep Coming!"
           }
