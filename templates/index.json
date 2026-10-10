@@ -43,7 +43,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Create Your Story →",
-            "link": "shopify://collections/create-a-custom-storybook",
+            "link": "shopify://pages/100-custom-storybooks",
             "open_in_new_tab": false,
             "style_class": "button-custom",
             "custom_button_background": "#2d86b6",
@@ -166,6 +166,7 @@
         "format_3"
       ],
       "settings": {
+        "collection_handle": "",
         "heading": "Fully Customizable Storybooks",
         "subheading": "Unqiue storybook. One story that's entirely theirs.",
         "text": "Every book is written from scratch, illustrated with your memories, and made just for you.",
@@ -225,6 +226,7 @@
       ],
       "name": "Choose your storybook",
       "settings": {
+        "collection_handle": "",
         "heading": "Personalized Storybooks",
         "subheading": "A personalized story without starting from scratch.",
         "text": "Choose one of our ready-made lake adventures, then make it theirs by personalizing the child's name, appearance, destination, family names and a special dedication.",
@@ -355,7 +357,7 @@
       "settings": {
         "heading": "Not Just Personalized. Truly Their Story.",
         "subheading": "Every child has a story worth telling. We turn their real memories, favorite people, and special places into a one-of-a-kind illustrated adventure, written from scratch just for them.",
-        "name_label": "Child's Nam",
+        "name_label": "Child's Name",
         "name_value": "Emma",
         "hair_label": "Hair Color",
         "hair_value": "Blonde",
@@ -364,7 +366,7 @@
         "companions_label": "Companions",
         "companions_value": "Grandma & Grandpa",
         "button_label": "Let's Get Started",
-        "button_link": "shopify://collections/create-a-custom-storybook",
+        "button_link": "shopify://pages/100-custom-storybooks",
         "placeholder_book_title": "Emma's Lake Geneva Adventure",
         "placeholder_note": "Every child has a story waiting on the lake.",
         "background_color": "#eaf8fb"
