@@ -41,9 +41,28 @@
         "policy_4_link": "",
         "background_color": "#f1f1f1"
       }
+    },
+    "story_club_popup": {
+      "type": "story-club-popup",
+      "settings": {
+        "delay_seconds": 3,
+        "image": "",
+        "eyebrow": "Limited-time launch special",
+        "heading": "Join the Little Lake Story Club",
+        "offer_lead": "Get Your First Book for Just",
+        "price": "$1.00",
+        "description": "Start their personalized storybook subscription with a magical first book delivered for only $1.00.",
+        "coupon_note": "No coupon code needed",
+        "join_label": "Join the Story Club",
+        "join_link": "shopify://products/little-lake-story-club",
+        "gift_label": "Give a Gift Membership",
+        "gift_link": "shopify://products/little-lake-story-club",
+        "fine_print": "Choose from 3, 6, or 12 month plans."
+      }
     }
   },
   "order": [
-    "brand_footer_home"
+    "brand_footer_home",
+    "story_club_popup"
   ]
 }
