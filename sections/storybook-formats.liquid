@@ -7,11 +7,13 @@
 
 {% if show_storybook_formats %}
 <section class="storybook-formats section section--page-width" style="--storybook-formats-bg: {{ section.settings.background_color }};">
-  <div class="storybook-formats__header">
-    {% if section.settings.heading != blank %}<h2>{{ section.settings.heading }}</h2>{% endif %}
-    {% if section.settings.subheading != blank %}<p class="storybook-formats__subheading">{{ section.settings.subheading }}</p>{% endif %}
-    {% if section.settings.text != blank %}<p class="storybook-formats__text">{{ section.settings.text }}</p>{% endif %}
-  </div>
+  {% if section.settings.heading != blank or section.settings.subheading != blank or section.settings.text != blank %}
+    <div class="storybook-formats__header">
+      {% if section.settings.heading != blank %}<h2>{{ section.settings.heading }}</h2>{% endif %}
+      {% if section.settings.subheading != blank %}<p class="storybook-formats__subheading">{{ section.settings.subheading }}</p>{% endif %}
+      {% if section.settings.text != blank %}<p class="storybook-formats__text">{{ section.settings.text }}</p>{% endif %}
+    </div>
+  {% endif %}
 
   <div class="storybook-formats__grid">
     {% for block in section.blocks %}

@@ -1,0 +1,86 @@
+<section class="customized-books-hero">
+  <div class="customized-books-hero__content">
+    <h1>{{ section.settings.heading }}</h1>
+    <p class="customized-books-hero__lead">{{ section.settings.subheading }}</p>
+    <div class="customized-books-hero__description">{{ section.settings.description }}</div>
+    <p class="customized-books-hero__promise"><strong>{{ section.settings.promise }}</strong></p>
+  </div>
+</section>
+
+{% stylesheet %}
+  .customized-books-hero {
+    padding: 64px 24px 40px;
+    color: #143d63;
+    text-align: center;
+  }
+
+  .customized-books-hero__content {
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  .customized-books-hero h1,
+  .customized-books-hero p {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .customized-books-hero h1 {
+    margin: 0;
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+
+  .customized-books-hero__lead {
+    margin: 14px 0 24px;
+    color: #2d86b6;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .customized-books-hero__description {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.08rem;
+    line-height: 1.6;
+  }
+
+  .customized-books-hero__description p {
+    margin: 0 0 14px;
+  }
+
+  .customized-books-hero__promise {
+    margin: 18px 0 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.08rem;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .customized-books-hero {
+      padding: 48px 20px 28px;
+    }
+
+    .customized-books-hero h1 {
+      font-size: 2.2rem;
+    }
+
+    .customized-books-hero__lead {
+      font-size: 1.2rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Customized books hero",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Create a Custom Storybook" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Your memories, turned into a one-of-a-kind storybook." },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Every book in our Custom Collection is created from scratch using the photos, memories, people, places and special details you share with us. We personalize the storyline, cover, characters, locations and illustrations to create a keepsake that feels completely your own.</p><p>From favorite lake adventures to meaningful family traditions, no two Custom Collection books are the same.</p>" },
+    { "type": "text", "id": "promise", "label": "Highlighted statement", "default": "Fully customized from your photos and questionnaire." }
+  ],
+  "presets": [
+    { "name": "Customized books hero" }
+  ]
+}
+{% endschema %}
