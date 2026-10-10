@@ -1,3 +1,11 @@
+{% liquid
+  assign show_storybook_formats = true
+  if section.settings.collection_handle != blank and collection.handle != section.settings.collection_handle
+    assign show_storybook_formats = false
+  endif
+%}
+
+{% if show_storybook_formats %}
 <section class="storybook-formats section section--page-width" style="--storybook-formats-bg: {{ section.settings.background_color }};">
   <div class="storybook-formats__header">
     {% if section.settings.heading != blank %}<h2>{{ section.settings.heading }}</h2>{% endif %}
@@ -44,6 +52,7 @@
     {% endfor %}
   </div>
 </section>
+{% endif %}
 
 {% stylesheet %}
   .storybook-formats {
@@ -201,6 +210,7 @@
     }
   ],
   "settings": [
+    { "type": "text", "id": "collection_handle", "label": "Show only on collection handle" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Choose Your Storybook" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Three beautiful formats. One story that's entirely theirs." },
     { "type": "text", "id": "text", "label": "Text", "default": "Every book is written from scratch, illustrated with your memories, and made just for you." },

@@ -8,6 +8,61 @@
  * ------------------------------------------------------------
  */{
   "sections": {
+    "storybook_formats_custom": {
+      "type": "storybook-formats",
+      "blocks": {
+        "classic": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/Olivia_sSummerAdventuresattheLake.png",
+            "badge_icon": "♥",
+            "badge": "Our Signature Format",
+            "badge_color": "#d8ecf6",
+            "heading": "The Classic Storybook",
+            "dimensions": "8.5 x 8.5 in | Hardcover",
+            "description": "A timeless square book made for little hands and treasured memories.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/the-classic-storybook"
+          }
+        },
+        "adventure": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/AdventureSTorybook-Max.png",
+            "badge_icon": "⛵",
+            "badge": "Wide-Format Adventures",
+            "badge_color": "#d8ecf6",
+            "heading": "The Adventure Storybook",
+            "dimensions": "11 x 8.5 in | Hardcover",
+            "description": "A wide canvas for boats, beaches, and unforgettable family adventures.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/the-adventure-storybook"
+          }
+        },
+        "wonder": {
+          "type": "format",
+          "settings": {
+            "image": "shopify://shop_images/Jessie_s_Wonder_Storybook.png",
+            "badge_icon": "★",
+            "badge": "Classic Portrait",
+            "badge_color": "#d8ecf6",
+            "heading": "The Wonder Storybook",
+            "dimensions": "8.5 x 11 in | Hardcover",
+            "description": "An elegant keepsake filled with favorite faces and special moments.",
+            "button_label": "Explore This Book",
+            "link": "shopify://products/the-wonder-storybook"
+          }
+        }
+      },
+      "block_order": ["classic", "adventure", "wonder"],
+      "settings": {
+        "collection_handle": "100-customizable-storybooks",
+        "heading": "",
+        "subheading": "",
+        "text": "",
+        "background_color": "#ffffff"
+      }
+    },
     "section": {
       "type": "section",
       "blocks": {
@@ -217,6 +272,7 @@
   },
   "order": [
     "section",
+    "storybook_formats_custom",
     "main"
   ]
 }
