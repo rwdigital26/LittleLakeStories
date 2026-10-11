@@ -618,7 +618,7 @@
             "story_club_offer": {
               "type": "custom-liquid",
               "settings": {
-                "custom_liquid": "<div style=\"display:grid;gap:12px;width:100%;\"><a class=\"button-secondary\" href=\"https://littlelakestories.com/products/little-lake-story-club\" style=\"display:flex;justify-content:center;text-decoration:none;width:100%;box-sizing:border-box;\">GET YOUR FIRST BOOK FOR $1 &rarr;</a><p style=\"margin:0;text-align:center;color:var(--color-foreground);opacity:0.7;font-size:0.95rem;line-height:1.5;\">Join the Little Lake Story Club subscription. No coupon code needed.</p></div>"
+                "custom_liquid": "<div style=\"margin-block-start:calc(-1 * (var(--padding-lg) + 19px));display:grid;gap:12px;width:100%;\"><a class=\"button-secondary\" href=\"https://littlelakestories.com/products/little-lake-story-club\" style=\"display:flex;justify-content:center;text-decoration:none;width:100%;box-sizing:border-box;color:#0b5e97;\">GET YOUR FIRST BOOK FOR $1 &rarr;</a><p style=\"margin:0;text-align:center;color:var(--color-foreground);opacity:0.7;font-size:7px;line-height:1.5;\">Join the Little Lake Story Club subscription. No coupon code needed.</p></div>"
               },
               "blocks": {}
             },
