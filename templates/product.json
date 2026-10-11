@@ -72,7 +72,6 @@
               "type": "group",
               "name": "t:names.header",
               "settings": {
-                "product_tag_visibility": "all",
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -244,7 +243,6 @@
                 "row_guarantee_1": {
                   "type": "group",
                   "settings": {
-                    "product_tag_visibility": "all",
                     "content_direction": "row",
                     "vertical_on_mobile": true,
                     "horizontal_alignment": "flex-start",
@@ -326,7 +324,6 @@
                 "row_guarantee_2": {
                   "type": "group",
                   "settings": {
-                    "product_tag_visibility": "all",
                     "content_direction": "row",
                     "vertical_on_mobile": true,
                     "horizontal_alignment": "flex-start",
@@ -408,7 +405,6 @@
                 "row_guarantee_3": {
                   "type": "group",
                   "settings": {
-                    "product_tag_visibility": "all",
                     "content_direction": "row",
                     "vertical_on_mobile": true,
                     "horizontal_alignment": "flex-start",
@@ -490,7 +486,6 @@
                 "row_guarantee_4": {
                   "type": "group",
                   "settings": {
-                    "product_tag_visibility": "all",
                     "content_direction": "row",
                     "vertical_on_mobile": true,
                     "horizontal_alignment": "flex-start",
@@ -596,8 +591,8 @@
                 "variant_style": "buttons",
                 "show_swatches": false,
                 "subscription_unit_price_text_3_months": "$1.00 for month one, then $19.95 per month",
-                "subscription_unit_price_text_6_months": "$1.00 for month one, then $18.95 per month",
-                "subscription_unit_price_text_12_months": "$1.00 for month one, then $17.95 per month",
+                "subscription_unit_price_text_6_months": "$1.00 for month one, then $19.95 per month",
+                "subscription_unit_price_text_12_months": "$1.00 for month one, then $19.95 per month",
                 "option_label_text_color": "",
                 "variant_style_class": "default",
                 "custom_variant_background": "{{ settings.color_palette.background }}",
@@ -618,6 +613,13 @@
             "character_personalizations": {
               "type": "product-personalizations",
               "settings": {},
+              "blocks": {}
+            },
+            "story_club_offer": {
+              "type": "custom-liquid",
+              "settings": {
+                "custom_liquid": "<div style=\"display:grid;gap:12px;width:100%;\"><a class=\"button-secondary\" href=\"https://littlelakestories.com/products/little-lake-story-club\" style=\"display:flex;justify-content:center;text-decoration:none;width:100%;box-sizing:border-box;\">GET YOUR FIRST BOOK FOR $1 &rarr;</a><p style=\"margin:0;text-align:center;color:var(--color-foreground);opacity:0.7;font-size:0.95rem;line-height:1.5;\">Join the Little Lake Story Club subscription. No coupon code needed.</p></div>"
+              },
               "blocks": {}
             },
             "buy_buttons_eYQEYi": {
@@ -704,8 +706,8 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Shipping Details",
-                    "open_by_default": false,
                     "product_tag_visibility": "custom",
+                    "open_by_default": false,
                     "icon": "none",
                     "width": 20
                   },
@@ -744,8 +746,8 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Shipping Details",
-                    "open_by_default": false,
                     "product_tag_visibility": "non-custom",
+                    "open_by_default": false,
                     "icon": "none",
                     "width": 20
                   },
@@ -784,8 +786,8 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Our Little Likeness Promise.",
-                    "open_by_default": false,
                     "product_tag_visibility": "custom",
+                    "open_by_default": false,
                     "icon": "none",
                     "width": 20
                   },
@@ -825,7 +827,6 @@
                   "settings": {
                     "heading": "Our Guarantee to You",
                     "open_by_default": true,
-                    "product_tag_visibility": "all",
                     "icon": "none",
                     "width": 20
                   },
@@ -878,6 +879,7 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "character_personalizations",
+            "story_club_offer",
             "buy_buttons_eYQEYi",
             "accordion_details_p6yz3k"
           ]
@@ -901,10 +903,10 @@
         "item_1": {
           "type": "item",
           "settings": {
-            "icon": "gift",
             "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/book.png",
             "subscription_heading": "One Personalized Story Every Month",
             "subscription_text": "A new adventure with your child’s name and custom details.",
+            "icon": "gift",
             "heading": "A Gift Unlike Any Other",
             "text": "Made just for them, inspired by your memories."
           }
@@ -912,10 +914,10 @@
         "item_2": {
           "type": "item",
           "settings": {
-            "icon": "heart",
             "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/heart.png",
             "subscription_heading": "Stories Curated Just for Them",
             "subscription_text": "Unique themes based on their age, interests, and special moments.",
+            "icon": "heart",
             "heading": "Their Story, Their Magic",
             "text": "Watch their face light up as the story unfolds."
           }
@@ -923,10 +925,10 @@
         "item_3": {
           "type": "item",
           "settings": {
-            "icon": "smiley",
             "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/book.png",
             "subscription_heading": "Create Their Profile Once",
             "subscription_text": "Tell us about your child’s appearance, interests and favorite things.",
+            "icon": "smiley",
             "heading": "A Keepsake for Years to Come",
             "text": "Today's adventures. Tomorrow's treasured memories."
           }
@@ -934,10 +936,7 @@
         "item_4": {
           "type": "item",
           "settings": {
-            "icon": "gift",
             "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/cake.png",
-            "subscription_heading": "",
-            "subscription_text": "",
             "heading": "A Special Birthday Story",
             "text": "During their birthday month, they’ll receive a one-of-a-kind celebration story."
           }
@@ -945,10 +944,7 @@
         "item_5": {
           "type": "item",
           "settings": {
-            "icon": "gift",
             "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/shipping.png",
-            "subscription_heading": "",
-            "subscription_text": "",
             "heading": "Shipping Included",
             "text": "Delivered to your door every month with no extra fees."
           }
@@ -956,10 +952,7 @@
         "item_6": {
           "type": "item",
           "settings": {
-            "icon": "gift",
             "icon_url": "https://cdn.shopify.com/s/files/1/0831/8376/3710/files/gift.png",
-            "subscription_heading": "",
-            "subscription_text": "",
             "heading": "Hardcover Upgrade Available",
             "text": "Choose a durable hardcover for stories that last a lifetime."
           }
@@ -974,9 +967,9 @@
         "item_6"
       ],
       "settings": {
+        "background_color": "#eaf3fb",
         "heading": "What’s Included",
-        "subheading": "Everything you need for a year of meaningful adventures.",
-        "background_color": "#eaf3fb"
+        "subheading": "Everything you need for a year of meaningful adventures."
       }
     },
     "product_recommendations_qggXJq": {
