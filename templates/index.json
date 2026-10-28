@@ -179,15 +179,15 @@
         "format_gHedEG": {
           "type": "format",
           "settings": {
-            "image": "shopify://shop_images/Peekaboo_LittleOne_LakesideDreams_1.png",
+            "image": "shopify://shop_images/Jackson_the_Miracle_in_Milwaukee_3.png",
             "badge_icon": "",
             "badge": "",
             "badge_color": "#d8ecf6",
-            "heading": "Peek-a-Boo I See You Personalized Book",
+            "heading": "Miracle in Milwaukee Personalized Book",
             "dimensions": "8.5 x 8.5 in | Hardcover",
             "description": "A timeless square book made for little hands and treasured memories.",
             "button_label": "Explore This Book",
-            "link": "shopify://products/peekaboo-little-one-i-see-you-storybook"
+            "link": "shopify://products/miracle-in-milwaukee"
           }
         },
         "format_tT38L7": {
